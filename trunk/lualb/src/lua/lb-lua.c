@@ -73,7 +73,6 @@ static lua_State *L = NULL;
 
 static const char *progname = PROGNAME;
 
-//extern int Lb_Init(lua_State* L);
 extern int luaopen_lb(lua_State* L);
 
 static const luaL_reg lualibs[] = {
@@ -83,10 +82,9 @@ static const luaL_reg lualibs[] = {
   {"string", luaopen_string},
   {"math", luaopen_math},
   {"debug", luaopen_debug},
-//  {"loadlib", luaopen_loadlib},
+  {"loadlib", luaopen_loadlib},
   /* add your libraries here */
   {"lb", luaopen_lb},
-//  {"lb", Lb_Init},
   LUA_EXTRALIBS
   {NULL, NULL}
 };
@@ -113,7 +111,7 @@ static void print_usage (void) {
   "Available options are:\n"
   "  -        execute stdin as a file\n"
   "  -e stat  execute string `stat'\n"
-  "  -i       enter interactive mode after executing `script'\n"
+  /*"  -i       enter interactive mode after executing `script'\n"*/
   "  -l name  load and run library `name'\n"
   "  -v       show version information\n"
   "  --       stop handling options\n" ,
@@ -333,10 +331,12 @@ static int handle_argv (char *argv[], int *interactive) {
           file_input(NULL);  /* executes stdin as a file */
           break;
         }
+		/*
         case 'i': {
           *interactive = 1;
           break;
         }
+		*/
         case 'v': {
           print_version();
           break;
@@ -433,18 +433,22 @@ static int pmain (lua_State *l) {
 
 int main (int argc, char *argv[]) {
   int status;
-  struct Smain s;
-  
-  // Do not allow interactive mode
-  if (argc<2) {
-    printf("Usage: %s <filename.lua>\n", argv[0]);
-    return 0;
-  }
+  struct Smain s;  
 
+  // Check if Master node
+  int myid = 0;
+  
 #ifdef LB_ENABLE_MPI
 	LB_CALL_MPI(MPI_Init(&argc, &argv))
+	LB_CALL_MPI(MPI_Comm_rank(MPI_COMM_WORLD,&myid))
 	LB_CALL_MPI(MPI_Barrier(MPI_COMM_WORLD))
 #endif /* LB_ENABLE_MPI */
+
+  // Do not allow interactive mode
+  if (argc<2) {
+    if (myid==0) print_usage();
+    return 0;
+  }
 
   lua_State *l = lua_open();  /* create state */
   if (l == NULL) {

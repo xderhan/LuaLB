@@ -1,8 +1,0 @@
-GridLB is an open source grid-enabled lattice Boltzmann code for simulation of fluid dynamics.
-
-http://gridlb.sourceforge.net/
-
-See installation instructions in doc/INSTALL.txt
-
-=== LICENSE ===
-This software is released under the GNU General Public License (see COPYING)

@@ -434,6 +434,12 @@ static int pmain (lua_State *l) {
 int main (int argc, char *argv[]) {
   int status;
   struct Smain s;
+  
+  // Do not allow interactive mode
+  if (argc<2) {
+    printf("Usage: %s <filename.lua>\n", argv[0]);
+    return 0;
+  }
 
 #ifdef LB_ENABLE_MPI
 	LB_CALL_MPI(MPI_Init(&argc, &argv))

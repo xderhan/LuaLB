@@ -1,8 +1,11 @@
-GridLB is an open source grid-enabled lattice Boltzmann code for simulation of fluid dynamics.
+LuaLB is an open-source parallelizable lattice Boltzmann simulation for computational fluid dynamics with Lua scripting. 
 
-http://gridlb.sourceforge.net/
+http://lualb.googlecode.com
 
 See installation instructions in doc/INSTALL.txt
 
 === LICENSE ===
-This software is released under the GNU General Public License (see COPYING)
+This software is released under the GNU General Public License (see COPYING).
+
+=== Credit ===
+This is a derived work from the origal authors V. Babin and R. Holyst (http://www.ichf.edu.pl/lb/)

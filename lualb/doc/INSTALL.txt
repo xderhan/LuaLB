@@ -1,0 +1,63 @@
+
+  GridLB Installation
+
+*System requirements*
+
+    * Linux with GCC compiler
+    * HDF5 >= 1.6.5 <http://hdf.ncsa.uiuc.edu/HDF5/>
+    * Lua >= 5.0 <http://www.lua.org/> script language
+    * SWIG >= 1.3.31 <http://www.swig.org/> for generating wrapper files
+    * libpng <http://www.libpng.org/> (optional)
+    * MPICH <http://www-unix.mcs.anl.gov/mpi/> (optional for Linux Cluster)
+
+*Preparing source files*
+
+    * Download the current source here: gridlb-x.x.xx.tar.gz
+      <http://sourceforge.net/project/showfiles.php?group_id=200235>
+    * You need to generate the wrapper code with SWIG
+      <http://www.swig.org/>.
+
+      $ tar xvfz gridlb-x.x.xx.tar.gz
+      $ cd gridlb-x.x.xx/src/wrapper
+      $ swig -lua -DLB_ENABLE_RGB -DLB_ENABLE_MPI lb-lua.i
+
+      Where -Dxxx are optionals, you can remove it.
+      -DLB_ENABLE_RGB = to enable 2D RGB graphics, need libpng
+      <http://www.libpng.org/>.
+      -DLB_ENABLE_MPI = to enable parallel programming, need MPICH
+      <http://www-unix.mcs.anl.gov/mpi/>.
+
+*Build instructions*
+Compiling source code proceed as follows
+
+For a PC (does not require MPICH):
+
+$ cd /path/to/gridlb-x.x.xx
+$ ./configure --prefix=/path/to/your_dir --with-hdf5=/path/to/hdf5
+--with-lua5=/path/to/lua5
+$ make
+$ make install
+
+For parallel computer:
+
+You must have installed MPICH and HDF5 with the MPI support
+(--enable-parallel option to the HDF5 configure script). The building
+precess are following:
+
+$ cd /path/to/gridlb-x.x.xx
+$ CC=/path/to/bin/mpicc ./configure --enable-mpi
+--prefix=/path/to/your_dir --with-hdf5=/path/to/hdf5
+--with-lua5=/path/to/lua5
+$ make
+$ make install
+
+*Running example scripts*
+
+Ther are simple example scripts in gridlb-x.x.xx/examples/, to run the
+scripts:
+
+$ cd /path/to/gridlb-x.x.xx/examples
+$ ../src/wrapper/gridlb script_files.lua (on a PC)
+$ /path/to/mpich/bin/mpirun -np 4 ../src/wrapper/gridlb script_files.lua
+(on a cluster)
+

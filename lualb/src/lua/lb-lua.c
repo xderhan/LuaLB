@@ -435,18 +435,17 @@ int main (int argc, char *argv[]) {
   int status;
   struct Smain s;  
 
-  // Check if Master node
-  int myid = 0;
-  
 #ifdef LB_ENABLE_MPI
 	LB_CALL_MPI(MPI_Init(&argc, &argv))
-	LB_CALL_MPI(MPI_Comm_rank(MPI_COMM_WORLD,&myid))
 	LB_CALL_MPI(MPI_Barrier(MPI_COMM_WORLD))
 #endif /* LB_ENABLE_MPI */
 
   // Do not allow interactive mode
   if (argc<2) {
-    if (myid==0) print_usage();
+#ifdef LB_ENABLE_MPI
+	if(lb_mpi_comm_rank(MPI_COMM_WORLD) == 0)
+#endif /* LB_ENABLE_MPI */
+	print_usage();
     return 0;
   }
 

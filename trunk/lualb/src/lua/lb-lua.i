@@ -132,108 +132,6 @@ void LBD3Q19Mix_get_walls_speed(LBD3Q19Mix *self, double *v40, double *v41,
 	*v40=v4[0]; *v41=v4[1]; *v50=v5[0]; *v51=v5[1];
 }
 
-
-/* ========== Utilities ========== */
-
-/* extending for LBColormap */
-//void set_color(int, const double c[3]);
-void LBColormap_set_color(const LBColormap* self, int c, 
-				const double r, 
-				const double g, 
-				const double b) 
-{
-	double cl[3];
-	cl[0]=r; cl[1]=g; cl[2]=b;
-	_LBColormap_set_color(self, c, cl);
-}
-
-//void get_color(int, double c[3]);
-void LBColormap_get_color(const LBColormap* self, int c, 
-					double *r, 
-					double *g, 
-					double *b) 
-{
-	double cl[3];
-	_LBColormap_get_color(self, c, cl);
-	*r=cl[0]; *b=cl[1]; *b=cl[2];
-}
-
-//void append_color(const double c[3]);
-/*
-void LBColormap_append_color(LBColormap* self, 
-				const double r, 
-				const double g, 
-				const double b) 
-{
-	double cl[3];
-	cl[0]=r; cl[1]=g; cl[2]=b;
-	_LBColormap_append_color(self, cl);
-}
-*/
-
-//void map_value(double, double c[3]);
-void LBColormap_map_value(const LBColormap* self, double v, 
-				double *r, 
-				double *g, 
-				double *b) 
-{
-	double cl[3];
-	_LBColormap_map_value(self, v, cl);
-	*r=cl[0]; *b=cl[1]; *b=cl[2];
-}
-
-/* extending for LBRGB */
-//void fill(const double rgb[3]);
-void LBRGB_fill(LBRGB* self, 
-			const double r, 
-			const double g, 
-			const double b) 
-{
-	double cl[3];
-	cl[0]=r; cl[1]=g; cl[2]=b;
-	_LBRGB_fill(self, cl);
-}
-
-//void get_pixel(int x, int y, double rgb[3]);
-void LBRGB_get_pixel(const LBRGB* self, int x, int y, 
-			double *r, 
-			double *g, 
-			double *b) 
-{
-	double cl[3];
-	_LBRGB_get_pixel(self, x, y, cl);
-	*r=cl[0]; *b=cl[1]; *b=cl[2];
-}
-
-//void set_pixel(int x, int y, const double rgb[3]);
-void LBRGB_set_pixel(LBRGB* self, int x, int y, 
-			const double r, 
-			const double g, 
-			const double b) 
-{
-	double cl[3];
-	cl[0]=r; cl[1]=g; cl[2]=b;
-	_LBRGB_set_pixel(self, x, y, cl);
-}
-
-//void set_pixel_rgba(int, int, const double rgba[4]);
-void LBRGB_set_pixel_rgba(LBRGB* self, int x, int y, 
-				const double r, 
-				const double g, 
-				const double b, 
-				const double a) 
-{
-	double cl[4];
-	cl[0]=r; cl[1]=g; cl[2]=b; cl[3]=a;
-	_LBRGB_set_pixel_rgba(self, x, y, cl);
-}
-
-void LBRGB_save(LBRGB* self, char* name) {
-	FILE *file;
-	file = fopen(name, "w");
-	_LBRGB_save(self, file);
-}
-
 %}
 
 typedef struct {
@@ -348,6 +246,7 @@ typedef struct {
 
 #ifdef LB_ENABLE_RGB
 
+
 %nodefaultctor;
 typedef struct {
 	%immutable;
@@ -358,7 +257,9 @@ typedef struct {
 	%immutable;
 } LBRGB;
 
+
 #endif /* LB_ENABLE_RGB */
+
 
 %rename(d2q9_BGK) LBD2Q9BGK_new;
 LBD2Q9BGK* LBD2Q9BGK_new(int c, int nx, int ny, int px, int py);
@@ -375,13 +276,16 @@ LBD3Q19Mix* LBD3Q19Mix_new(int nx, int ny, int nz, int pz);
 
 #ifdef LB_ENABLE_RGB
 
+
 %rename(colormap) LBColormap_new;
 LBColormap* LBColormap_new(void);
 
 %rename(rgb) LBRGB_new;
 LBRGB* LBRGB_new(int width, int height);
 
+
 #endif /* LB_ENABLE_RGB */
+
 
 /* ===== BGK module ===== */
 
@@ -535,39 +439,35 @@ void lb_info_enable(void);
 %rename(info_disable) lb_info_disable;
 void lb_info_disable(void);
 
+
 #ifdef LB_ENABLE_MPI
+
 
 %rename(mpi_barrier) lb_mpi_barrier;
 void lb_mpi_barrier(void);
 
+
 #endif /* LB_ENABLE_MPI */
+
 
 /* ===== Graphics ===== */
 
 #ifdef LB_ENABLE_RGB
 
+
 /* Color map */
 
 %extend LBColormap {
-
+	
 	void destroy();
-
 	int num_colors();
-
-	//void set_color(int, const double c[3]);
-	void set_color(int, const double, const double, const double);
-
-	//void get_color(int, double c[3]);
-	void get_color(int, double *OUTPUT, double *OUTPUT, double *OUTPUT);
-
 	%apply double INPUT[ANY] {const double c[3]};
-	void append_color(const double c[3]);
-	//void append_color(const double, const double, const double);
+	void set_color(int, const double c[3]);	void append_color(const double c[3]);
 	%clear const double c[3];
-
-	//void map_value(double, double c[3]);
-	void map_value(double, double *OUTPUT, double *OUTPUT, double *OUTPUT);
-
+	%apply double OUTPUT[ANY] {const double OUTPUT[3]};
+	void get_color(int, double OUTPUT[3]);
+	void map_value(double, double OUTPUT[3]);
+	%clear const double OUTPUT[3];
 }
 
 /* RGB */
@@ -575,28 +475,25 @@ void lb_mpi_barrier(void);
 %extend LBRGB {
 
 	void destroy();
-
 	int width();
-
 	int height();
-
-	//void fill(const double rgb[3]);
-	void fill(const double, const double, const double);
-
-	//void get_pixel(int x, int y, double rgb[3]);
-	void get_pixel(int x, int y, double *OUTPUT, double *OUTPUT, double *OUTPUT);
-
-	//void set_pixel(int x, int y, const double rgb[3]);
-	void set_pixel(int x, int y, const double, const double, const double);
-
-	//void set_pixel_rgba(int, int, const double rgba[4]);
-	void set_pixel_rgba(int, int, const double, const double, const double, const double);
+	%apply double INPUT[ANY] {const double rgb[3]};
+	void fill(const double rgb[3]);
+	void set_pixel(int x, int y, const double rgb[3]);
+	%clear const double rgb[3];
+	%apply double INPUT[ANY] {const double rgba[4]};
+	void set_pixel_rgba(int, int, const double rgba[4]);
+	%clear const double rgba[4];
 
 	//void map_value(const LBColormap*, int, int, double);
 
-	//void save(FILE*);
+	%apply double OUTPUT[ANY] {const double OUTPUT[3]};
+	void get_pixel(int x, int y, double OUTPUT[3]);
+	%clear const double rgb[3];
 	void save(char*);
-
 }
 
+
 #endif /* LB_ENABLE_RGB */
+
+

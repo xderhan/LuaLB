@@ -55,3 +55,19 @@ $ cd /path/to/lualb/examples
 $ ../path/to/lualb script_files.lua (on a PC)
 $ /path/to/mpich/bin/mpirun -np 4 ../src/lua/lualb script_files.lua (for parallel version) 
 }}}
+
+= Generating wrapper files = 
+
+You may want to generate the lua wrapper code with SWIG. Please follow this instruction:
+
+{{{
+      $ cd gridlb-x.x.xx/src/lua
+      # for a PC version
+      $ swig -lua -DLB_ENABLE_RGB lb-lua.i
+      # for parallel version
+      $ swig -lua -DLB_ENABLE_RGB -DLB_ENABLE_MPI -o lb-lua_wrap-mpi.c lb-lua.i
+
+      Where -Dxxx are optionals:
+      -DLB_ENABLE_RGB = to enable 2D RGB graphics, need libpng.
+      -DLB_ENABLE_MPI = to enable parallel version with MPI, need MPICH. 
+}}}

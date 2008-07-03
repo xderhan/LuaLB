@@ -14,7 +14,7 @@ int LBColormap_num_colors(const LBColormap*);
 
 void _LBColormap_get_color(const LBColormap*, int, double c[3]);
 void _LBColormap_set_color(LBColormap*, int, const double c[3]);
-void _LBColormap_append_color(LBColormap*, const double c[3]);
+void LBColormap_append_color(LBColormap*, const double c[3]);
 
 void _LBColormap_map_value(const LBColormap*, double, double c[3]);
 

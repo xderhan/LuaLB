@@ -14,7 +14,6 @@
 */
 
 %module lb
-
 %include "typemaps.i"
 
 %{
@@ -160,6 +159,7 @@ void LBColormap_get_color(const LBColormap* self, int c,
 }
 
 //void append_color(const double c[3]);
+/*
 void LBColormap_append_color(LBColormap* self, 
 				const double r, 
 				const double g, 
@@ -169,6 +169,7 @@ void LBColormap_append_color(LBColormap* self,
 	cl[0]=r; cl[1]=g; cl[2]=b;
 	_LBColormap_append_color(self, cl);
 }
+*/
 
 //void map_value(double, double c[3]);
 void LBColormap_map_value(const LBColormap* self, double v, 
@@ -559,8 +560,10 @@ void lb_mpi_barrier(void);
 	//void get_color(int, double c[3]);
 	void get_color(int, double *OUTPUT, double *OUTPUT, double *OUTPUT);
 
-	//void append_color(const double c[3]);
-	void append_color(const double, const double, const double);
+	%apply double INPUT[ANY] {const double c[3]};
+	void append_color(const double c[3]);
+	//void append_color(const double, const double, const double);
+	%clear const double c[3];
 
 	//void map_value(double, double c[3]);
 	void map_value(double, double *OUTPUT, double *OUTPUT, double *OUTPUT);

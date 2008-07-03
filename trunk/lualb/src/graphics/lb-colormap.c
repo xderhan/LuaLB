@@ -73,7 +73,7 @@ _LBColormap_set_color(LBColormap* self, int c, const double color[3])
 }
 
 void
-_LBColormap_append_color(LBColormap* self, const double color[3])
+LBColormap_append_color(LBColormap* self, const double color[3])
 {
 	lb_assert(self != NULL);
 	lb_assert(color != NULL);

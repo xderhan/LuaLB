@@ -59,7 +59,7 @@ LBRGB_height(const LBRGB* self)
 }
 
 void
-_LBRGB_fill(LBRGB* self, const double c[3])
+LBRGB_fill(LBRGB* self, const double c[3])
 {
 	double* end;
 	double* ptr;
@@ -86,7 +86,7 @@ _LBRGB_fill(LBRGB* self, const double c[3])
 }
 
 void
-_LBRGB_get_pixel(const LBRGB* self, int x, int y, double pixel[3])
+LBRGB_get_pixel(const LBRGB* self, int x, int y, double pixel[3])
 {
 	const double* ptr;
 
@@ -103,7 +103,7 @@ _LBRGB_get_pixel(const LBRGB* self, int x, int y, double pixel[3])
 }
 
 void
-_LBRGB_set_pixel(LBRGB* self, int x, int y, const double pixel[3])
+LBRGB_set_pixel(LBRGB* self, int x, int y, const double pixel[3])
 {
 	double* ptr;
 
@@ -120,7 +120,7 @@ _LBRGB_set_pixel(LBRGB* self, int x, int y, const double pixel[3])
 }
 
 void
-_LBRGB_set_pixel_rgba(LBRGB* self, int x, int y, const double rgba[4])
+LBRGB_set_pixel_rgba(LBRGB* self, int x, int y, const double rgba[4])
 {
 	double* ptr;
 
@@ -146,14 +146,17 @@ _LBRGB_set_pixel_rgba(LBRGB* self, int x, int y, const double rgba[4])
 #endif /* png_jmpbuf */
 
 void
-_LBRGB_save(const LBRGB* self, FILE* file)
+LBRGB_save(const LBRGB* self, char* name)
 {
 	png_structp png_ptr;
 	png_infop info_ptr;
 	png_color_8 sig_bit;
 
+	FILE *file;
+
 	lb_assert(self != NULL);
-	lb_assert(file != NULL);
+	lb_assert(name != NULL);
+	lb_assert( (file=(FILE *)fopen(name, "w")) != NULL );
 
 	png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING,
                                           NULL, NULL, NULL);
@@ -219,5 +222,5 @@ LBRGB_map_value(LBRGB* self, const LBColormap* cmap,
         lb_assert(y >= 0 && y < self->height);
 
 	ptr = self->pixels + y*self->rowstride + 3*x;
-	_LBColormap_map_value(cmap, v, ptr);
+	LBColormap_map_value(cmap, v, ptr);
 }

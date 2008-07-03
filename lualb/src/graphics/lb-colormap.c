@@ -45,7 +45,7 @@ LBColormap_num_colors(const LBColormap* self)
 }
 
 void
-_LBColormap_get_color(const LBColormap* self, int c, double color[3])
+LBColormap_get_color(const LBColormap* self, int c, double color[3])
 {
 	lb_assert(self != NULL);
 	lb_assert(c < self->ncolors);
@@ -59,7 +59,7 @@ _LBColormap_get_color(const LBColormap* self, int c, double color[3])
 }
 
 void
-_LBColormap_set_color(LBColormap* self, int c, const double color[3])
+LBColormap_set_color(LBColormap* self, int c, const double color[3])
 {
 	lb_assert(self != NULL);
 	lb_assert(c < self->ncolors);
@@ -92,7 +92,7 @@ LBColormap_append_color(LBColormap* self, const double color[3])
 }
 
 void
-_LBColormap_map_value(const LBColormap* self, double v, double color[3])
+LBColormap_map_value(const LBColormap* self, double v, double color[3])
 {
 	int bin;
 

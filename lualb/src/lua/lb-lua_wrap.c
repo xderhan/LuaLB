@@ -1794,6 +1794,7 @@ void LBColormap_get_color(const LBColormap* self, int c,
 }
 
 //void append_color(const double c[3]);
+/*
 void LBColormap_append_color(LBColormap* self, 
 				const double r, 
 				const double g, 
@@ -1803,6 +1804,7 @@ void LBColormap_append_color(LBColormap* self,
 	cl[0]=r; cl[1]=g; cl[2]=b;
 	_LBColormap_append_color(self, cl);
 }
+*/
 
 //void map_value(double, double c[3]);
 void LBColormap_map_value(const LBColormap* self, double v, 
@@ -5534,30 +5536,26 @@ fail:
 static int _wrap_LBColormap_append_color(lua_State* L) {
   int SWIG_arg = 0;
   LBColormap *arg1 = (LBColormap *) 0 ;
-  double arg2 ;
-  double arg3 ;
-  double arg4 ;
+  double *arg2 ;
   
-  SWIG_check_num_args("append_color",4,4)
+  SWIG_check_num_args("append_color",2,2)
   if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("append_color",1,"LBColormap *");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("append_color",2,"double const");
-  if(!lua_isnumber(L,3)) SWIG_fail_arg("append_color",3,"double const");
-  if(!lua_isnumber(L,4)) SWIG_fail_arg("append_color",4,"double const");
   
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBColormap,0))){
     SWIG_fail_ptr("LBColormap_append_color",1,SWIGTYPE_p_LBColormap);
   }
   
-  arg2 = (double const)lua_tonumber(L, 2);
-  arg3 = (double const)lua_tonumber(L, 3);
-  arg4 = (double const)lua_tonumber(L, 4);
-  LBColormap_append_color(arg1,arg2,arg3,arg4);
+  arg2 = SWIG_get_double_num_array_fixed(L,2,3);
+  if (!arg2) SWIG_fail;
+  LBColormap_append_color(arg1,(double const (*))arg2);
   
+  SWIG_FREE_ARRAY(arg2);
   return SWIG_arg;
   
   if(0) SWIG_fail;
   
 fail:
+  SWIG_FREE_ARRAY(arg2);
   lua_error(L);
   return SWIG_arg;
 }

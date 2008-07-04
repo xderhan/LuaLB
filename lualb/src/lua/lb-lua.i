@@ -100,38 +100,6 @@ void LBMixParameters_set(LBMixParameters *self,
 	self->ptau = ptau;
 }
 
-void LBD3Q19BGK_set_walls_speed(LBD3Q19BGK *self, const double v40, const double v41, 
-						const double v50, const double v51) 
-{
-	double v4[2], v5[2];
-	v4[0]=v41; v4[1]=v41; v5[0]=v50; v5[1]=v51;
-	_LBD3Q19BGK_set_walls_speed(self, v4, v5);
-}
-
-void LBD3Q19BGK_get_walls_speed(LBD3Q19BGK *self, double *v40, double *v41, 
-						double *v50, double *v51) 
-{
-	double v4[2], v5[2];
-	_LBD3Q19BGK_get_walls_speed(self, v4, v5);
-	*v40=v4[0]; *v41=v4[1]; *v50=v5[0]; *v51=v5[1];
-}
-
-void LBD3Q19Mix_set_walls_speed(LBD3Q19Mix *self, const double v40, const double v41, 
-						const double v50, const double v51) 
-{
-	double v4[2], v5[2];
-	v4[0]=v41; v4[1]=v41; v5[0]=v50; v5[1]=v51;
-	_LBD3Q19Mix_set_walls_speed(self, v4, v5);
-}
-
-void LBD3Q19Mix_get_walls_speed(LBD3Q19Mix *self, double *v40, double *v41, 
-						double *v50, double *v51) 
-{
-	double v4[2], v5[2];
-	_LBD3Q19Mix_get_walls_speed(self, v4, v5);
-	*v40=v4[0]; *v41=v4[1]; *v50=v5[0]; *v51=v5[1];
-}
-
 %}
 
 typedef struct {
@@ -329,35 +297,29 @@ LBRGB* LBRGB_new(int width, int height);
 %extend LBD3Q19BGK {
 
 	void destroy();
-
 	LBPartitionInfo* partition_info();
-
 	LBD3Q19BGKStats* stats();
-
 	void set_parameters(const LBGKParameters*);
-
 	LBGKParameters* get_parameters();
-
-	void set_walls_speed(const double, const double, const double, const double);
-
-	void get_walls_speed(double *OUTPUT, double *OUTPUT, double *OUTPUT, double *OUTPUT);
 	
-	void set_pdfs(int a, int x, int y, int z, double f);
+	%apply double INPUT[ANY] {const double v4[2],const double v5[2]};
+	void set_walls_speed(const double v4[2], const double v5[2]);
+	%clear const double v4[2],const double v5[2];
+	%apply (double OUTPUT[ANY],double OUTPUT[ANY]) {(const double OUTPUT[2],const double OUTPUT[2])};
+	void get_walls_speed(double OUTPUT[2], double OUTPUT[2]);
+	%clear (const double OUTPUT[2],const double OUTPUT[2]);	
 	
+	//void set_walls_speed(const double, const double, const double, const double);
+	//void get_walls_speed(double *OUTPUT, double *OUTPUT, double *OUTPUT, double *OUTPUT);
+	
+	void set_pdfs(int a, int x, int y, int z, double f);	
 	void get_pdfs(int a, int x, int y, int z, double *OUTPUT);
-
 	void set_averages(int x, int y, int z, double density, double vx, double vy, double vz);
-
 	void get_averages(int x, int y, int z, double *OUTPUT, double *OUTPUT, double *OUTPUT, double *OUTPUT);
-
 	void set_equilibrium();
-
 	void advance();
-
 	void dump(const char* filename);
-
 	double mass();
-
 }
 
 /* ===== Bibary Mixture module ===== */
@@ -395,31 +357,26 @@ LBRGB* LBRGB_new(int width, int height);
 %extend LBD3Q19Mix {
 
 	void destroy();
-
 	LBPartitionInfo* partition_info();
-
 	LBD3Q19MixStats* stats();
-
 	void set_parameters(const LBMixParameters*);
-
 	LBMixParameters* get_parameters();
 
-	void set_walls_speed(const double, const double, const double, const double);
-
-	void get_walls_speed(double *OUTPUT, double *OUTPUT, double *OUTPUT, double *OUTPUT);
+	//void set_walls_speed(const double, const double, const double, const double);
+	%apply double INPUT[ANY] {const double v4[2],const double v5[2]};
+	void set_walls_speed(const double v4[2], const double v5[2]);
+	%clear const double v4[2],const double v5[2];
+	%apply (double OUTPUT[ANY],double OUTPUT[ANY]) {(const double OUTPUT[2],const double OUTPUT[2])};
+	void get_walls_speed(double OUTPUT[2], double OUTPUT[2]);
+	%clear (const double OUTPUT[2],const double OUTPUT[2]);	
+	//void get_walls_speed(double *OUTPUT, double *OUTPUT, double *OUTPUT, double *OUTPUT);
 
 	void set_averages(int x, int y, int z, double density, double diff_density, double vx, double vy, double vz);
-
 	void get_averages(int x, int y, int z, double *OUTPUT, double *OUTPUT, double *OUTPUT, double *OUTPUT, double *OUTPUT);
-
 	void set_equilibrium();
-
 	void advance();
-
 	void dump(const char* filename);
-
 	double mass();
-
 }
 
 /* ===== Utilities ===== */
@@ -489,7 +446,7 @@ void lb_mpi_barrier(void);
 
 	%apply double OUTPUT[ANY] {const double OUTPUT[3]};
 	void get_pixel(int x, int y, double OUTPUT[3]);
-	%clear const double rgb[3];
+	%clear const double OUTPUT[3];
 	void save(char*);
 }
 

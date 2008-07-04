@@ -28,9 +28,9 @@ void LBD3Q19BGK_set_parameters(LBD3Q19BGK*, const LBGKParameters*);
 
 LBGKParameters* LBD3Q19BGK_get_parameters(const LBD3Q19BGK*);
 
-void _LBD3Q19BGK_set_walls_speed(LBD3Q19BGK*, const double v4[2],
+void LBD3Q19BGK_set_walls_speed(LBD3Q19BGK*, const double v4[2],
 						   const double v5[2]);
-void _LBD3Q19BGK_get_walls_speed(const LBD3Q19BGK*, double*, double*);
+void LBD3Q19BGK_get_walls_speed(const LBD3Q19BGK*, double*, double*);
 
 void LBD3Q19BGK_set_pdfs(LBD3Q19BGK*, int a, int x, int y, int z, double f);
 void LBD3Q19BGK_get_pdfs(const LBD3Q19BGK*, int a, int x, int y, int z, double* f);

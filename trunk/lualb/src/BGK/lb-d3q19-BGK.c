@@ -568,7 +568,7 @@ LBD3Q19BGK_get_parameters(const LBD3Q19BGK* self)
 
 
 void
-_LBD3Q19BGK_set_walls_speed(LBD3Q19BGK* self,
+LBD3Q19BGK_set_walls_speed(LBD3Q19BGK* self,
 			       const double v4[2],
 			       const double v5[2])
 {
@@ -588,7 +588,7 @@ _LBD3Q19BGK_set_walls_speed(LBD3Q19BGK* self,
 }
 
 void
-_LBD3Q19BGK_get_walls_speed(const LBD3Q19BGK* self,
+LBD3Q19BGK_get_walls_speed(const LBD3Q19BGK* self,
 			       double v4[2], double v5[2])
 {
 	lb_assert(self != NULL);

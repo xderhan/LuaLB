@@ -704,7 +704,7 @@ LBD3Q19Mix_get_parameters(const LBD3Q19Mix* self)
 
 
 void
-_LBD3Q19Mix_set_walls_speed(LBD3Q19Mix* self,
+LBD3Q19Mix_set_walls_speed(LBD3Q19Mix* self,
 			       const double v4[2],
 			       const double v5[2])
 {
@@ -724,7 +724,7 @@ _LBD3Q19Mix_set_walls_speed(LBD3Q19Mix* self,
 }
 
 void
-_LBD3Q19Mix_get_walls_speed(const LBD3Q19Mix* self,
+LBD3Q19Mix_get_walls_speed(const LBD3Q19Mix* self,
 			       double v4[2], double v5[2])
 {
 	lb_assert(self != NULL);

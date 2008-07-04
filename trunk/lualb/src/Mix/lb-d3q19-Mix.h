@@ -44,9 +44,9 @@ void LBD3Q19Mix_set_parameters(LBD3Q19Mix*, const LBMixParameters*);
 //void LBD3Q19VdW_get_parameters(const LBD3Q19VdW*, LBVdWParameters*);
 LBMixParameters* LBD3Q19Mix_get_parameters(const LBD3Q19Mix*);
 
-void _LBD3Q19Mix_set_walls_speed(LBD3Q19Mix*, const double v4[2],
+void LBD3Q19Mix_set_walls_speed(LBD3Q19Mix*, const double v4[2],
 						   const double v5[2]);
-void _LBD3Q19Mix_get_walls_speed(const LBD3Q19Mix*, double*, double*);
+void LBD3Q19Mix_get_walls_speed(const LBD3Q19Mix*, double*, double*);
 
 void LBD3Q19Mix_set_averages(LBD3Q19Mix*, int x, int y, int z,
     double density, double diff_density, double velocity_x, double velocity_y, double velocity_z);

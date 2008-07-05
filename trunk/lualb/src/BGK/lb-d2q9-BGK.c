@@ -357,7 +357,7 @@ LBD2Q9BGK_destroy(LBD2Q9BGK* self)
 }
 
 void
-_LBD2Q9BGK_partition_info(const LBD2Q9BGK* self,
+LBD2Q9BGK_partition_info(const LBD2Q9BGK* self,
 			    LBPartitionInfo* pinfo)
 {
 	lb_assert(self != NULL);
@@ -366,6 +366,7 @@ _LBD2Q9BGK_partition_info(const LBD2Q9BGK* self,
 	*pinfo = self->d2q9.partition_info;
 }
 
+/*
 LBPartitionInfo*
 LBD2Q9BGK_partition_info(const LBD2Q9BGK* self)
 {
@@ -379,6 +380,7 @@ LBD2Q9BGK_partition_info(const LBD2Q9BGK* self)
 
 	return pinfo;
 }
+*/
 
 void
 LBD2Q9BGK_set_parameters(LBD2Q9BGK*             self,
@@ -392,7 +394,7 @@ LBD2Q9BGK_set_parameters(LBD2Q9BGK*             self,
 }
 
 void
-lb_d2q9_get_parameters(const LBD2Q9BGK* self,
+LBD2Q9BGK_get_parameters(const LBD2Q9BGK* self,
 			     LBGKParameters* parameters)
 {
 	lb_assert(self != NULL);
@@ -401,6 +403,7 @@ lb_d2q9_get_parameters(const LBD2Q9BGK* self,
 	*parameters = self->parameters;
 }
 
+/*
 LBGKParameters*
 LBD2Q9BGK_get_parameters(const LBD2Q9BGK* self)
 {
@@ -414,6 +417,7 @@ LBD2Q9BGK_get_parameters(const LBD2Q9BGK* self)
 
 	return params;
 }
+*/
 
 void
 LBD2Q9BGK_set_walls_speed(LBD2Q9BGK* self, double vx_top, double vx_down)

@@ -63,13 +63,6 @@ int LBPartitionInfo_periods(LBPartitionInfo *self, int i){ return self->periods[
 int LBPartitionInfo_global_size(LBPartitionInfo *self, int i){ return self->global_size[i];}
 int LBPartitionInfo_global_origin(LBPartitionInfo *self, int i){ return self->global_origin[i];}
 
-/* extending for LBGKParameters array membrs */
-void LBGKParameters_set_tau(LBGKParameters *self, double x) {self->tau = x;}
-
-void LBGKParameters_set(LBGKParameters *self, double tau) {
-	self->tau = tau;
-}
-
 /* extending for LBMixParameters array membrs */
 void LBMixParameters_set_T(LBMixParameters *self, double x) {self->T = x;}
 void LBMixParameters_set_a(LBMixParameters *self, double x) {self->a = x;}
@@ -102,9 +95,23 @@ void LBMixParameters_set(LBMixParameters *self,
 
 %}
 
+%apply int OUTPUT[ANY] {processors_size[3],processor_coords[3],size[3],periods[3],global_size[3],global_origin[3]};
 typedef struct {
 	%immutable;
+	/*int ndims;
+	int processor_rank;
+	
+	int processors_size[3];
+	int processor_coords[3];
+
+	int size[3];
+	int periods[3];
+	int global_size[3];
+	int global_origin[3];*/
+
 } LBPartitionInfo;
+
+%clear processors_size[3],processor_coords[3],size[3],periods[3],global_size[3],global_origin[3];
 
 %extend LBPartitionInfo {
 	int ndims();
@@ -118,13 +125,9 @@ typedef struct {
 }
 
 typedef struct {
+	%mutable;
 	double tau;
 } LBGKParameters;
-
-%extend LBGKParameters {
-	void set_tau(double);
-	void set(double);
-}
 
 typedef struct {
 	double T;
@@ -260,15 +263,19 @@ LBRGB* LBRGB_new(int width, int height);
 %extend LBD2Q9BGK {
 
 	void destroy();
-
-	LBPartitionInfo* partition_info();
-
+	void partition_info(LBPartitionInfo* OUTPUT);
+	//LBPartitionInfo* partition_info();
 	LBD2Q9BGKStats* stats();
-
-	void set_parameters(const LBGKParameters*);
-
-	LBGKParameters* get_parameters();
-
+	//%apply TYPE *INOUT {const LBGKParameters *par};
+	void set_parameters(const LBGKParameters *INPUT);
+	//%clear const LBGKParameters *par;
+	
+	//%apply SWIGTYPE *OUTPUT[ANY] {const LBGKParameters *OUTPUT};
+	void get_parameters(LBGKParameters *OUTPUT);
+	//%clear const LBGKParameters *OUTPUT;
+		
+	//LBGKParameters* get_parameters();
+	
 	void set_walls_speed(double top, double bottom);
 	void get_walls_speed(double *OUTPUT, double *OUTPUT);
 	
@@ -297,6 +304,7 @@ LBRGB* LBRGB_new(int width, int height);
 %extend LBD3Q19BGK {
 
 	void destroy();
+	//void partition_info(LBPartitionInfo* OUTPUT);
 	LBPartitionInfo* partition_info();
 	LBD3Q19BGKStats* stats();
 	void set_parameters(const LBGKParameters*);

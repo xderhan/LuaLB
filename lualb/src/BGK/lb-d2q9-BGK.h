@@ -21,11 +21,13 @@ typedef struct _LBD2Q9BGK LBD2Q9BGK;
 LBD2Q9BGK* LBD2Q9BGK_new(int c, int nx, int ny, int px, int py);
 void LBD2Q9BGK_destroy(LBD2Q9BGK*);
 
-LBPartitionInfo* LBD2Q9BGK_partition_info(const LBD2Q9BGK*);
+void LBD2Q9BGK_partition_info(const LBD2Q9BGK*, LBPartitionInfo*);
+//LBPartitionInfo* LBD2Q9BGK_partition_info(const LBD2Q9BGK*);
 
 void LBD2Q9BGK_set_parameters(LBD2Q9BGK*, const LBGKParameters*);
+void LBD2Q9BGK_get_parameters(const LBD2Q9BGK*, LBGKParameters*);
 
-LBGKParameters* LBD2Q9BGK_get_parameters(const LBD2Q9BGK*);
+//LBGKParameters* LBD2Q9BGK_get_parameters(const LBD2Q9BGK*);
 
 void LBD2Q9BGK_set_walls_speed(LBD2Q9BGK*, double top, double bottom);
 void LBD2Q9BGK_get_walls_speed(const LBD2Q9BGK*, double*, double*);

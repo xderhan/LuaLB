@@ -1698,13 +1698,6 @@ int LBPartitionInfo_periods(LBPartitionInfo *self, int i){ return self->periods[
 int LBPartitionInfo_global_size(LBPartitionInfo *self, int i){ return self->global_size[i];}
 int LBPartitionInfo_global_origin(LBPartitionInfo *self, int i){ return self->global_origin[i];}
 
-/* extending for LBGKParameters array membrs */
-void LBGKParameters_set_tau(LBGKParameters *self, double x) {self->tau = x;}
-
-void LBGKParameters_set(LBGKParameters *self, double tau) {
-	self->tau = tau;
-}
-
 /* extending for LBMixParameters array membrs */
 void LBMixParameters_set_T(LBMixParameters *self, double x) {self->T = x;}
 void LBMixParameters_set_a(LBMixParameters *self, double x) {self->a = x;}
@@ -1988,6 +1981,32 @@ static swig_lua_class *swig_LBPartitionInfo_bases[] = {0};
 static const char *swig_LBPartitionInfo_base_names[] = {0};
 static swig_lua_class _wrap_class_LBPartitionInfo = { "LBPartitionInfo", &SWIGTYPE_p_LBPartitionInfo,_wrap_new_LBPartitionInfo, swig_delete_LBPartitionInfo, swig_LBPartitionInfo_methods, swig_LBPartitionInfo_attributes, swig_LBPartitionInfo_bases, swig_LBPartitionInfo_base_names };
 
+static int _wrap_LBGKParameters_tau_set(lua_State* L) {
+  int SWIG_arg = 0;
+  LBGKParameters *arg1 = (LBGKParameters *) 0 ;
+  double arg2 ;
+  
+  SWIG_check_num_args("tau",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("tau",1,"LBGKParameters *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("tau",2,"double");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBGKParameters,0))){
+    SWIG_fail_ptr("LBGKParameters_tau_set",1,SWIGTYPE_p_LBGKParameters);
+  }
+  
+  arg2 = (double)lua_tonumber(L, 2);
+  if (arg1) (arg1)->tau = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_LBGKParameters_tau_get(lua_State* L) {
   int SWIG_arg = 0;
   LBGKParameters *arg1 = (LBGKParameters *) 0 ;
@@ -2002,58 +2021,6 @@ static int _wrap_LBGKParameters_tau_get(lua_State* L) {
   
   result = (double) ((arg1)->tau);
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
-  return SWIG_arg;
-  
-  if(0) SWIG_fail;
-  
-fail:
-  lua_error(L);
-  return SWIG_arg;
-}
-
-
-static int _wrap_LBGKParameters_set_tau(lua_State* L) {
-  int SWIG_arg = 0;
-  LBGKParameters *arg1 = (LBGKParameters *) 0 ;
-  double arg2 ;
-  
-  SWIG_check_num_args("set_tau",2,2)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("set_tau",1,"LBGKParameters *");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("set_tau",2,"double");
-  
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBGKParameters,0))){
-    SWIG_fail_ptr("LBGKParameters_set_tau",1,SWIGTYPE_p_LBGKParameters);
-  }
-  
-  arg2 = (double)lua_tonumber(L, 2);
-  LBGKParameters_set_tau(arg1,arg2);
-  
-  return SWIG_arg;
-  
-  if(0) SWIG_fail;
-  
-fail:
-  lua_error(L);
-  return SWIG_arg;
-}
-
-
-static int _wrap_LBGKParameters_set(lua_State* L) {
-  int SWIG_arg = 0;
-  LBGKParameters *arg1 = (LBGKParameters *) 0 ;
-  double arg2 ;
-  
-  SWIG_check_num_args("set",2,2)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("set",1,"LBGKParameters *");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("set",2,"double");
-  
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBGKParameters,0))){
-    SWIG_fail_ptr("LBGKParameters_set",1,SWIGTYPE_p_LBGKParameters);
-  }
-  
-  arg2 = (double)lua_tonumber(L, 2);
-  LBGKParameters_set(arg1,arg2);
-  
   return SWIG_arg;
   
   if(0) SWIG_fail;
@@ -2086,17 +2053,41 @@ LBGKParameters *arg1 = (LBGKParameters *) obj;
 free((char *) arg1);
 }
 static swig_lua_method swig_LBGKParameters_methods[] = {
-    {"set_tau", _wrap_LBGKParameters_set_tau}, 
-    {"set", _wrap_LBGKParameters_set}, 
     {0,0}
 };
 static swig_lua_attribute swig_LBGKParameters_attributes[] = {
-    { "tau", _wrap_LBGKParameters_tau_get, SWIG_Lua_set_immutable},
+    { "tau", _wrap_LBGKParameters_tau_get, _wrap_LBGKParameters_tau_set},
     {0,0,0}
 };
 static swig_lua_class *swig_LBGKParameters_bases[] = {0};
 static const char *swig_LBGKParameters_base_names[] = {0};
 static swig_lua_class _wrap_class_LBGKParameters = { "LBGKParameters", &SWIGTYPE_p_LBGKParameters,_wrap_new_LBGKParameters, swig_delete_LBGKParameters, swig_LBGKParameters_methods, swig_LBGKParameters_attributes, swig_LBGKParameters_bases, swig_LBGKParameters_base_names };
+
+static int _wrap_LBMixParameters_T_set(lua_State* L) {
+  int SWIG_arg = 0;
+  LBMixParameters *arg1 = (LBMixParameters *) 0 ;
+  double arg2 ;
+  
+  SWIG_check_num_args("T",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("T",1,"LBMixParameters *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("T",2,"double");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBMixParameters,0))){
+    SWIG_fail_ptr("LBMixParameters_T_set",1,SWIGTYPE_p_LBMixParameters);
+  }
+  
+  arg2 = (double)lua_tonumber(L, 2);
+  if (arg1) (arg1)->T = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
 
 static int _wrap_LBMixParameters_T_get(lua_State* L) {
   int SWIG_arg = 0;
@@ -2112,6 +2103,32 @@ static int _wrap_LBMixParameters_T_get(lua_State* L) {
   
   result = (double) ((arg1)->T);
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LBMixParameters_a_set(lua_State* L) {
+  int SWIG_arg = 0;
+  LBMixParameters *arg1 = (LBMixParameters *) 0 ;
+  double arg2 ;
+  
+  SWIG_check_num_args("a",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("a",1,"LBMixParameters *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("a",2,"double");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBMixParameters,0))){
+    SWIG_fail_ptr("LBMixParameters_a_set",1,SWIGTYPE_p_LBMixParameters);
+  }
+  
+  arg2 = (double)lua_tonumber(L, 2);
+  if (arg1) (arg1)->a = arg2;
+  
   return SWIG_arg;
   
   if(0) SWIG_fail;
@@ -2146,6 +2163,32 @@ fail:
 }
 
 
+static int _wrap_LBMixParameters_b_set(lua_State* L) {
+  int SWIG_arg = 0;
+  LBMixParameters *arg1 = (LBMixParameters *) 0 ;
+  double arg2 ;
+  
+  SWIG_check_num_args("b",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("b",1,"LBMixParameters *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("b",2,"double");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBMixParameters,0))){
+    SWIG_fail_ptr("LBMixParameters_b_set",1,SWIGTYPE_p_LBMixParameters);
+  }
+  
+  arg2 = (double)lua_tonumber(L, 2);
+  if (arg1) (arg1)->b = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_LBMixParameters_b_get(lua_State* L) {
   int SWIG_arg = 0;
   LBMixParameters *arg1 = (LBMixParameters *) 0 ;
@@ -2160,6 +2203,32 @@ static int _wrap_LBMixParameters_b_get(lua_State* L) {
   
   result = (double) ((arg1)->b);
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LBMixParameters_K_set(lua_State* L) {
+  int SWIG_arg = 0;
+  LBMixParameters *arg1 = (LBMixParameters *) 0 ;
+  double arg2 ;
+  
+  SWIG_check_num_args("K",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("K",1,"LBMixParameters *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("K",2,"double");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBMixParameters,0))){
+    SWIG_fail_ptr("LBMixParameters_K_set",1,SWIGTYPE_p_LBMixParameters);
+  }
+  
+  arg2 = (double)lua_tonumber(L, 2);
+  if (arg1) (arg1)->K = arg2;
+  
   return SWIG_arg;
   
   if(0) SWIG_fail;
@@ -2194,6 +2263,32 @@ fail:
 }
 
 
+static int _wrap_LBMixParameters_Gr_set(lua_State* L) {
+  int SWIG_arg = 0;
+  LBMixParameters *arg1 = (LBMixParameters *) 0 ;
+  double arg2 ;
+  
+  SWIG_check_num_args("Gr",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("Gr",1,"LBMixParameters *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("Gr",2,"double");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBMixParameters,0))){
+    SWIG_fail_ptr("LBMixParameters_Gr_set",1,SWIGTYPE_p_LBMixParameters);
+  }
+  
+  arg2 = (double)lua_tonumber(L, 2);
+  if (arg1) (arg1)->Gr = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_LBMixParameters_Gr_get(lua_State* L) {
   int SWIG_arg = 0;
   LBMixParameters *arg1 = (LBMixParameters *) 0 ;
@@ -2208,6 +2303,32 @@ static int _wrap_LBMixParameters_Gr_get(lua_State* L) {
   
   result = (double) ((arg1)->Gr);
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LBMixParameters_lamda_set(lua_State* L) {
+  int SWIG_arg = 0;
+  LBMixParameters *arg1 = (LBMixParameters *) 0 ;
+  double arg2 ;
+  
+  SWIG_check_num_args("lamda",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("lamda",1,"LBMixParameters *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("lamda",2,"double");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBMixParameters,0))){
+    SWIG_fail_ptr("LBMixParameters_lamda_set",1,SWIGTYPE_p_LBMixParameters);
+  }
+  
+  arg2 = (double)lua_tonumber(L, 2);
+  if (arg1) (arg1)->lamda = arg2;
+  
   return SWIG_arg;
   
   if(0) SWIG_fail;
@@ -2242,6 +2363,32 @@ fail:
 }
 
 
+static int _wrap_LBMixParameters_rtau_set(lua_State* L) {
+  int SWIG_arg = 0;
+  LBMixParameters *arg1 = (LBMixParameters *) 0 ;
+  double arg2 ;
+  
+  SWIG_check_num_args("rtau",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rtau",1,"LBMixParameters *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rtau",2,"double");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBMixParameters,0))){
+    SWIG_fail_ptr("LBMixParameters_rtau_set",1,SWIGTYPE_p_LBMixParameters);
+  }
+  
+  arg2 = (double)lua_tonumber(L, 2);
+  if (arg1) (arg1)->rtau = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_LBMixParameters_rtau_get(lua_State* L) {
   int SWIG_arg = 0;
   LBMixParameters *arg1 = (LBMixParameters *) 0 ;
@@ -2256,6 +2403,32 @@ static int _wrap_LBMixParameters_rtau_get(lua_State* L) {
   
   result = (double) ((arg1)->rtau);
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LBMixParameters_ptau_set(lua_State* L) {
+  int SWIG_arg = 0;
+  LBMixParameters *arg1 = (LBMixParameters *) 0 ;
+  double arg2 ;
+  
+  SWIG_check_num_args("ptau",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ptau",1,"LBMixParameters *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("ptau",2,"double");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBMixParameters,0))){
+    SWIG_fail_ptr("LBMixParameters_ptau_set",1,SWIGTYPE_p_LBMixParameters);
+  }
+  
+  arg2 = (double)lua_tonumber(L, 2);
+  if (arg1) (arg1)->ptau = arg2;
+  
   return SWIG_arg;
   
   if(0) SWIG_fail;
@@ -2579,14 +2752,14 @@ static swig_lua_method swig_LBMixParameters_methods[] = {
     {0,0}
 };
 static swig_lua_attribute swig_LBMixParameters_attributes[] = {
-    { "T", _wrap_LBMixParameters_T_get, SWIG_Lua_set_immutable},
-    { "a", _wrap_LBMixParameters_a_get, SWIG_Lua_set_immutable},
-    { "b", _wrap_LBMixParameters_b_get, SWIG_Lua_set_immutable},
-    { "K", _wrap_LBMixParameters_K_get, SWIG_Lua_set_immutable},
-    { "Gr", _wrap_LBMixParameters_Gr_get, SWIG_Lua_set_immutable},
-    { "lamda", _wrap_LBMixParameters_lamda_get, SWIG_Lua_set_immutable},
-    { "rtau", _wrap_LBMixParameters_rtau_get, SWIG_Lua_set_immutable},
-    { "ptau", _wrap_LBMixParameters_ptau_get, SWIG_Lua_set_immutable},
+    { "T", _wrap_LBMixParameters_T_get, _wrap_LBMixParameters_T_set},
+    { "a", _wrap_LBMixParameters_a_get, _wrap_LBMixParameters_a_set},
+    { "b", _wrap_LBMixParameters_b_get, _wrap_LBMixParameters_b_set},
+    { "K", _wrap_LBMixParameters_K_get, _wrap_LBMixParameters_K_set},
+    { "Gr", _wrap_LBMixParameters_Gr_get, _wrap_LBMixParameters_Gr_set},
+    { "lamda", _wrap_LBMixParameters_lamda_get, _wrap_LBMixParameters_lamda_set},
+    { "rtau", _wrap_LBMixParameters_rtau_get, _wrap_LBMixParameters_rtau_set},
+    { "ptau", _wrap_LBMixParameters_ptau_get, _wrap_LBMixParameters_ptau_set},
     {0,0,0}
 };
 static swig_lua_class *swig_LBMixParameters_bases[] = {0};
@@ -3393,17 +3566,23 @@ fail:
 static int _wrap_LBD2Q9BGK_partition_info(lua_State* L) {
   int SWIG_arg = 0;
   LBD2Q9BGK *arg1 = (LBD2Q9BGK *) 0 ;
-  LBPartitionInfo *result = 0 ;
+  LBPartitionInfo *arg2 = (LBPartitionInfo *) 0 ;
   
-  SWIG_check_num_args("partition_info",1,1)
+  SWIG_check_num_args("partition_info",2,2)
   if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("partition_info",1,"LBD2Q9BGK *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("partition_info",2,"LBPartitionInfo *");
   
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBD2Q9BGK,0))){
     SWIG_fail_ptr("LBD2Q9BGK_partition_info",1,SWIGTYPE_p_LBD2Q9BGK);
   }
   
-  result = (LBPartitionInfo *)LBD2Q9BGK_partition_info(arg1);
-  SWIG_NewPointerObj(L,result,SWIGTYPE_p_LBPartitionInfo,0); SWIG_arg++; 
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_LBPartitionInfo,0))){
+    SWIG_fail_ptr("LBD2Q9BGK_partition_info",2,SWIGTYPE_p_LBPartitionInfo);
+  }
+  
+  LBD2Q9BGK_partition_info(arg1,arg2);
+  
   return SWIG_arg;
   
   if(0) SWIG_fail;
@@ -3471,17 +3650,23 @@ fail:
 static int _wrap_LBD2Q9BGK_get_parameters(lua_State* L) {
   int SWIG_arg = 0;
   LBD2Q9BGK *arg1 = (LBD2Q9BGK *) 0 ;
-  LBGKParameters *result = 0 ;
+  LBGKParameters *arg2 = (LBGKParameters *) 0 ;
   
-  SWIG_check_num_args("get_parameters",1,1)
+  SWIG_check_num_args("get_parameters",2,2)
   if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("get_parameters",1,"LBD2Q9BGK *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("get_parameters",2,"LBGKParameters *");
   
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBD2Q9BGK,0))){
     SWIG_fail_ptr("LBD2Q9BGK_get_parameters",1,SWIGTYPE_p_LBD2Q9BGK);
   }
   
-  result = (LBGKParameters *)LBD2Q9BGK_get_parameters(arg1);
-  SWIG_NewPointerObj(L,result,SWIGTYPE_p_LBGKParameters,0); SWIG_arg++; 
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_LBGKParameters,0))){
+    SWIG_fail_ptr("LBD2Q9BGK_get_parameters",2,SWIGTYPE_p_LBGKParameters);
+  }
+  
+  LBD2Q9BGK_get_parameters(arg1,arg2);
+  
   return SWIG_arg;
   
   if(0) SWIG_fail;

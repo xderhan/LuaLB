@@ -5341,7 +5341,7 @@ else
 fi
 
 
-ac_config_files="$ac_config_files Makefile doc/Makefile examples/Makefile src/Makefile src/core/Makefile src/graphics/Makefile src/BGK/Makefile src/Mix/Makefile src/lua/Makefile"
+ac_config_files="$ac_config_files Makefile doc/Makefile examples/Makefile src/Makefile src/core/Makefile src/graphics/Makefile src/BGK/Makefile src/Mix/Makefile src/Landau/Makefile src/lua/Makefile"
 
 
 cat >confcache <<\_ACEOF
@@ -5952,6 +5952,7 @@ do
     "src/graphics/Makefile") CONFIG_FILES="$CONFIG_FILES src/graphics/Makefile" ;;
     "src/BGK/Makefile") CONFIG_FILES="$CONFIG_FILES src/BGK/Makefile" ;;
     "src/Mix/Makefile") CONFIG_FILES="$CONFIG_FILES src/Mix/Makefile" ;;
+    "src/Landau/Makefile") CONFIG_FILES="$CONFIG_FILES src/Landau/Makefile" ;;
     "src/lua/Makefile") CONFIG_FILES="$CONFIG_FILES src/lua/Makefile" ;;
 
   *) { { echo "$as_me:$LINENO: error: invalid argument: $ac_config_target" >&5

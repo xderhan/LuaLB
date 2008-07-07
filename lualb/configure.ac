@@ -211,6 +211,7 @@ AC_CONFIG_FILES([
   src/graphics/Makefile
   src/BGK/Makefile
   src/Mix/Makefile
+  src/Landau/Makefile
   src/lua/Makefile
 ])
 

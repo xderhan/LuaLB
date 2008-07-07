@@ -18,14 +18,14 @@ struct _LBRGB {
 	double* pixels;
 };
 
-LBRGB*
-LBRGB_new(int width, int height)
+lb_rgb*
+lb_rgb_new(int width, int height)
 {
-	LBRGB* self;
+	lb_rgb* self;
 
 	lb_assert(width > 0 && height > 0);
 
-	self = lb_new(LBRGB, 1);
+	self = lb_new(lb_rgb, 1);
 
 	self->width = width;
 	self->height = height;
@@ -36,7 +36,7 @@ LBRGB_new(int width, int height)
 }
 
 void
-LBRGB_destroy(LBRGB* self)
+lb_rgb_destroy(lb_rgb* self)
 {
 	lb_assert(self != NULL);
 
@@ -45,21 +45,21 @@ LBRGB_destroy(LBRGB* self)
 }
 
 int
-LBRGB_width(const LBRGB* self)
+lb_rgb_width(const lb_rgb* self)
 {
 	lb_assert(self != NULL);
 	return self->width;
 }
 
 int
-LBRGB_height(const LBRGB* self)
+lb_rgb_height(const lb_rgb* self)
 {
 	lb_assert(self != NULL);
 	return self->height;
 }
 
 void
-LBRGB_fill(LBRGB* self, const double c[3])
+lb_rgb_fill(lb_rgb* self, const double c[3])
 {
 	double* end;
 	double* ptr;
@@ -86,7 +86,7 @@ LBRGB_fill(LBRGB* self, const double c[3])
 }
 
 void
-LBRGB_get_pixel(const LBRGB* self, int x, int y, double pixel[3])
+lb_rgb_get_pixel(const lb_rgb* self, int x, int y, double pixel[3])
 {
 	const double* ptr;
 
@@ -103,7 +103,7 @@ LBRGB_get_pixel(const LBRGB* self, int x, int y, double pixel[3])
 }
 
 void
-LBRGB_set_pixel(LBRGB* self, int x, int y, const double pixel[3])
+lb_rgb_set_pixel(lb_rgb* self, int x, int y, const double pixel[3])
 {
 	double* ptr;
 
@@ -120,7 +120,7 @@ LBRGB_set_pixel(LBRGB* self, int x, int y, const double pixel[3])
 }
 
 void
-LBRGB_set_pixel_rgba(LBRGB* self, int x, int y, const double rgba[4])
+lb_rgb_set_pixel_rgba(lb_rgb* self, int x, int y, const double rgba[4])
 {
 	double* ptr;
 
@@ -146,7 +146,7 @@ LBRGB_set_pixel_rgba(LBRGB* self, int x, int y, const double rgba[4])
 #endif /* png_jmpbuf */
 
 void
-LBRGB_save(const LBRGB* self, char* name)
+lb_rgb_save(const lb_rgb* self, char* name)
 {
 	png_structp png_ptr;
 	png_infop info_ptr;
@@ -211,7 +211,7 @@ LBRGB_save(const LBRGB* self, char* name)
 }
 
 void
-LBRGB_map_value(LBRGB* self, const LBColormap* cmap,
+lb_rgb_map_value(lb_rgb* self, const lb_colormap* cmap,
 		   int x, int y, double v)
 {
         double* ptr;
@@ -222,5 +222,5 @@ LBRGB_map_value(LBRGB* self, const LBColormap* cmap,
         lb_assert(y >= 0 && y < self->height);
 
 	ptr = self->pixels + y*self->rowstride + 3*x;
-	LBColormap_map_value(cmap, v, ptr);
+	lb_colormap_map_value(cmap, v, ptr);
 }

@@ -7,6 +7,7 @@ SUBDIRS = .
 LuaLBLibs =			\
 	../BGK/liblbBGK.a	\
 	../Mix/liblbMix.a	\
+	../Landau/liblbLandau.a	\
 	../graphics/liblbgraphics.a \
 	../core/liblbcore.a		
 	
@@ -24,7 +25,7 @@ lualb_SOURCES =		\
 
 lualb_LDADD = $(LuaLBLibs) $(HDF5_LIBS) $(PNG_LIBS) $(LUA5_LIBS)
 
-INCLUDES = -I../core -I../graphics -I../BGK -I../Mix -I$(top_srcdir) $(HDF5_CFLAGS) $(LUA5_CFLAGS)
+INCLUDES = -I../core -I../graphics -I../BGK -I../Mix -I../BGK -I../Landau -I$(top_srcdir) $(HDF5_CFLAGS) $(LUA5_CFLAGS)
 
 EXTRA_lualb_SOURCES = 	\
 		lb-lua.i	

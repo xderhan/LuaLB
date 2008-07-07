@@ -1,61 +1,52 @@
 NX = 128
-NY = 64
+NY = 128
 
-PARAMETERS = lb.LBGKParameters()
+PARAMETERS = lb.LBLandauParameters()
 
-PARAMETERS.tau = 0.8
+a = 9/49
+b = 2/21
+K = 0.01
+Gr = 1.0
+rtau = 0.8
+ptau = 0.8
 
---tau = 0.8
+--PARAMETERS:set(T, a, b, K, Gr, lamda, rtau, ptau)
 
---PARAMETERS:set(tau)
+PY = 1
 
-PY = 0
-
-VT = 0.0 
-VB = 0.0
+VT = 0.05 
+VB = -0.05 
 
 START = 0 
-END = 2048
-FREQ = 128
+END = 2048 -- 1024, 2048, 4096, 8192, 16384, 32768
+FREQ = 64
 
 cmap = lb.colormap()
 cmap:append_color({1, 0, 0})
 cmap:append_color({1, 1, 1})
 cmap:append_color({0, 0, 1})
 
-poiseuilleVelocity = function(iY, Ly, U) 
-	y = iY/Ly
-	return 4.*U*(y-y*y)
-end
-
-poiseuillePressure = function(iX, Lx, Ly, U, nu)
-	Lx = Lx - 1
-	Ly = Ly - 1
-	return 8.*nu*U/(Ly*Ly)*(Lx/2.-iX);
-end
-
 density2rgb = function(rho, ux, uy)
-	return cmap:map_value((rho - 2.7)/3)
+	return cmap:map_value(rho)
+end
+
+ordering2rgb = function(phi, ux, uy)	
+	return cmap:map_value( (1+phi)/2 )
 end
 
 initializer = function(x, y)
-	return 2.5 
---	return 2.5 + math.random(), 0, 0
+	return 1+0.0001*(1-2*math.random()-1.), 0.0001*(1-2*math.random()), 0, 0
 end
 
-initialize = function(simulation, initializer,pinfo)
-	--local pinfo = lb.LBPartitionInfo()
-	--simulation:partition_info(pinfo)
+initialize = function(simulation, initializer)
+	local pinfo = simulation:partition_info()
 	local nx, ny = pinfo:size(0), pinfo:size(1)
 	local x0, y0 = pinfo:global_origin(0), pinfo:global_origin(1)
 
 	for x = 0, nx - 1 do
 		for y = 0, ny - 1 do
-			local ux = poiseuilleVelocity(y, ny-1, 0.01)
-			simulation:set_averages(x, y, 0,
-						initializer(x + x0, y + y0), 
-						ux, 
-						0.0)
+			simulation:set_averages(x, y,
+						initializer(x + x0, y + y0))
 		end
 	end
 
@@ -73,7 +64,7 @@ report_progress = function(start_wtime, t0, t1, t)
 	io.write(string.format("<>> ETA: %s\n", lb.wtime_string((t1 - t)*sps)))
 end
 
-make_filename = function(t)
+make_filename = function(t, ext)
 	local res = ""
 	local digits = 1
 
@@ -91,7 +82,7 @@ make_filename = function(t)
 		res = res .. "0"
 	end
 
-	return res .. t .. ".h5"
+	return res .. t .. ext
 end
 
 render1 = function(callback, simulation, filename)
@@ -101,8 +92,8 @@ render1 = function(callback, simulation, filename)
 
 	for x = 0, nx - 1 do
 		for y = 0, ny - 1 do
-			local rho, ux, uy = simulation:get_averages(x, y)
-			local c = callback(rho, ux, uy)
+			local rho, phi, ux, uy = simulation:get_averages(x, y)
+			local c = callback(phi, ux, uy)
 			rgb:set_pixel(x, ny - y - 1, c)
 		end
 	end
@@ -150,7 +141,7 @@ renderN = function(callback, simulation, filename)
 end
 
 render = function(callback, simulation, t)
-	local filename = make_filename(t)
+	local filename = make_filename(t, ".png")
 
 	if lb.is_parallel() == 1 then
 		renderN(callback, simulation, filename)
@@ -161,27 +152,21 @@ end
 
 -- ##### Begin simulation code #####
 
-simulation = lb.d2q9_BGK(1, NX, NY, 1, PY)
-pinfo = lb.LBPartitionInfo()
-simulation:partition_info(pinfo)
---math.randomseed(pinfo:processor_rank() + 1)
+simulation = lb.d2q9_LD(NX, NY, PY)
+pinfo = simulation:partition_info()
+math.randomseed(pinfo:processor_rank() + 1)
 
---pinfo.size[0] = 1
+--simulation:set_parameters(PARAMETERS)
 
---print(pinfo.size[0])
-
-simulation:set_parameters(PARAMETERS)
-
---[[if not PY then
+if not PY then
 	simulation:set_walls_speed(VT, VB)
-end--]]
+end
 
-initialize(simulation, initializer, pinfo)
+initialize(simulation, initializer)
+simulation:dump("bin_init_2d.h5")
 
 t0 = lb.wtime()
 last_report = t0
-
---simulation:dump("init.h5")
 
 for t = START, END do
 	simulation:advance()
@@ -190,18 +175,20 @@ for t = START, END do
 		local now = lb.wtime()
 		if now - last_report > 7 then
 			report_progress(t0, START, END, t)
-			last_report = now		
+			last_report = now
+		   stats = simulation:stats()
+		   print("ENERGY\t= ", stats.kin_energy)
 		end
 	end
 
+	--print("MASS\t= ", simulation:mass())
+
 	if math.mod(t, FREQ) == 0 then
---		render(density2rgb, simulation, t)
-		simulation:dump(make_filename(t))
-		print(simulation:mass())
+		render(ordering2rgb, simulation, t)
+--		simulation:dump(make_filename(t, ".h5"))
 	end
 end
 
-par = lb.LBGKParameters()
-simulation:get_parameters(par)
+--simulation:dump("final.h5")
 
-print("TAU = ", par.tau)
+simulation:destroy()

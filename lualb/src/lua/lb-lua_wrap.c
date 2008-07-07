@@ -1469,22 +1469,27 @@ SWIG_Lua_dostring(lua_State *L, const char* str) {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_LBColormap swig_types[0]
-#define SWIGTYPE_p_LBD2Q9BGK swig_types[1]
-#define SWIGTYPE_p_LBD2Q9BGKStats swig_types[2]
+#define SWIGTYPE_p_LBD2Q9BGK swig_types[0]
+#define SWIGTYPE_p_LBD2Q9BGKStats swig_types[1]
+#define SWIGTYPE_p_LBD2Q9LandauStats swig_types[2]
 #define SWIGTYPE_p_LBD2Q9Mix swig_types[3]
 #define SWIGTYPE_p_LBD2Q9MixStats swig_types[4]
 #define SWIGTYPE_p_LBD3Q19BGK swig_types[5]
 #define SWIGTYPE_p_LBD3Q19BGKStats swig_types[6]
-#define SWIGTYPE_p_LBD3Q19Mix swig_types[7]
-#define SWIGTYPE_p_LBD3Q19MixStats swig_types[8]
-#define SWIGTYPE_p_LBGKParameters swig_types[9]
-#define SWIGTYPE_p_LBMixParameters swig_types[10]
-#define SWIGTYPE_p_LBPartitionInfo swig_types[11]
-#define SWIGTYPE_p_LBRGB swig_types[12]
-#define SWIGTYPE_p_double swig_types[13]
-static swig_type_info *swig_types[15];
-static swig_module_info swig_module = {swig_types, 14, 0, 0, 0, 0};
+#define SWIGTYPE_p_LBD3Q19LandauStats swig_types[7]
+#define SWIGTYPE_p_LBD3Q19Mix swig_types[8]
+#define SWIGTYPE_p_LBD3Q19MixStats swig_types[9]
+#define SWIGTYPE_p_LBGKParameters swig_types[10]
+#define SWIGTYPE_p_LBLandauParameters swig_types[11]
+#define SWIGTYPE_p_LBMixParameters swig_types[12]
+#define SWIGTYPE_p_LBPartitionInfo swig_types[13]
+#define SWIGTYPE_p_double swig_types[14]
+#define SWIGTYPE_p_lb_colormap swig_types[15]
+#define SWIGTYPE_p_lb_d2q9_Landau swig_types[16]
+#define SWIGTYPE_p_lb_d3q19_Landau swig_types[17]
+#define SWIGTYPE_p_lb_rgb swig_types[18]
+static swig_type_info *swig_types[20];
+static swig_module_info swig_module = {swig_types, 19, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -1669,6 +1674,8 @@ SWIGINTERN void SWIG_write_ptr_array(lua_State* L,void **array,int size,swig_typ
 #include "lb-d3q19-BGK.h"
 #include "lb-d2q9-Mix.h"
 #include "lb-d3q19-Mix.h"
+#include "lb-d2q9-Landau.h"
+#include "lb-d3q19-Landau.h"
 
 #include "lb-wtime.h"
 #include "lb-messages.h"
@@ -1677,13 +1684,14 @@ SWIGINTERN void SWIG_write_ptr_array(lua_State* L,void **array,int size,swig_typ
 #include "lb-rgb.h"
 #endif /* LB_ENABLE_RGB */
 
-/* already added
+/* You may do not need to include these header files
 #include <mpi.h>
 #include <stdio.h>
 #include <stddef.h>
 #include <lb-messages.h>
 #include <lb-BGK.h>
 #include <lb-Mix.h>
+#include <lb-Landau.h>
 #include <lb-macros.h>
 #include <lb-partition-info.h>
 */
@@ -2766,6 +2774,292 @@ static swig_lua_class *swig_LBMixParameters_bases[] = {0};
 static const char *swig_LBMixParameters_base_names[] = {0};
 static swig_lua_class _wrap_class_LBMixParameters = { "LBMixParameters", &SWIGTYPE_p_LBMixParameters,_wrap_new_LBMixParameters, swig_delete_LBMixParameters, swig_LBMixParameters_methods, swig_LBMixParameters_attributes, swig_LBMixParameters_bases, swig_LBMixParameters_base_names };
 
+static int _wrap_LBLandauParameters_a_set(lua_State* L) {
+  int SWIG_arg = 0;
+  LBLandauParameters *arg1 = (LBLandauParameters *) 0 ;
+  double arg2 ;
+  
+  SWIG_check_num_args("a",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("a",1,"LBLandauParameters *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("a",2,"double");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBLandauParameters,0))){
+    SWIG_fail_ptr("LBLandauParameters_a_set",1,SWIGTYPE_p_LBLandauParameters);
+  }
+  
+  arg2 = (double)lua_tonumber(L, 2);
+  if (arg1) (arg1)->a = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LBLandauParameters_a_get(lua_State* L) {
+  int SWIG_arg = 0;
+  LBLandauParameters *arg1 = (LBLandauParameters *) 0 ;
+  double result;
+  
+  SWIG_check_num_args("a",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("a",1,"LBLandauParameters *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBLandauParameters,0))){
+    SWIG_fail_ptr("LBLandauParameters_a_get",1,SWIGTYPE_p_LBLandauParameters);
+  }
+  
+  result = (double) ((arg1)->a);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LBLandauParameters_b_set(lua_State* L) {
+  int SWIG_arg = 0;
+  LBLandauParameters *arg1 = (LBLandauParameters *) 0 ;
+  double arg2 ;
+  
+  SWIG_check_num_args("b",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("b",1,"LBLandauParameters *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("b",2,"double");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBLandauParameters,0))){
+    SWIG_fail_ptr("LBLandauParameters_b_set",1,SWIGTYPE_p_LBLandauParameters);
+  }
+  
+  arg2 = (double)lua_tonumber(L, 2);
+  if (arg1) (arg1)->b = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LBLandauParameters_b_get(lua_State* L) {
+  int SWIG_arg = 0;
+  LBLandauParameters *arg1 = (LBLandauParameters *) 0 ;
+  double result;
+  
+  SWIG_check_num_args("b",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("b",1,"LBLandauParameters *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBLandauParameters,0))){
+    SWIG_fail_ptr("LBLandauParameters_b_get",1,SWIGTYPE_p_LBLandauParameters);
+  }
+  
+  result = (double) ((arg1)->b);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LBLandauParameters_K_set(lua_State* L) {
+  int SWIG_arg = 0;
+  LBLandauParameters *arg1 = (LBLandauParameters *) 0 ;
+  double arg2 ;
+  
+  SWIG_check_num_args("K",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("K",1,"LBLandauParameters *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("K",2,"double");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBLandauParameters,0))){
+    SWIG_fail_ptr("LBLandauParameters_K_set",1,SWIGTYPE_p_LBLandauParameters);
+  }
+  
+  arg2 = (double)lua_tonumber(L, 2);
+  if (arg1) (arg1)->K = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LBLandauParameters_K_get(lua_State* L) {
+  int SWIG_arg = 0;
+  LBLandauParameters *arg1 = (LBLandauParameters *) 0 ;
+  double result;
+  
+  SWIG_check_num_args("K",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("K",1,"LBLandauParameters *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBLandauParameters,0))){
+    SWIG_fail_ptr("LBLandauParameters_K_get",1,SWIGTYPE_p_LBLandauParameters);
+  }
+  
+  result = (double) ((arg1)->K);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LBLandauParameters_rtau_set(lua_State* L) {
+  int SWIG_arg = 0;
+  LBLandauParameters *arg1 = (LBLandauParameters *) 0 ;
+  double arg2 ;
+  
+  SWIG_check_num_args("rtau",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rtau",1,"LBLandauParameters *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rtau",2,"double");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBLandauParameters,0))){
+    SWIG_fail_ptr("LBLandauParameters_rtau_set",1,SWIGTYPE_p_LBLandauParameters);
+  }
+  
+  arg2 = (double)lua_tonumber(L, 2);
+  if (arg1) (arg1)->rtau = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LBLandauParameters_rtau_get(lua_State* L) {
+  int SWIG_arg = 0;
+  LBLandauParameters *arg1 = (LBLandauParameters *) 0 ;
+  double result;
+  
+  SWIG_check_num_args("rtau",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rtau",1,"LBLandauParameters *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBLandauParameters,0))){
+    SWIG_fail_ptr("LBLandauParameters_rtau_get",1,SWIGTYPE_p_LBLandauParameters);
+  }
+  
+  result = (double) ((arg1)->rtau);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LBLandauParameters_ptau_set(lua_State* L) {
+  int SWIG_arg = 0;
+  LBLandauParameters *arg1 = (LBLandauParameters *) 0 ;
+  double arg2 ;
+  
+  SWIG_check_num_args("ptau",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ptau",1,"LBLandauParameters *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("ptau",2,"double");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBLandauParameters,0))){
+    SWIG_fail_ptr("LBLandauParameters_ptau_set",1,SWIGTYPE_p_LBLandauParameters);
+  }
+  
+  arg2 = (double)lua_tonumber(L, 2);
+  if (arg1) (arg1)->ptau = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LBLandauParameters_ptau_get(lua_State* L) {
+  int SWIG_arg = 0;
+  LBLandauParameters *arg1 = (LBLandauParameters *) 0 ;
+  double result;
+  
+  SWIG_check_num_args("ptau",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ptau",1,"LBLandauParameters *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBLandauParameters,0))){
+    SWIG_fail_ptr("LBLandauParameters_ptau_get",1,SWIGTYPE_p_LBLandauParameters);
+  }
+  
+  result = (double) ((arg1)->ptau);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_LBLandauParameters(lua_State* L) {
+  int SWIG_arg = 0;
+  LBLandauParameters *result = 0 ;
+  
+  SWIG_check_num_args("LBLandauParameters::LBLandauParameters",0,0)
+  result = (LBLandauParameters *)calloc(1, sizeof(LBLandauParameters));
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_LBLandauParameters,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_LBLandauParameters(void *obj) {
+LBLandauParameters *arg1 = (LBLandauParameters *) obj;
+free((char *) arg1);
+}
+static swig_lua_method swig_LBLandauParameters_methods[] = {
+    {0,0}
+};
+static swig_lua_attribute swig_LBLandauParameters_attributes[] = {
+    { "a", _wrap_LBLandauParameters_a_get, _wrap_LBLandauParameters_a_set},
+    { "b", _wrap_LBLandauParameters_b_get, _wrap_LBLandauParameters_b_set},
+    { "K", _wrap_LBLandauParameters_K_get, _wrap_LBLandauParameters_K_set},
+    { "rtau", _wrap_LBLandauParameters_rtau_get, _wrap_LBLandauParameters_rtau_set},
+    { "ptau", _wrap_LBLandauParameters_ptau_get, _wrap_LBLandauParameters_ptau_set},
+    {0,0,0}
+};
+static swig_lua_class *swig_LBLandauParameters_bases[] = {0};
+static const char *swig_LBLandauParameters_base_names[] = {0};
+static swig_lua_class _wrap_class_LBLandauParameters = { "LBLandauParameters", &SWIGTYPE_p_LBLandauParameters,_wrap_new_LBLandauParameters, swig_delete_LBLandauParameters, swig_LBLandauParameters_methods, swig_LBLandauParameters_attributes, swig_LBLandauParameters_bases, swig_LBLandauParameters_base_names };
+
 static int _wrap_LBD2Q9BGKStats_min_density_get(lua_State* L) {
   int SWIG_arg = 0;
   LBD2Q9BGKStats *arg1 = (LBD2Q9BGKStats *) 0 ;
@@ -3539,6 +3833,393 @@ static swig_lua_attribute swig_LBD3Q19MixStats_attributes[] = {
 static swig_lua_class *swig_LBD3Q19MixStats_bases[] = {0};
 static const char *swig_LBD3Q19MixStats_base_names[] = {0};
 static swig_lua_class _wrap_class_LBD3Q19MixStats = { "LBD3Q19MixStats", &SWIGTYPE_p_LBD3Q19MixStats,_wrap_new_LBD3Q19MixStats, swig_delete_LBD3Q19MixStats, swig_LBD3Q19MixStats_methods, swig_LBD3Q19MixStats_attributes, swig_LBD3Q19MixStats_bases, swig_LBD3Q19MixStats_base_names };
+
+static int _wrap_LBD2Q9LandauStats_min_density_get(lua_State* L) {
+  int SWIG_arg = 0;
+  LBD2Q9LandauStats *arg1 = (LBD2Q9LandauStats *) 0 ;
+  double result;
+  
+  SWIG_check_num_args("min_density",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("min_density",1,"LBD2Q9LandauStats *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBD2Q9LandauStats,0))){
+    SWIG_fail_ptr("LBD2Q9LandauStats_min_density_get",1,SWIGTYPE_p_LBD2Q9LandauStats);
+  }
+  
+  result = (double) ((arg1)->min_density);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LBD2Q9LandauStats_max_density_get(lua_State* L) {
+  int SWIG_arg = 0;
+  LBD2Q9LandauStats *arg1 = (LBD2Q9LandauStats *) 0 ;
+  double result;
+  
+  SWIG_check_num_args("max_density",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("max_density",1,"LBD2Q9LandauStats *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBD2Q9LandauStats,0))){
+    SWIG_fail_ptr("LBD2Q9LandauStats_max_density_get",1,SWIGTYPE_p_LBD2Q9LandauStats);
+  }
+  
+  result = (double) ((arg1)->max_density);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LBD2Q9LandauStats_max_velocity_get(lua_State* L) {
+  int SWIG_arg = 0;
+  LBD2Q9LandauStats *arg1 = (LBD2Q9LandauStats *) 0 ;
+  double result;
+  
+  SWIG_check_num_args("max_velocity",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("max_velocity",1,"LBD2Q9LandauStats *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBD2Q9LandauStats,0))){
+    SWIG_fail_ptr("LBD2Q9LandauStats_max_velocity_get",1,SWIGTYPE_p_LBD2Q9LandauStats);
+  }
+  
+  result = (double) ((arg1)->max_velocity);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LBD2Q9LandauStats_kin_energy_get(lua_State* L) {
+  int SWIG_arg = 0;
+  LBD2Q9LandauStats *arg1 = (LBD2Q9LandauStats *) 0 ;
+  double result;
+  
+  SWIG_check_num_args("kin_energy",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("kin_energy",1,"LBD2Q9LandauStats *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBD2Q9LandauStats,0))){
+    SWIG_fail_ptr("LBD2Q9LandauStats_kin_energy_get",1,SWIGTYPE_p_LBD2Q9LandauStats);
+  }
+  
+  result = (double) ((arg1)->kin_energy);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LBD2Q9LandauStats_momentum_x_get(lua_State* L) {
+  int SWIG_arg = 0;
+  LBD2Q9LandauStats *arg1 = (LBD2Q9LandauStats *) 0 ;
+  double result;
+  
+  SWIG_check_num_args("momentum_x",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("momentum_x",1,"LBD2Q9LandauStats *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBD2Q9LandauStats,0))){
+    SWIG_fail_ptr("LBD2Q9LandauStats_momentum_x_get",1,SWIGTYPE_p_LBD2Q9LandauStats);
+  }
+  
+  result = (double) ((arg1)->momentum_x);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LBD2Q9LandauStats_momentum_y_get(lua_State* L) {
+  int SWIG_arg = 0;
+  LBD2Q9LandauStats *arg1 = (LBD2Q9LandauStats *) 0 ;
+  double result;
+  
+  SWIG_check_num_args("momentum_y",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("momentum_y",1,"LBD2Q9LandauStats *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBD2Q9LandauStats,0))){
+    SWIG_fail_ptr("LBD2Q9LandauStats_momentum_y_get",1,SWIGTYPE_p_LBD2Q9LandauStats);
+  }
+  
+  result = (double) ((arg1)->momentum_y);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_LBD2Q9LandauStats(lua_State* L) {
+  int SWIG_arg = 0;
+  LBD2Q9LandauStats *result = 0 ;
+  
+  SWIG_check_num_args("LBD2Q9LandauStats::LBD2Q9LandauStats",0,0)
+  result = (LBD2Q9LandauStats *)calloc(1, sizeof(LBD2Q9LandauStats));
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_LBD2Q9LandauStats,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_LBD2Q9LandauStats(void *obj) {
+LBD2Q9LandauStats *arg1 = (LBD2Q9LandauStats *) obj;
+free((char *) arg1);
+}
+static swig_lua_method swig_LBD2Q9LandauStats_methods[] = {
+    {0,0}
+};
+static swig_lua_attribute swig_LBD2Q9LandauStats_attributes[] = {
+    { "min_density", _wrap_LBD2Q9LandauStats_min_density_get, SWIG_Lua_set_immutable},
+    { "max_density", _wrap_LBD2Q9LandauStats_max_density_get, SWIG_Lua_set_immutable},
+    { "max_velocity", _wrap_LBD2Q9LandauStats_max_velocity_get, SWIG_Lua_set_immutable},
+    { "kin_energy", _wrap_LBD2Q9LandauStats_kin_energy_get, SWIG_Lua_set_immutable},
+    { "momentum_x", _wrap_LBD2Q9LandauStats_momentum_x_get, SWIG_Lua_set_immutable},
+    { "momentum_y", _wrap_LBD2Q9LandauStats_momentum_y_get, SWIG_Lua_set_immutable},
+    {0,0,0}
+};
+static swig_lua_class *swig_LBD2Q9LandauStats_bases[] = {0};
+static const char *swig_LBD2Q9LandauStats_base_names[] = {0};
+static swig_lua_class _wrap_class_LBD2Q9LandauStats = { "LBD2Q9LandauStats", &SWIGTYPE_p_LBD2Q9LandauStats,_wrap_new_LBD2Q9LandauStats, swig_delete_LBD2Q9LandauStats, swig_LBD2Q9LandauStats_methods, swig_LBD2Q9LandauStats_attributes, swig_LBD2Q9LandauStats_bases, swig_LBD2Q9LandauStats_base_names };
+
+static int _wrap_LBD3Q19LandauStats_min_density_get(lua_State* L) {
+  int SWIG_arg = 0;
+  LBD3Q19LandauStats *arg1 = (LBD3Q19LandauStats *) 0 ;
+  double result;
+  
+  SWIG_check_num_args("min_density",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("min_density",1,"LBD3Q19LandauStats *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBD3Q19LandauStats,0))){
+    SWIG_fail_ptr("LBD3Q19LandauStats_min_density_get",1,SWIGTYPE_p_LBD3Q19LandauStats);
+  }
+  
+  result = (double) ((arg1)->min_density);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LBD3Q19LandauStats_max_density_get(lua_State* L) {
+  int SWIG_arg = 0;
+  LBD3Q19LandauStats *arg1 = (LBD3Q19LandauStats *) 0 ;
+  double result;
+  
+  SWIG_check_num_args("max_density",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("max_density",1,"LBD3Q19LandauStats *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBD3Q19LandauStats,0))){
+    SWIG_fail_ptr("LBD3Q19LandauStats_max_density_get",1,SWIGTYPE_p_LBD3Q19LandauStats);
+  }
+  
+  result = (double) ((arg1)->max_density);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LBD3Q19LandauStats_max_velocity_get(lua_State* L) {
+  int SWIG_arg = 0;
+  LBD3Q19LandauStats *arg1 = (LBD3Q19LandauStats *) 0 ;
+  double result;
+  
+  SWIG_check_num_args("max_velocity",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("max_velocity",1,"LBD3Q19LandauStats *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBD3Q19LandauStats,0))){
+    SWIG_fail_ptr("LBD3Q19LandauStats_max_velocity_get",1,SWIGTYPE_p_LBD3Q19LandauStats);
+  }
+  
+  result = (double) ((arg1)->max_velocity);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LBD3Q19LandauStats_kin_energy_get(lua_State* L) {
+  int SWIG_arg = 0;
+  LBD3Q19LandauStats *arg1 = (LBD3Q19LandauStats *) 0 ;
+  double result;
+  
+  SWIG_check_num_args("kin_energy",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("kin_energy",1,"LBD3Q19LandauStats *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBD3Q19LandauStats,0))){
+    SWIG_fail_ptr("LBD3Q19LandauStats_kin_energy_get",1,SWIGTYPE_p_LBD3Q19LandauStats);
+  }
+  
+  result = (double) ((arg1)->kin_energy);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LBD3Q19LandauStats_momentum_x_get(lua_State* L) {
+  int SWIG_arg = 0;
+  LBD3Q19LandauStats *arg1 = (LBD3Q19LandauStats *) 0 ;
+  double result;
+  
+  SWIG_check_num_args("momentum_x",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("momentum_x",1,"LBD3Q19LandauStats *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBD3Q19LandauStats,0))){
+    SWIG_fail_ptr("LBD3Q19LandauStats_momentum_x_get",1,SWIGTYPE_p_LBD3Q19LandauStats);
+  }
+  
+  result = (double) ((arg1)->momentum_x);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LBD3Q19LandauStats_momentum_y_get(lua_State* L) {
+  int SWIG_arg = 0;
+  LBD3Q19LandauStats *arg1 = (LBD3Q19LandauStats *) 0 ;
+  double result;
+  
+  SWIG_check_num_args("momentum_y",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("momentum_y",1,"LBD3Q19LandauStats *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBD3Q19LandauStats,0))){
+    SWIG_fail_ptr("LBD3Q19LandauStats_momentum_y_get",1,SWIGTYPE_p_LBD3Q19LandauStats);
+  }
+  
+  result = (double) ((arg1)->momentum_y);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LBD3Q19LandauStats_momentum_z_get(lua_State* L) {
+  int SWIG_arg = 0;
+  LBD3Q19LandauStats *arg1 = (LBD3Q19LandauStats *) 0 ;
+  double result;
+  
+  SWIG_check_num_args("momentum_z",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("momentum_z",1,"LBD3Q19LandauStats *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBD3Q19LandauStats,0))){
+    SWIG_fail_ptr("LBD3Q19LandauStats_momentum_z_get",1,SWIGTYPE_p_LBD3Q19LandauStats);
+  }
+  
+  result = (double) ((arg1)->momentum_z);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_LBD3Q19LandauStats(lua_State* L) {
+  int SWIG_arg = 0;
+  LBD3Q19LandauStats *result = 0 ;
+  
+  SWIG_check_num_args("LBD3Q19LandauStats::LBD3Q19LandauStats",0,0)
+  result = (LBD3Q19LandauStats *)calloc(1, sizeof(LBD3Q19LandauStats));
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_LBD3Q19LandauStats,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_LBD3Q19LandauStats(void *obj) {
+LBD3Q19LandauStats *arg1 = (LBD3Q19LandauStats *) obj;
+free((char *) arg1);
+}
+static swig_lua_method swig_LBD3Q19LandauStats_methods[] = {
+    {0,0}
+};
+static swig_lua_attribute swig_LBD3Q19LandauStats_attributes[] = {
+    { "min_density", _wrap_LBD3Q19LandauStats_min_density_get, SWIG_Lua_set_immutable},
+    { "max_density", _wrap_LBD3Q19LandauStats_max_density_get, SWIG_Lua_set_immutable},
+    { "max_velocity", _wrap_LBD3Q19LandauStats_max_velocity_get, SWIG_Lua_set_immutable},
+    { "kin_energy", _wrap_LBD3Q19LandauStats_kin_energy_get, SWIG_Lua_set_immutable},
+    { "momentum_x", _wrap_LBD3Q19LandauStats_momentum_x_get, SWIG_Lua_set_immutable},
+    { "momentum_y", _wrap_LBD3Q19LandauStats_momentum_y_get, SWIG_Lua_set_immutable},
+    { "momentum_z", _wrap_LBD3Q19LandauStats_momentum_z_get, SWIG_Lua_set_immutable},
+    {0,0,0}
+};
+static swig_lua_class *swig_LBD3Q19LandauStats_bases[] = {0};
+static const char *swig_LBD3Q19LandauStats_base_names[] = {0};
+static swig_lua_class _wrap_class_LBD3Q19LandauStats = { "LBD3Q19LandauStats", &SWIGTYPE_p_LBD3Q19LandauStats,_wrap_new_LBD3Q19LandauStats, swig_delete_LBD3Q19LandauStats, swig_LBD3Q19LandauStats_methods, swig_LBD3Q19LandauStats_attributes, swig_LBD3Q19LandauStats_bases, swig_LBD3Q19LandauStats_base_names };
 
 static int _wrap_LBD2Q9BGK_destroy(lua_State* L) {
   int SWIG_arg = 0;
@@ -5448,18 +6129,18 @@ static swig_lua_class *swig_LBD3Q19Mix_bases[] = {0};
 static const char *swig_LBD3Q19Mix_base_names[] = {0};
 static swig_lua_class _wrap_class_LBD3Q19Mix = { "LBD3Q19Mix", &SWIGTYPE_p_LBD3Q19Mix,0, swig_delete_LBD3Q19Mix, swig_LBD3Q19Mix_methods, swig_LBD3Q19Mix_attributes, swig_LBD3Q19Mix_bases, swig_LBD3Q19Mix_base_names };
 
-static int _wrap_LBColormap_destroy(lua_State* L) {
+static int _wrap_lb_d2q9_Landau_destroy(lua_State* L) {
   int SWIG_arg = 0;
-  LBColormap *arg1 = (LBColormap *) 0 ;
+  lb_d2q9_Landau *arg1 = (lb_d2q9_Landau *) 0 ;
   
   SWIG_check_num_args("destroy",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("destroy",1,"LBColormap *");
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("destroy",1,"lb_d2q9_Landau *");
   
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBColormap,0))){
-    SWIG_fail_ptr("LBColormap_destroy",1,SWIGTYPE_p_LBColormap);
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_d2q9_Landau,0))){
+    SWIG_fail_ptr("lb_d2q9_Landau_destroy",1,SWIGTYPE_p_lb_d2q9_Landau);
   }
   
-  LBColormap_destroy(arg1);
+  lb_d2q9_Landau_destroy(arg1);
   
   return SWIG_arg;
   
@@ -5471,19 +6152,339 @@ fail:
 }
 
 
-static int _wrap_LBColormap_num_colors(lua_State* L) {
+static int _wrap_lb_d2q9_Landau_partition_info(lua_State* L) {
   int SWIG_arg = 0;
-  LBColormap *arg1 = (LBColormap *) 0 ;
-  int result;
+  lb_d2q9_Landau *arg1 = (lb_d2q9_Landau *) 0 ;
+  LBPartitionInfo *result = 0 ;
   
-  SWIG_check_num_args("num_colors",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("num_colors",1,"LBColormap *");
+  SWIG_check_num_args("partition_info",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("partition_info",1,"lb_d2q9_Landau *");
   
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBColormap,0))){
-    SWIG_fail_ptr("LBColormap_num_colors",1,SWIGTYPE_p_LBColormap);
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_d2q9_Landau,0))){
+    SWIG_fail_ptr("lb_d2q9_Landau_partition_info",1,SWIGTYPE_p_lb_d2q9_Landau);
   }
   
-  result = (int)LBColormap_num_colors(arg1);
+  result = (LBPartitionInfo *)lb_d2q9_Landau_partition_info(arg1);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_LBPartitionInfo,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_lb_d2q9_Landau_stats(lua_State* L) {
+  int SWIG_arg = 0;
+  lb_d2q9_Landau *arg1 = (lb_d2q9_Landau *) 0 ;
+  LBD2Q9LandauStats *result = 0 ;
+  
+  SWIG_check_num_args("stats",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("stats",1,"lb_d2q9_Landau *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_d2q9_Landau,0))){
+    SWIG_fail_ptr("lb_d2q9_Landau_stats",1,SWIGTYPE_p_lb_d2q9_Landau);
+  }
+  
+  result = (LBD2Q9LandauStats *)lb_d2q9_Landau_stats(arg1);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_LBD2Q9LandauStats,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_lb_d2q9_Landau_set_parameters(lua_State* L) {
+  int SWIG_arg = 0;
+  lb_d2q9_Landau *arg1 = (lb_d2q9_Landau *) 0 ;
+  LBLandauParameters *arg2 = (LBLandauParameters *) 0 ;
+  
+  SWIG_check_num_args("set_parameters",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("set_parameters",1,"lb_d2q9_Landau *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("set_parameters",2,"LBLandauParameters const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_d2q9_Landau,0))){
+    SWIG_fail_ptr("lb_d2q9_Landau_set_parameters",1,SWIGTYPE_p_lb_d2q9_Landau);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_LBLandauParameters,0))){
+    SWIG_fail_ptr("lb_d2q9_Landau_set_parameters",2,SWIGTYPE_p_LBLandauParameters);
+  }
+  
+  lb_d2q9_Landau_set_parameters(arg1,(LBLandauParameters const *)arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_lb_d2q9_Landau_get_parameters(lua_State* L) {
+  int SWIG_arg = 0;
+  lb_d2q9_Landau *arg1 = (lb_d2q9_Landau *) 0 ;
+  LBLandauParameters *result = 0 ;
+  
+  SWIG_check_num_args("get_parameters",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("get_parameters",1,"lb_d2q9_Landau *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_d2q9_Landau,0))){
+    SWIG_fail_ptr("lb_d2q9_Landau_get_parameters",1,SWIGTYPE_p_lb_d2q9_Landau);
+  }
+  
+  result = (LBLandauParameters *)lb_d2q9_Landau_get_parameters(arg1);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_LBLandauParameters,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_lb_d2q9_Landau_set_walls_speed(lua_State* L) {
+  int SWIG_arg = 0;
+  lb_d2q9_Landau *arg1 = (lb_d2q9_Landau *) 0 ;
+  double arg2 ;
+  double arg3 ;
+  
+  SWIG_check_num_args("set_walls_speed",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("set_walls_speed",1,"lb_d2q9_Landau *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("set_walls_speed",2,"double");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("set_walls_speed",3,"double");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_d2q9_Landau,0))){
+    SWIG_fail_ptr("lb_d2q9_Landau_set_walls_speed",1,SWIGTYPE_p_lb_d2q9_Landau);
+  }
+  
+  arg2 = (double)lua_tonumber(L, 2);
+  arg3 = (double)lua_tonumber(L, 3);
+  lb_d2q9_Landau_set_walls_speed(arg1,arg2,arg3);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_lb_d2q9_Landau_get_walls_speed(lua_State* L) {
+  int SWIG_arg = 0;
+  lb_d2q9_Landau *arg1 = (lb_d2q9_Landau *) 0 ;
+  double *arg2 = (double *) 0 ;
+  double *arg3 = (double *) 0 ;
+  double temp2 ;
+  double temp3 ;
+  
+  arg2 = &temp2; 
+  arg3 = &temp3; 
+  SWIG_check_num_args("get_walls_speed",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("get_walls_speed",1,"lb_d2q9_Landau *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_d2q9_Landau,0))){
+    SWIG_fail_ptr("lb_d2q9_Landau_get_walls_speed",1,SWIGTYPE_p_lb_d2q9_Landau);
+  }
+  
+  lb_d2q9_Landau_get_walls_speed(arg1,arg2,arg3);
+  
+  lua_pushnumber(L, (lua_Number) *arg2); SWIG_arg++;
+  lua_pushnumber(L, (lua_Number) *arg3); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_lb_d2q9_Landau_set_averages(lua_State* L) {
+  int SWIG_arg = 0;
+  lb_d2q9_Landau *arg1 = (lb_d2q9_Landau *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  double arg4 ;
+  double arg5 ;
+  double arg6 ;
+  double arg7 ;
+  
+  SWIG_check_num_args("set_averages",7,7)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("set_averages",1,"lb_d2q9_Landau *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("set_averages",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("set_averages",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("set_averages",4,"double");
+  if(!lua_isnumber(L,5)) SWIG_fail_arg("set_averages",5,"double");
+  if(!lua_isnumber(L,6)) SWIG_fail_arg("set_averages",6,"double");
+  if(!lua_isnumber(L,7)) SWIG_fail_arg("set_averages",7,"double");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_d2q9_Landau,0))){
+    SWIG_fail_ptr("lb_d2q9_Landau_set_averages",1,SWIGTYPE_p_lb_d2q9_Landau);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (double)lua_tonumber(L, 4);
+  arg5 = (double)lua_tonumber(L, 5);
+  arg6 = (double)lua_tonumber(L, 6);
+  arg7 = (double)lua_tonumber(L, 7);
+  lb_d2q9_Landau_set_averages(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_lb_d2q9_Landau_get_averages(lua_State* L) {
+  int SWIG_arg = 0;
+  lb_d2q9_Landau *arg1 = (lb_d2q9_Landau *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  double *arg4 = (double *) 0 ;
+  double *arg5 = (double *) 0 ;
+  double *arg6 = (double *) 0 ;
+  double *arg7 = (double *) 0 ;
+  double temp4 ;
+  double temp5 ;
+  double temp6 ;
+  double temp7 ;
+  
+  arg4 = &temp4; 
+  arg5 = &temp5; 
+  arg6 = &temp6; 
+  arg7 = &temp7; 
+  SWIG_check_num_args("get_averages",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("get_averages",1,"lb_d2q9_Landau *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("get_averages",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("get_averages",3,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_d2q9_Landau,0))){
+    SWIG_fail_ptr("lb_d2q9_Landau_get_averages",1,SWIGTYPE_p_lb_d2q9_Landau);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  lb_d2q9_Landau_get_averages(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
+  
+  lua_pushnumber(L, (lua_Number) *arg4); SWIG_arg++;
+  lua_pushnumber(L, (lua_Number) *arg5); SWIG_arg++;
+  lua_pushnumber(L, (lua_Number) *arg6); SWIG_arg++;
+  lua_pushnumber(L, (lua_Number) *arg7); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_lb_d2q9_Landau_set_equilibrium(lua_State* L) {
+  int SWIG_arg = 0;
+  lb_d2q9_Landau *arg1 = (lb_d2q9_Landau *) 0 ;
+  
+  SWIG_check_num_args("set_equilibrium",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("set_equilibrium",1,"lb_d2q9_Landau *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_d2q9_Landau,0))){
+    SWIG_fail_ptr("lb_d2q9_Landau_set_equilibrium",1,SWIGTYPE_p_lb_d2q9_Landau);
+  }
+  
+  lb_d2q9_Landau_set_equilibrium(arg1);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_lb_d2q9_Landau_advance(lua_State* L) {
+  int SWIG_arg = 0;
+  lb_d2q9_Landau *arg1 = (lb_d2q9_Landau *) 0 ;
+  
+  SWIG_check_num_args("advance",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("advance",1,"lb_d2q9_Landau *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_d2q9_Landau,0))){
+    SWIG_fail_ptr("lb_d2q9_Landau_advance",1,SWIGTYPE_p_lb_d2q9_Landau);
+  }
+  
+  lb_d2q9_Landau_advance(arg1);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_lb_d2q9_Landau_dump(lua_State* L) {
+  int SWIG_arg = 0;
+  lb_d2q9_Landau *arg1 = (lb_d2q9_Landau *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  SWIG_check_num_args("dump",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("dump",1,"lb_d2q9_Landau *");
+  if(!lua_isstring(L,2)) SWIG_fail_arg("dump",2,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_d2q9_Landau,0))){
+    SWIG_fail_ptr("lb_d2q9_Landau_dump",1,SWIGTYPE_p_lb_d2q9_Landau);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  lb_d2q9_Landau_dump(arg1,(char const *)arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_lb_d2q9_Landau_mass(lua_State* L) {
+  int SWIG_arg = 0;
+  lb_d2q9_Landau *arg1 = (lb_d2q9_Landau *) 0 ;
+  double result;
+  
+  SWIG_check_num_args("mass",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("mass",1,"lb_d2q9_Landau *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_d2q9_Landau,0))){
+    SWIG_fail_ptr("lb_d2q9_Landau_mass",1,SWIGTYPE_p_lb_d2q9_Landau);
+  }
+  
+  result = (double)lb_d2q9_Landau_mass(arg1);
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
   return SWIG_arg;
   
@@ -5495,24 +6496,511 @@ fail:
 }
 
 
-static int _wrap_LBColormap_set_color(lua_State* L) {
+static void swig_delete_lb_d2q9_Landau(void *obj) {
+lb_d2q9_Landau *arg1 = (lb_d2q9_Landau *) obj;
+free((char *) arg1);
+}
+static swig_lua_method swig_lb_d2q9_Landau_methods[] = {
+    {"destroy", _wrap_lb_d2q9_Landau_destroy}, 
+    {"partition_info", _wrap_lb_d2q9_Landau_partition_info}, 
+    {"stats", _wrap_lb_d2q9_Landau_stats}, 
+    {"set_parameters", _wrap_lb_d2q9_Landau_set_parameters}, 
+    {"get_parameters", _wrap_lb_d2q9_Landau_get_parameters}, 
+    {"set_walls_speed", _wrap_lb_d2q9_Landau_set_walls_speed}, 
+    {"get_walls_speed", _wrap_lb_d2q9_Landau_get_walls_speed}, 
+    {"set_averages", _wrap_lb_d2q9_Landau_set_averages}, 
+    {"get_averages", _wrap_lb_d2q9_Landau_get_averages}, 
+    {"set_equilibrium", _wrap_lb_d2q9_Landau_set_equilibrium}, 
+    {"advance", _wrap_lb_d2q9_Landau_advance}, 
+    {"dump", _wrap_lb_d2q9_Landau_dump}, 
+    {"mass", _wrap_lb_d2q9_Landau_mass}, 
+    {0,0}
+};
+static swig_lua_attribute swig_lb_d2q9_Landau_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_class *swig_lb_d2q9_Landau_bases[] = {0};
+static const char *swig_lb_d2q9_Landau_base_names[] = {0};
+static swig_lua_class _wrap_class_lb_d2q9_Landau = { "lb_d2q9_Landau", &SWIGTYPE_p_lb_d2q9_Landau,0, swig_delete_lb_d2q9_Landau, swig_lb_d2q9_Landau_methods, swig_lb_d2q9_Landau_attributes, swig_lb_d2q9_Landau_bases, swig_lb_d2q9_Landau_base_names };
+
+static int _wrap_lb_d3q19_Landau_destroy(lua_State* L) {
   int SWIG_arg = 0;
-  LBColormap *arg1 = (LBColormap *) 0 ;
+  lb_d3q19_Landau *arg1 = (lb_d3q19_Landau *) 0 ;
+  
+  SWIG_check_num_args("destroy",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("destroy",1,"lb_d3q19_Landau *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_d3q19_Landau,0))){
+    SWIG_fail_ptr("lb_d3q19_Landau_destroy",1,SWIGTYPE_p_lb_d3q19_Landau);
+  }
+  
+  lb_d3q19_Landau_destroy(arg1);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_lb_d3q19_Landau_partition_info(lua_State* L) {
+  int SWIG_arg = 0;
+  lb_d3q19_Landau *arg1 = (lb_d3q19_Landau *) 0 ;
+  LBPartitionInfo *result = 0 ;
+  
+  SWIG_check_num_args("partition_info",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("partition_info",1,"lb_d3q19_Landau *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_d3q19_Landau,0))){
+    SWIG_fail_ptr("lb_d3q19_Landau_partition_info",1,SWIGTYPE_p_lb_d3q19_Landau);
+  }
+  
+  result = (LBPartitionInfo *)lb_d3q19_Landau_partition_info(arg1);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_LBPartitionInfo,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_lb_d3q19_Landau_stats(lua_State* L) {
+  int SWIG_arg = 0;
+  lb_d3q19_Landau *arg1 = (lb_d3q19_Landau *) 0 ;
+  LBD3Q19LandauStats *result = 0 ;
+  
+  SWIG_check_num_args("stats",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("stats",1,"lb_d3q19_Landau *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_d3q19_Landau,0))){
+    SWIG_fail_ptr("lb_d3q19_Landau_stats",1,SWIGTYPE_p_lb_d3q19_Landau);
+  }
+  
+  result = (LBD3Q19LandauStats *)lb_d3q19_Landau_stats(arg1);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_LBD3Q19LandauStats,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_lb_d3q19_Landau_set_parameters(lua_State* L) {
+  int SWIG_arg = 0;
+  lb_d3q19_Landau *arg1 = (lb_d3q19_Landau *) 0 ;
+  LBLandauParameters *arg2 = (LBLandauParameters *) 0 ;
+  
+  SWIG_check_num_args("set_parameters",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("set_parameters",1,"lb_d3q19_Landau *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("set_parameters",2,"LBLandauParameters const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_d3q19_Landau,0))){
+    SWIG_fail_ptr("lb_d3q19_Landau_set_parameters",1,SWIGTYPE_p_lb_d3q19_Landau);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_LBLandauParameters,0))){
+    SWIG_fail_ptr("lb_d3q19_Landau_set_parameters",2,SWIGTYPE_p_LBLandauParameters);
+  }
+  
+  lb_d3q19_Landau_set_parameters(arg1,(LBLandauParameters const *)arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_lb_d3q19_Landau_get_parameters(lua_State* L) {
+  int SWIG_arg = 0;
+  lb_d3q19_Landau *arg1 = (lb_d3q19_Landau *) 0 ;
+  LBLandauParameters *result = 0 ;
+  
+  SWIG_check_num_args("get_parameters",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("get_parameters",1,"lb_d3q19_Landau *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_d3q19_Landau,0))){
+    SWIG_fail_ptr("lb_d3q19_Landau_get_parameters",1,SWIGTYPE_p_lb_d3q19_Landau);
+  }
+  
+  result = (LBLandauParameters *)lb_d3q19_Landau_get_parameters(arg1);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_LBLandauParameters,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_lb_d3q19_Landau_set_walls_speed(lua_State* L) {
+  int SWIG_arg = 0;
+  lb_d3q19_Landau *arg1 = (lb_d3q19_Landau *) 0 ;
+  double *arg2 ;
+  double *arg3 ;
+  
+  SWIG_check_num_args("set_walls_speed",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("set_walls_speed",1,"lb_d3q19_Landau *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_d3q19_Landau,0))){
+    SWIG_fail_ptr("lb_d3q19_Landau_set_walls_speed",1,SWIGTYPE_p_lb_d3q19_Landau);
+  }
+  
+  arg2 = SWIG_get_double_num_array_fixed(L,2,2);
+  if (!arg2) SWIG_fail;
+  arg3 = SWIG_get_double_num_array_fixed(L,3,2);
+  if (!arg3) SWIG_fail;
+  lb_d3q19_Landau_set_walls_speed(arg1,(double const (*))arg2,(double const (*))arg3);
+  
+  SWIG_FREE_ARRAY(arg2);
+  SWIG_FREE_ARRAY(arg3);
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  SWIG_FREE_ARRAY(arg2);
+  SWIG_FREE_ARRAY(arg3);
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_lb_d3q19_Landau_get_walls_speed(lua_State* L) {
+  int SWIG_arg = 0;
+  lb_d3q19_Landau *arg1 = (lb_d3q19_Landau *) 0 ;
+  double *arg2 ;
+  double *arg3 ;
+  
+  arg2 = SWIG_ALLOC_ARRAY(double,2); 
+  arg3 = SWIG_ALLOC_ARRAY(double,2); 
+  SWIG_check_num_args("get_walls_speed",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("get_walls_speed",1,"lb_d3q19_Landau *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_d3q19_Landau,0))){
+    SWIG_fail_ptr("lb_d3q19_Landau_get_walls_speed",1,SWIGTYPE_p_lb_d3q19_Landau);
+  }
+  
+  lb_d3q19_Landau_get_walls_speed(arg1,arg2,arg3);
+  
+  SWIG_write_double_num_array(L,arg2,2); SWIG_arg++; 
+  SWIG_write_double_num_array(L,arg3,2); SWIG_arg++; 
+  SWIG_FREE_ARRAY(arg2); 
+  SWIG_FREE_ARRAY(arg3); 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  SWIG_FREE_ARRAY(arg2); 
+  SWIG_FREE_ARRAY(arg3); 
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_lb_d3q19_Landau_set_averages(lua_State* L) {
+  int SWIG_arg = 0;
+  lb_d3q19_Landau *arg1 = (lb_d3q19_Landau *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  double arg5 ;
+  double arg6 ;
+  double arg7 ;
+  double arg8 ;
+  double arg9 ;
+  
+  SWIG_check_num_args("set_averages",9,9)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("set_averages",1,"lb_d3q19_Landau *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("set_averages",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("set_averages",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("set_averages",4,"int");
+  if(!lua_isnumber(L,5)) SWIG_fail_arg("set_averages",5,"double");
+  if(!lua_isnumber(L,6)) SWIG_fail_arg("set_averages",6,"double");
+  if(!lua_isnumber(L,7)) SWIG_fail_arg("set_averages",7,"double");
+  if(!lua_isnumber(L,8)) SWIG_fail_arg("set_averages",8,"double");
+  if(!lua_isnumber(L,9)) SWIG_fail_arg("set_averages",9,"double");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_d3q19_Landau,0))){
+    SWIG_fail_ptr("lb_d3q19_Landau_set_averages",1,SWIGTYPE_p_lb_d3q19_Landau);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  arg5 = (double)lua_tonumber(L, 5);
+  arg6 = (double)lua_tonumber(L, 6);
+  arg7 = (double)lua_tonumber(L, 7);
+  arg8 = (double)lua_tonumber(L, 8);
+  arg9 = (double)lua_tonumber(L, 9);
+  lb_d3q19_Landau_set_averages(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_lb_d3q19_Landau_get_averages(lua_State* L) {
+  int SWIG_arg = 0;
+  lb_d3q19_Landau *arg1 = (lb_d3q19_Landau *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  double *arg5 = (double *) 0 ;
+  double *arg6 = (double *) 0 ;
+  double *arg7 = (double *) 0 ;
+  double *arg8 = (double *) 0 ;
+  double *arg9 = (double *) 0 ;
+  double temp5 ;
+  double temp6 ;
+  double temp7 ;
+  double temp8 ;
+  double temp9 ;
+  
+  arg5 = &temp5; 
+  arg6 = &temp6; 
+  arg7 = &temp7; 
+  arg8 = &temp8; 
+  arg9 = &temp9; 
+  SWIG_check_num_args("get_averages",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("get_averages",1,"lb_d3q19_Landau *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("get_averages",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("get_averages",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("get_averages",4,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_d3q19_Landau,0))){
+    SWIG_fail_ptr("lb_d3q19_Landau_get_averages",1,SWIGTYPE_p_lb_d3q19_Landau);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  lb_d3q19_Landau_get_averages(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9);
+  
+  lua_pushnumber(L, (lua_Number) *arg5); SWIG_arg++;
+  lua_pushnumber(L, (lua_Number) *arg6); SWIG_arg++;
+  lua_pushnumber(L, (lua_Number) *arg7); SWIG_arg++;
+  lua_pushnumber(L, (lua_Number) *arg8); SWIG_arg++;
+  lua_pushnumber(L, (lua_Number) *arg9); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_lb_d3q19_Landau_set_equilibrium(lua_State* L) {
+  int SWIG_arg = 0;
+  lb_d3q19_Landau *arg1 = (lb_d3q19_Landau *) 0 ;
+  
+  SWIG_check_num_args("set_equilibrium",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("set_equilibrium",1,"lb_d3q19_Landau *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_d3q19_Landau,0))){
+    SWIG_fail_ptr("lb_d3q19_Landau_set_equilibrium",1,SWIGTYPE_p_lb_d3q19_Landau);
+  }
+  
+  lb_d3q19_Landau_set_equilibrium(arg1);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_lb_d3q19_Landau_advance(lua_State* L) {
+  int SWIG_arg = 0;
+  lb_d3q19_Landau *arg1 = (lb_d3q19_Landau *) 0 ;
+  
+  SWIG_check_num_args("advance",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("advance",1,"lb_d3q19_Landau *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_d3q19_Landau,0))){
+    SWIG_fail_ptr("lb_d3q19_Landau_advance",1,SWIGTYPE_p_lb_d3q19_Landau);
+  }
+  
+  lb_d3q19_Landau_advance(arg1);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_lb_d3q19_Landau_dump(lua_State* L) {
+  int SWIG_arg = 0;
+  lb_d3q19_Landau *arg1 = (lb_d3q19_Landau *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  SWIG_check_num_args("dump",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("dump",1,"lb_d3q19_Landau *");
+  if(!lua_isstring(L,2)) SWIG_fail_arg("dump",2,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_d3q19_Landau,0))){
+    SWIG_fail_ptr("lb_d3q19_Landau_dump",1,SWIGTYPE_p_lb_d3q19_Landau);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  lb_d3q19_Landau_dump(arg1,(char const *)arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_lb_d3q19_Landau_mass(lua_State* L) {
+  int SWIG_arg = 0;
+  lb_d3q19_Landau *arg1 = (lb_d3q19_Landau *) 0 ;
+  double result;
+  
+  SWIG_check_num_args("mass",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("mass",1,"lb_d3q19_Landau *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_d3q19_Landau,0))){
+    SWIG_fail_ptr("lb_d3q19_Landau_mass",1,SWIGTYPE_p_lb_d3q19_Landau);
+  }
+  
+  result = (double)lb_d3q19_Landau_mass(arg1);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_lb_d3q19_Landau(void *obj) {
+lb_d3q19_Landau *arg1 = (lb_d3q19_Landau *) obj;
+free((char *) arg1);
+}
+static swig_lua_method swig_lb_d3q19_Landau_methods[] = {
+    {"destroy", _wrap_lb_d3q19_Landau_destroy}, 
+    {"partition_info", _wrap_lb_d3q19_Landau_partition_info}, 
+    {"stats", _wrap_lb_d3q19_Landau_stats}, 
+    {"set_parameters", _wrap_lb_d3q19_Landau_set_parameters}, 
+    {"get_parameters", _wrap_lb_d3q19_Landau_get_parameters}, 
+    {"set_walls_speed", _wrap_lb_d3q19_Landau_set_walls_speed}, 
+    {"get_walls_speed", _wrap_lb_d3q19_Landau_get_walls_speed}, 
+    {"set_averages", _wrap_lb_d3q19_Landau_set_averages}, 
+    {"get_averages", _wrap_lb_d3q19_Landau_get_averages}, 
+    {"set_equilibrium", _wrap_lb_d3q19_Landau_set_equilibrium}, 
+    {"advance", _wrap_lb_d3q19_Landau_advance}, 
+    {"dump", _wrap_lb_d3q19_Landau_dump}, 
+    {"mass", _wrap_lb_d3q19_Landau_mass}, 
+    {0,0}
+};
+static swig_lua_attribute swig_lb_d3q19_Landau_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_class *swig_lb_d3q19_Landau_bases[] = {0};
+static const char *swig_lb_d3q19_Landau_base_names[] = {0};
+static swig_lua_class _wrap_class_lb_d3q19_Landau = { "lb_d3q19_Landau", &SWIGTYPE_p_lb_d3q19_Landau,0, swig_delete_lb_d3q19_Landau, swig_lb_d3q19_Landau_methods, swig_lb_d3q19_Landau_attributes, swig_lb_d3q19_Landau_bases, swig_lb_d3q19_Landau_base_names };
+
+static int _wrap_lb_colormap_destroy(lua_State* L) {
+  int SWIG_arg = 0;
+  lb_colormap *arg1 = (lb_colormap *) 0 ;
+  
+  SWIG_check_num_args("destroy",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("destroy",1,"lb_colormap *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_colormap,0))){
+    SWIG_fail_ptr("lb_colormap_destroy",1,SWIGTYPE_p_lb_colormap);
+  }
+  
+  lb_colormap_destroy(arg1);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_lb_colormap_num_colors(lua_State* L) {
+  int SWIG_arg = 0;
+  lb_colormap *arg1 = (lb_colormap *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("num_colors",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("num_colors",1,"lb_colormap *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_colormap,0))){
+    SWIG_fail_ptr("lb_colormap_num_colors",1,SWIGTYPE_p_lb_colormap);
+  }
+  
+  result = (int)lb_colormap_num_colors(arg1);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_lb_colormap_set_color(lua_State* L) {
+  int SWIG_arg = 0;
+  lb_colormap *arg1 = (lb_colormap *) 0 ;
   int arg2 ;
   double *arg3 ;
   
   SWIG_check_num_args("set_color",3,3)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("set_color",1,"LBColormap *");
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("set_color",1,"lb_colormap *");
   if(!lua_isnumber(L,2)) SWIG_fail_arg("set_color",2,"int");
   
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBColormap,0))){
-    SWIG_fail_ptr("LBColormap_set_color",1,SWIGTYPE_p_LBColormap);
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_colormap,0))){
+    SWIG_fail_ptr("lb_colormap_set_color",1,SWIGTYPE_p_lb_colormap);
   }
   
   arg2 = (int)lua_tonumber(L, 2);
   arg3 = SWIG_get_double_num_array_fixed(L,3,3);
   if (!arg3) SWIG_fail;
-  LBColormap_set_color(arg1,arg2,(double const (*))arg3);
+  lb_colormap_set_color(arg1,arg2,(double const (*))arg3);
   
   SWIG_FREE_ARRAY(arg3);
   return SWIG_arg;
@@ -5526,21 +7014,21 @@ fail:
 }
 
 
-static int _wrap_LBColormap_append_color(lua_State* L) {
+static int _wrap_lb_colormap_append_color(lua_State* L) {
   int SWIG_arg = 0;
-  LBColormap *arg1 = (LBColormap *) 0 ;
+  lb_colormap *arg1 = (lb_colormap *) 0 ;
   double *arg2 ;
   
   SWIG_check_num_args("append_color",2,2)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("append_color",1,"LBColormap *");
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("append_color",1,"lb_colormap *");
   
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBColormap,0))){
-    SWIG_fail_ptr("LBColormap_append_color",1,SWIGTYPE_p_LBColormap);
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_colormap,0))){
+    SWIG_fail_ptr("lb_colormap_append_color",1,SWIGTYPE_p_lb_colormap);
   }
   
   arg2 = SWIG_get_double_num_array_fixed(L,2,3);
   if (!arg2) SWIG_fail;
-  LBColormap_append_color(arg1,(double const (*))arg2);
+  lb_colormap_append_color(arg1,(double const (*))arg2);
   
   SWIG_FREE_ARRAY(arg2);
   return SWIG_arg;
@@ -5554,23 +7042,23 @@ fail:
 }
 
 
-static int _wrap_LBColormap_get_color(lua_State* L) {
+static int _wrap_lb_colormap_get_color(lua_State* L) {
   int SWIG_arg = 0;
-  LBColormap *arg1 = (LBColormap *) 0 ;
+  lb_colormap *arg1 = (lb_colormap *) 0 ;
   int arg2 ;
   double *arg3 ;
   
   arg3 = SWIG_ALLOC_ARRAY(double,3); 
   SWIG_check_num_args("get_color",2,2)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("get_color",1,"LBColormap *");
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("get_color",1,"lb_colormap *");
   if(!lua_isnumber(L,2)) SWIG_fail_arg("get_color",2,"int");
   
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBColormap,0))){
-    SWIG_fail_ptr("LBColormap_get_color",1,SWIGTYPE_p_LBColormap);
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_colormap,0))){
+    SWIG_fail_ptr("lb_colormap_get_color",1,SWIGTYPE_p_lb_colormap);
   }
   
   arg2 = (int)lua_tonumber(L, 2);
-  LBColormap_get_color(arg1,arg2,arg3);
+  lb_colormap_get_color(arg1,arg2,arg3);
   
   SWIG_write_double_num_array(L,arg3,3); SWIG_arg++; 
   SWIG_FREE_ARRAY(arg3); 
@@ -5585,23 +7073,23 @@ fail:
 }
 
 
-static int _wrap_LBColormap_map_value(lua_State* L) {
+static int _wrap_lb_colormap_map_value(lua_State* L) {
   int SWIG_arg = 0;
-  LBColormap *arg1 = (LBColormap *) 0 ;
+  lb_colormap *arg1 = (lb_colormap *) 0 ;
   double arg2 ;
   double *arg3 ;
   
   arg3 = SWIG_ALLOC_ARRAY(double,3); 
   SWIG_check_num_args("map_value",2,2)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("map_value",1,"LBColormap *");
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("map_value",1,"lb_colormap *");
   if(!lua_isnumber(L,2)) SWIG_fail_arg("map_value",2,"double");
   
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBColormap,0))){
-    SWIG_fail_ptr("LBColormap_map_value",1,SWIGTYPE_p_LBColormap);
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_colormap,0))){
+    SWIG_fail_ptr("lb_colormap_map_value",1,SWIGTYPE_p_lb_colormap);
   }
   
   arg2 = (double)lua_tonumber(L, 2);
-  LBColormap_map_value(arg1,arg2,arg3);
+  lb_colormap_map_value(arg1,arg2,arg3);
   
   SWIG_write_double_num_array(L,arg3,3); SWIG_arg++; 
   SWIG_FREE_ARRAY(arg3); 
@@ -5616,38 +7104,38 @@ fail:
 }
 
 
-static void swig_delete_LBColormap(void *obj) {
-LBColormap *arg1 = (LBColormap *) obj;
+static void swig_delete_lb_colormap(void *obj) {
+lb_colormap *arg1 = (lb_colormap *) obj;
 free((char *) arg1);
 }
-static swig_lua_method swig_LBColormap_methods[] = {
-    {"destroy", _wrap_LBColormap_destroy}, 
-    {"num_colors", _wrap_LBColormap_num_colors}, 
-    {"set_color", _wrap_LBColormap_set_color}, 
-    {"append_color", _wrap_LBColormap_append_color}, 
-    {"get_color", _wrap_LBColormap_get_color}, 
-    {"map_value", _wrap_LBColormap_map_value}, 
+static swig_lua_method swig_lb_colormap_methods[] = {
+    {"destroy", _wrap_lb_colormap_destroy}, 
+    {"num_colors", _wrap_lb_colormap_num_colors}, 
+    {"set_color", _wrap_lb_colormap_set_color}, 
+    {"append_color", _wrap_lb_colormap_append_color}, 
+    {"get_color", _wrap_lb_colormap_get_color}, 
+    {"map_value", _wrap_lb_colormap_map_value}, 
     {0,0}
 };
-static swig_lua_attribute swig_LBColormap_attributes[] = {
+static swig_lua_attribute swig_lb_colormap_attributes[] = {
     {0,0,0}
 };
-static swig_lua_class *swig_LBColormap_bases[] = {0};
-static const char *swig_LBColormap_base_names[] = {0};
-static swig_lua_class _wrap_class_LBColormap = { "LBColormap", &SWIGTYPE_p_LBColormap,0, swig_delete_LBColormap, swig_LBColormap_methods, swig_LBColormap_attributes, swig_LBColormap_bases, swig_LBColormap_base_names };
+static swig_lua_class *swig_lb_colormap_bases[] = {0};
+static const char *swig_lb_colormap_base_names[] = {0};
+static swig_lua_class _wrap_class_lb_colormap = { "lb_colormap", &SWIGTYPE_p_lb_colormap,0, swig_delete_lb_colormap, swig_lb_colormap_methods, swig_lb_colormap_attributes, swig_lb_colormap_bases, swig_lb_colormap_base_names };
 
-static int _wrap_LBRGB_destroy(lua_State* L) {
+static int _wrap_lb_rgb_destroy(lua_State* L) {
   int SWIG_arg = 0;
-  LBRGB *arg1 = (LBRGB *) 0 ;
+  lb_rgb *arg1 = (lb_rgb *) 0 ;
   
   SWIG_check_num_args("destroy",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("destroy",1,"LBRGB *");
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("destroy",1,"lb_rgb *");
   
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBRGB,0))){
-    SWIG_fail_ptr("LBRGB_destroy",1,SWIGTYPE_p_LBRGB);
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_rgb,0))){
+    SWIG_fail_ptr("lb_rgb_destroy",1,SWIGTYPE_p_lb_rgb);
   }
   
-  LBRGB_destroy(arg1);
+  lb_rgb_destroy(arg1);
   
   return SWIG_arg;
   
@@ -5659,19 +7147,19 @@ fail:
 }
 
 
-static int _wrap_LBRGB_width(lua_State* L) {
+static int _wrap_lb_rgb_width(lua_State* L) {
   int SWIG_arg = 0;
-  LBRGB *arg1 = (LBRGB *) 0 ;
+  lb_rgb *arg1 = (lb_rgb *) 0 ;
   int result;
   
   SWIG_check_num_args("width",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("width",1,"LBRGB *");
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("width",1,"lb_rgb *");
   
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBRGB,0))){
-    SWIG_fail_ptr("LBRGB_width",1,SWIGTYPE_p_LBRGB);
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_rgb,0))){
+    SWIG_fail_ptr("lb_rgb_width",1,SWIGTYPE_p_lb_rgb);
   }
   
-  result = (int)LBRGB_width(arg1);
+  result = (int)lb_rgb_width(arg1);
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
   return SWIG_arg;
   
@@ -5683,19 +7171,19 @@ fail:
 }
 
 
-static int _wrap_LBRGB_height(lua_State* L) {
+static int _wrap_lb_rgb_height(lua_State* L) {
   int SWIG_arg = 0;
-  LBRGB *arg1 = (LBRGB *) 0 ;
+  lb_rgb *arg1 = (lb_rgb *) 0 ;
   int result;
   
   SWIG_check_num_args("height",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("height",1,"LBRGB *");
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("height",1,"lb_rgb *");
   
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBRGB,0))){
-    SWIG_fail_ptr("LBRGB_height",1,SWIGTYPE_p_LBRGB);
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_rgb,0))){
+    SWIG_fail_ptr("lb_rgb_height",1,SWIGTYPE_p_lb_rgb);
   }
   
-  result = (int)LBRGB_height(arg1);
+  result = (int)lb_rgb_height(arg1);
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
   return SWIG_arg;
   
@@ -5707,21 +7195,21 @@ fail:
 }
 
 
-static int _wrap_LBRGB_fill(lua_State* L) {
+static int _wrap_lb_rgb_fill(lua_State* L) {
   int SWIG_arg = 0;
-  LBRGB *arg1 = (LBRGB *) 0 ;
+  lb_rgb *arg1 = (lb_rgb *) 0 ;
   double *arg2 ;
   
   SWIG_check_num_args("fill",2,2)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("fill",1,"LBRGB *");
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("fill",1,"lb_rgb *");
   
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBRGB,0))){
-    SWIG_fail_ptr("LBRGB_fill",1,SWIGTYPE_p_LBRGB);
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_rgb,0))){
+    SWIG_fail_ptr("lb_rgb_fill",1,SWIGTYPE_p_lb_rgb);
   }
   
   arg2 = SWIG_get_double_num_array_fixed(L,2,3);
   if (!arg2) SWIG_fail;
-  LBRGB_fill(arg1,(double const (*))arg2);
+  lb_rgb_fill(arg1,(double const (*))arg2);
   
   SWIG_FREE_ARRAY(arg2);
   return SWIG_arg;
@@ -5735,27 +7223,27 @@ fail:
 }
 
 
-static int _wrap_LBRGB_set_pixel(lua_State* L) {
+static int _wrap_lb_rgb_set_pixel(lua_State* L) {
   int SWIG_arg = 0;
-  LBRGB *arg1 = (LBRGB *) 0 ;
+  lb_rgb *arg1 = (lb_rgb *) 0 ;
   int arg2 ;
   int arg3 ;
   double *arg4 ;
   
   SWIG_check_num_args("set_pixel",4,4)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("set_pixel",1,"LBRGB *");
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("set_pixel",1,"lb_rgb *");
   if(!lua_isnumber(L,2)) SWIG_fail_arg("set_pixel",2,"int");
   if(!lua_isnumber(L,3)) SWIG_fail_arg("set_pixel",3,"int");
   
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBRGB,0))){
-    SWIG_fail_ptr("LBRGB_set_pixel",1,SWIGTYPE_p_LBRGB);
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_rgb,0))){
+    SWIG_fail_ptr("lb_rgb_set_pixel",1,SWIGTYPE_p_lb_rgb);
   }
   
   arg2 = (int)lua_tonumber(L, 2);
   arg3 = (int)lua_tonumber(L, 3);
   arg4 = SWIG_get_double_num_array_fixed(L,4,3);
   if (!arg4) SWIG_fail;
-  LBRGB_set_pixel(arg1,arg2,arg3,(double const (*))arg4);
+  lb_rgb_set_pixel(arg1,arg2,arg3,(double const (*))arg4);
   
   SWIG_FREE_ARRAY(arg4);
   return SWIG_arg;
@@ -5769,27 +7257,27 @@ fail:
 }
 
 
-static int _wrap_LBRGB_set_pixel_rgba(lua_State* L) {
+static int _wrap_lb_rgb_set_pixel_rgba(lua_State* L) {
   int SWIG_arg = 0;
-  LBRGB *arg1 = (LBRGB *) 0 ;
+  lb_rgb *arg1 = (lb_rgb *) 0 ;
   int arg2 ;
   int arg3 ;
   double *arg4 ;
   
   SWIG_check_num_args("set_pixel_rgba",4,4)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("set_pixel_rgba",1,"LBRGB *");
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("set_pixel_rgba",1,"lb_rgb *");
   if(!lua_isnumber(L,2)) SWIG_fail_arg("set_pixel_rgba",2,"int");
   if(!lua_isnumber(L,3)) SWIG_fail_arg("set_pixel_rgba",3,"int");
   
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBRGB,0))){
-    SWIG_fail_ptr("LBRGB_set_pixel_rgba",1,SWIGTYPE_p_LBRGB);
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_rgb,0))){
+    SWIG_fail_ptr("lb_rgb_set_pixel_rgba",1,SWIGTYPE_p_lb_rgb);
   }
   
   arg2 = (int)lua_tonumber(L, 2);
   arg3 = (int)lua_tonumber(L, 3);
   arg4 = SWIG_get_double_num_array_fixed(L,4,4);
   if (!arg4) SWIG_fail;
-  LBRGB_set_pixel_rgba(arg1,arg2,arg3,(double const (*))arg4);
+  lb_rgb_set_pixel_rgba(arg1,arg2,arg3,(double const (*))arg4);
   
   SWIG_FREE_ARRAY(arg4);
   return SWIG_arg;
@@ -5803,26 +7291,26 @@ fail:
 }
 
 
-static int _wrap_LBRGB_get_pixel(lua_State* L) {
+static int _wrap_lb_rgb_get_pixel(lua_State* L) {
   int SWIG_arg = 0;
-  LBRGB *arg1 = (LBRGB *) 0 ;
+  lb_rgb *arg1 = (lb_rgb *) 0 ;
   int arg2 ;
   int arg3 ;
   double *arg4 ;
   
   arg4 = SWIG_ALLOC_ARRAY(double,3); 
   SWIG_check_num_args("get_pixel",3,3)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("get_pixel",1,"LBRGB *");
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("get_pixel",1,"lb_rgb *");
   if(!lua_isnumber(L,2)) SWIG_fail_arg("get_pixel",2,"int");
   if(!lua_isnumber(L,3)) SWIG_fail_arg("get_pixel",3,"int");
   
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBRGB,0))){
-    SWIG_fail_ptr("LBRGB_get_pixel",1,SWIGTYPE_p_LBRGB);
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_rgb,0))){
+    SWIG_fail_ptr("lb_rgb_get_pixel",1,SWIGTYPE_p_lb_rgb);
   }
   
   arg2 = (int)lua_tonumber(L, 2);
   arg3 = (int)lua_tonumber(L, 3);
-  LBRGB_get_pixel(arg1,arg2,arg3,arg4);
+  lb_rgb_get_pixel(arg1,arg2,arg3,arg4);
   
   SWIG_write_double_num_array(L,arg4,3); SWIG_arg++; 
   SWIG_FREE_ARRAY(arg4); 
@@ -5837,21 +7325,21 @@ fail:
 }
 
 
-static int _wrap_LBRGB_save(lua_State* L) {
+static int _wrap_lb_rgb_save(lua_State* L) {
   int SWIG_arg = 0;
-  LBRGB *arg1 = (LBRGB *) 0 ;
+  lb_rgb *arg1 = (lb_rgb *) 0 ;
   char *arg2 = (char *) 0 ;
   
   SWIG_check_num_args("save",2,2)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("save",1,"LBRGB *");
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("save",1,"lb_rgb *");
   if(!lua_isstring(L,2)) SWIG_fail_arg("save",2,"char *");
   
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LBRGB,0))){
-    SWIG_fail_ptr("LBRGB_save",1,SWIGTYPE_p_LBRGB);
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_rgb,0))){
+    SWIG_fail_ptr("lb_rgb_save",1,SWIGTYPE_p_lb_rgb);
   }
   
   arg2 = (char *)lua_tostring(L, 2);
-  LBRGB_save(arg1,arg2);
+  lb_rgb_save(arg1,arg2);
   
   return SWIG_arg;
   
@@ -5863,27 +7351,27 @@ fail:
 }
 
 
-static void swig_delete_LBRGB(void *obj) {
-LBRGB *arg1 = (LBRGB *) obj;
+static void swig_delete_lb_rgb(void *obj) {
+lb_rgb *arg1 = (lb_rgb *) obj;
 free((char *) arg1);
 }
-static swig_lua_method swig_LBRGB_methods[] = {
-    {"destroy", _wrap_LBRGB_destroy}, 
-    {"width", _wrap_LBRGB_width}, 
-    {"height", _wrap_LBRGB_height}, 
-    {"fill", _wrap_LBRGB_fill}, 
-    {"set_pixel", _wrap_LBRGB_set_pixel}, 
-    {"set_pixel_rgba", _wrap_LBRGB_set_pixel_rgba}, 
-    {"get_pixel", _wrap_LBRGB_get_pixel}, 
-    {"save", _wrap_LBRGB_save}, 
+static swig_lua_method swig_lb_rgb_methods[] = {
+    {"destroy", _wrap_lb_rgb_destroy}, 
+    {"width", _wrap_lb_rgb_width}, 
+    {"height", _wrap_lb_rgb_height}, 
+    {"fill", _wrap_lb_rgb_fill}, 
+    {"set_pixel", _wrap_lb_rgb_set_pixel}, 
+    {"set_pixel_rgba", _wrap_lb_rgb_set_pixel_rgba}, 
+    {"get_pixel", _wrap_lb_rgb_get_pixel}, 
+    {"save", _wrap_lb_rgb_save}, 
     {0,0}
 };
-static swig_lua_attribute swig_LBRGB_attributes[] = {
+static swig_lua_attribute swig_lb_rgb_attributes[] = {
     {0,0,0}
 };
-static swig_lua_class *swig_LBRGB_bases[] = {0};
-static const char *swig_LBRGB_base_names[] = {0};
-static swig_lua_class _wrap_class_LBRGB = { "LBRGB", &SWIGTYPE_p_LBRGB,0, swig_delete_LBRGB, swig_LBRGB_methods, swig_LBRGB_attributes, swig_LBRGB_bases, swig_LBRGB_base_names };
+static swig_lua_class *swig_lb_rgb_bases[] = {0};
+static const char *swig_lb_rgb_base_names[] = {0};
+static swig_lua_class _wrap_class_lb_rgb = { "lb_rgb", &SWIGTYPE_p_lb_rgb,0, swig_delete_lb_rgb, swig_lb_rgb_methods, swig_lb_rgb_attributes, swig_lb_rgb_bases, swig_lb_rgb_base_names };
 
 static int _wrap_d2q9_BGK(lua_State* L) {
   int SWIG_arg = 0;
@@ -6001,13 +7489,68 @@ fail:
 }
 
 
+static int _wrap_d2q9_LD(lua_State* L) {
+  int SWIG_arg = 0;
+  int arg1 ;
+  int arg2 ;
+  int arg3 ;
+  lb_d2q9_Landau *result = 0 ;
+  
+  SWIG_check_num_args("lb_d2q9_Landau_new",3,3)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("lb_d2q9_Landau_new",1,"int");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("lb_d2q9_Landau_new",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("lb_d2q9_Landau_new",3,"int");
+  arg1 = (int)lua_tonumber(L, 1);
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  result = (lb_d2q9_Landau *)lb_d2q9_Landau_new(arg1,arg2,arg3);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_lb_d2q9_Landau,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_d3q19_LD(lua_State* L) {
+  int SWIG_arg = 0;
+  int arg1 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  lb_d3q19_Landau *result = 0 ;
+  
+  SWIG_check_num_args("lb_d3q19_Landau_new",4,4)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("lb_d3q19_Landau_new",1,"int");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("lb_d3q19_Landau_new",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("lb_d3q19_Landau_new",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("lb_d3q19_Landau_new",4,"int");
+  arg1 = (int)lua_tonumber(L, 1);
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  result = (lb_d3q19_Landau *)lb_d3q19_Landau_new(arg1,arg2,arg3,arg4);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_lb_d3q19_Landau,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_colormap(lua_State* L) {
   int SWIG_arg = 0;
-  LBColormap *result = 0 ;
+  lb_colormap *result = 0 ;
   
-  SWIG_check_num_args("LBColormap_new",0,0)
-  result = (LBColormap *)LBColormap_new();
-  SWIG_NewPointerObj(L,result,SWIGTYPE_p_LBColormap,0); SWIG_arg++; 
+  SWIG_check_num_args("lb_colormap_new",0,0)
+  result = (lb_colormap *)lb_colormap_new();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_lb_colormap,0); SWIG_arg++; 
   return SWIG_arg;
   
   if(0) SWIG_fail;
@@ -6022,15 +7565,15 @@ static int _wrap_rgb(lua_State* L) {
   int SWIG_arg = 0;
   int arg1 ;
   int arg2 ;
-  LBRGB *result = 0 ;
+  lb_rgb *result = 0 ;
   
-  SWIG_check_num_args("LBRGB_new",2,2)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("LBRGB_new",1,"int");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("LBRGB_new",2,"int");
+  SWIG_check_num_args("lb_rgb_new",2,2)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("lb_rgb_new",1,"int");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("lb_rgb_new",2,"int");
   arg1 = (int)lua_tonumber(L, 1);
   arg2 = (int)lua_tonumber(L, 2);
-  result = (LBRGB *)LBRGB_new(arg1,arg2);
-  SWIG_NewPointerObj(L,result,SWIGTYPE_p_LBRGB,0); SWIG_arg++; 
+  result = (lb_rgb *)lb_rgb_new(arg1,arg2);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_lb_rgb,0); SWIG_arg++; 
   return SWIG_arg;
   
   if(0) SWIG_fail;
@@ -6136,6 +7679,8 @@ static const struct luaL_reg swig_commands[] = {
     { "d3q19_BGK", _wrap_d3q19_BGK},
     { "d2q9_Mix", _wrap_d2q9_Mix},
     { "d3q19_Mix", _wrap_d3q19_Mix},
+    { "d2q9_LD", _wrap_d2q9_LD},
+    { "d3q19_LD", _wrap_d3q19_LD},
     { "colormap", _wrap_colormap},
     { "rgb", _wrap_rgb},
     { "wtime", _wrap_wtime},
@@ -6156,68 +7701,88 @@ static swig_lua_const_info swig_constants[] = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static swig_type_info _swigt__p_LBColormap = {"_p_LBColormap", "LBColormap *", 0, 0, (void*)&_wrap_class_LBColormap, 0};
 static swig_type_info _swigt__p_LBD2Q9BGK = {"_p_LBD2Q9BGK", "LBD2Q9BGK *", 0, 0, (void*)&_wrap_class_LBD2Q9BGK, 0};
 static swig_type_info _swigt__p_LBD2Q9BGKStats = {"_p_LBD2Q9BGKStats", "LBD2Q9BGKStats *", 0, 0, (void*)&_wrap_class_LBD2Q9BGKStats, 0};
+static swig_type_info _swigt__p_LBD2Q9LandauStats = {"_p_LBD2Q9LandauStats", "LBD2Q9LandauStats *", 0, 0, (void*)&_wrap_class_LBD2Q9LandauStats, 0};
 static swig_type_info _swigt__p_LBD2Q9Mix = {"_p_LBD2Q9Mix", "LBD2Q9Mix *", 0, 0, (void*)&_wrap_class_LBD2Q9Mix, 0};
 static swig_type_info _swigt__p_LBD2Q9MixStats = {"_p_LBD2Q9MixStats", "LBD2Q9MixStats *", 0, 0, (void*)&_wrap_class_LBD2Q9MixStats, 0};
 static swig_type_info _swigt__p_LBD3Q19BGK = {"_p_LBD3Q19BGK", "LBD3Q19BGK *", 0, 0, (void*)&_wrap_class_LBD3Q19BGK, 0};
 static swig_type_info _swigt__p_LBD3Q19BGKStats = {"_p_LBD3Q19BGKStats", "LBD3Q19BGKStats *", 0, 0, (void*)&_wrap_class_LBD3Q19BGKStats, 0};
+static swig_type_info _swigt__p_LBD3Q19LandauStats = {"_p_LBD3Q19LandauStats", "LBD3Q19LandauStats *", 0, 0, (void*)&_wrap_class_LBD3Q19LandauStats, 0};
 static swig_type_info _swigt__p_LBD3Q19Mix = {"_p_LBD3Q19Mix", "LBD3Q19Mix *", 0, 0, (void*)&_wrap_class_LBD3Q19Mix, 0};
 static swig_type_info _swigt__p_LBD3Q19MixStats = {"_p_LBD3Q19MixStats", "LBD3Q19MixStats *", 0, 0, (void*)&_wrap_class_LBD3Q19MixStats, 0};
 static swig_type_info _swigt__p_LBGKParameters = {"_p_LBGKParameters", "LBGKParameters *", 0, 0, (void*)&_wrap_class_LBGKParameters, 0};
+static swig_type_info _swigt__p_LBLandauParameters = {"_p_LBLandauParameters", "LBLandauParameters *", 0, 0, (void*)&_wrap_class_LBLandauParameters, 0};
 static swig_type_info _swigt__p_LBMixParameters = {"_p_LBMixParameters", "LBMixParameters *", 0, 0, (void*)&_wrap_class_LBMixParameters, 0};
 static swig_type_info _swigt__p_LBPartitionInfo = {"_p_LBPartitionInfo", "LBPartitionInfo *", 0, 0, (void*)&_wrap_class_LBPartitionInfo, 0};
-static swig_type_info _swigt__p_LBRGB = {"_p_LBRGB", "LBRGB *", 0, 0, (void*)&_wrap_class_LBRGB, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_lb_colormap = {"_p_lb_colormap", "lb_colormap *", 0, 0, (void*)&_wrap_class_lb_colormap, 0};
+static swig_type_info _swigt__p_lb_d2q9_Landau = {"_p_lb_d2q9_Landau", "lb_d2q9_Landau *", 0, 0, (void*)&_wrap_class_lb_d2q9_Landau, 0};
+static swig_type_info _swigt__p_lb_d3q19_Landau = {"_p_lb_d3q19_Landau", "lb_d3q19_Landau *", 0, 0, (void*)&_wrap_class_lb_d3q19_Landau, 0};
+static swig_type_info _swigt__p_lb_rgb = {"_p_lb_rgb", "lb_rgb *", 0, 0, (void*)&_wrap_class_lb_rgb, 0};
 
 static swig_type_info *swig_type_initial[] = {
-  &_swigt__p_LBColormap,
   &_swigt__p_LBD2Q9BGK,
   &_swigt__p_LBD2Q9BGKStats,
+  &_swigt__p_LBD2Q9LandauStats,
   &_swigt__p_LBD2Q9Mix,
   &_swigt__p_LBD2Q9MixStats,
   &_swigt__p_LBD3Q19BGK,
   &_swigt__p_LBD3Q19BGKStats,
+  &_swigt__p_LBD3Q19LandauStats,
   &_swigt__p_LBD3Q19Mix,
   &_swigt__p_LBD3Q19MixStats,
   &_swigt__p_LBGKParameters,
+  &_swigt__p_LBLandauParameters,
   &_swigt__p_LBMixParameters,
   &_swigt__p_LBPartitionInfo,
-  &_swigt__p_LBRGB,
   &_swigt__p_double,
+  &_swigt__p_lb_colormap,
+  &_swigt__p_lb_d2q9_Landau,
+  &_swigt__p_lb_d3q19_Landau,
+  &_swigt__p_lb_rgb,
 };
 
-static swig_cast_info _swigc__p_LBColormap[] = {  {&_swigt__p_LBColormap, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_LBD2Q9BGK[] = {  {&_swigt__p_LBD2Q9BGK, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_LBD2Q9BGKStats[] = {  {&_swigt__p_LBD2Q9BGKStats, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_LBD2Q9LandauStats[] = {  {&_swigt__p_LBD2Q9LandauStats, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_LBD2Q9Mix[] = {  {&_swigt__p_LBD2Q9Mix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_LBD2Q9MixStats[] = {  {&_swigt__p_LBD2Q9MixStats, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_LBD3Q19BGK[] = {  {&_swigt__p_LBD3Q19BGK, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_LBD3Q19BGKStats[] = {  {&_swigt__p_LBD3Q19BGKStats, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_LBD3Q19LandauStats[] = {  {&_swigt__p_LBD3Q19LandauStats, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_LBD3Q19Mix[] = {  {&_swigt__p_LBD3Q19Mix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_LBD3Q19MixStats[] = {  {&_swigt__p_LBD3Q19MixStats, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_LBGKParameters[] = {  {&_swigt__p_LBGKParameters, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_LBLandauParameters[] = {  {&_swigt__p_LBLandauParameters, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_LBMixParameters[] = {  {&_swigt__p_LBMixParameters, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_LBPartitionInfo[] = {  {&_swigt__p_LBPartitionInfo, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_LBRGB[] = {  {&_swigt__p_LBRGB, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_lb_colormap[] = {  {&_swigt__p_lb_colormap, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_lb_d2q9_Landau[] = {  {&_swigt__p_lb_d2q9_Landau, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_lb_d3q19_Landau[] = {  {&_swigt__p_lb_d3q19_Landau, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_lb_rgb[] = {  {&_swigt__p_lb_rgb, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
-  _swigc__p_LBColormap,
   _swigc__p_LBD2Q9BGK,
   _swigc__p_LBD2Q9BGKStats,
+  _swigc__p_LBD2Q9LandauStats,
   _swigc__p_LBD2Q9Mix,
   _swigc__p_LBD2Q9MixStats,
   _swigc__p_LBD3Q19BGK,
   _swigc__p_LBD3Q19BGKStats,
+  _swigc__p_LBD3Q19LandauStats,
   _swigc__p_LBD3Q19Mix,
   _swigc__p_LBD3Q19MixStats,
   _swigc__p_LBGKParameters,
+  _swigc__p_LBLandauParameters,
   _swigc__p_LBMixParameters,
   _swigc__p_LBPartitionInfo,
-  _swigc__p_LBRGB,
   _swigc__p_double,
+  _swigc__p_lb_colormap,
+  _swigc__p_lb_d2q9_Landau,
+  _swigc__p_lb_d3q19_Landau,
+  _swigc__p_lb_rgb,
 };
 
 

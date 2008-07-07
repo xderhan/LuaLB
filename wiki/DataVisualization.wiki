@@ -1,0 +1,23 @@
+#labels Featured
+= Introduction =
+
+In 2D version of LuaLB, they also visualize the scalar quantities (total density or order parameter) in the PNG image files. It means that we do need any additional software to process our simulation data. For 3D version, LauLB store the data in [http://hdf.ncsa.uiuc.edu/HDF5/ HDF5] format. This may be possible to be visualized with any software that supports HDF5 format i.e. [http://www.opendx.org/ OpenDX]. We may visualize our data by using the [http://www.vtk.org/ Visualization ToolKit (VTK)] software i.e. MayaVi([http://mayavi.sourceforge.net/ 1],[https://svn.enthought.com/enthought/wiki/MayaVi 2]) and [http://www.paraview.org ParaView] by exporting HDF5 to VTK format. We will learn how to visualize our 3D data with VTK in the next section.
+
+
+= Converting HDF5 to VTK =
+
+To convert HDF5 to VTK, we need {{{h5tovtk}}} utility program included in [http://ab-initio.mit.edu/wiki/index.php/H5utils h5utils]. Please download and in install the h5utils which contains installation guide form [http://ab-initio.mit.edu/wiki/index.php/H5utils its page]
+
+To use h5tovtk, type:
+
+{{{
+$h5tovtk file.h5
+}}}
+
+This will automatically generate all dataset in {{{file.h5}}} to VTK with file name {{{file.vtk}}}. If you want to export only one dataset, please use this command:
+
+{{{
+$h5tovtk -d dataset_name file.h5
+}}}
+
+Now you can use MayaVi([http://mayavi.sourceforge.net/ 1],[https://svn.enthought.com/enthought/wiki/MayaVi 2]) or [http://www.paraview.org ParaView] open the exported VTK file.

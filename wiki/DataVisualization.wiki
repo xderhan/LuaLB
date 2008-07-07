@@ -1,7 +1,7 @@
 #labels Featured
 = Introduction =
 
-In 2D version of LuaLB, they also visualize the scalar quantities (total density or order parameter) in the PNG image files. It means that we do need any additional software to process our simulation data. For 3D version, LauLB store the data in [http://hdf.ncsa.uiuc.edu/HDF5/ HDF5] format. This may be possible to be visualized with any software that supports HDF5 format i.e. [http://www.opendx.org/ OpenDX]. We may visualize our data by using the [http://www.vtk.org/ Visualization ToolKit (VTK)] software i.e. MayaVi([http://mayavi.sourceforge.net/ 1],[https://svn.enthought.com/enthought/wiki/MayaVi 2]) and [http://www.paraview.org ParaView] by exporting HDF5 to VTK format. We will learn how to visualize our 3D data with VTK in the next section.
+In 2D version of LuaLB, they visualize the scalar quantities (total density or order parameter) in the PNG image files. It means that we do need any additional software to process our simulation data. For 3D version, LauLB store the data in [http://hdf.ncsa.uiuc.edu/HDF5/ HDF5] format. This may be possible to be visualized with any software that supports HDF5 format i.e. [http://www.opendx.org/ OpenDX]. We may visualize our data by using the [http://www.vtk.org/ Visualization ToolKit (VTK)] software i.e. MayaVi([http://mayavi.sourceforge.net/ 1],[https://svn.enthought.com/enthought/wiki/MayaVi 2]) and [http://www.paraview.org ParaView] by exporting HDF5 to VTK format. We will learn how to visualize our 3D data with VTK in the next section.
 
 
 = Converting HDF5 to VTK =

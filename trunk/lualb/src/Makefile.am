@@ -1,3 +1,3 @@
-SUBDIRS = . core graphics BGK Mix lua
+SUBDIRS = . core graphics BGK Mix Landau lua
 
 EXTRA_DIST = README 

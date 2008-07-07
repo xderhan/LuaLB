@@ -15,10 +15,10 @@ struct _LBColormap {
 	double* colors;
 };
 
-LBColormap*
-LBColormap_new(void)
+lb_colormap*
+lb_colormap_new(void)
 {
-	LBColormap* self = lb_new(LBColormap, 1);
+	lb_colormap* self = lb_new(lb_colormap, 1);
 
 	self->ncolors = 0;
 	self->allocated = 32;
@@ -28,7 +28,7 @@ LBColormap_new(void)
 }
 
 void
-LBColormap_destroy(LBColormap* self)
+lb_colormap_destroy(lb_colormap* self)
 {
 	lb_assert(self != NULL);
 
@@ -37,7 +37,7 @@ LBColormap_destroy(LBColormap* self)
 }
 
 int
-LBColormap_num_colors(const LBColormap* self)
+lb_colormap_num_colors(const lb_colormap* self)
 {
 	lb_assert(self != NULL);
 
@@ -45,7 +45,7 @@ LBColormap_num_colors(const LBColormap* self)
 }
 
 void
-LBColormap_get_color(const LBColormap* self, int c, double color[3])
+lb_colormap_get_color(const lb_colormap* self, int c, double color[3])
 {
 	lb_assert(self != NULL);
 	lb_assert(c < self->ncolors);
@@ -59,7 +59,7 @@ LBColormap_get_color(const LBColormap* self, int c, double color[3])
 }
 
 void
-LBColormap_set_color(LBColormap* self, int c, const double color[3])
+lb_colormap_set_color(lb_colormap* self, int c, const double color[3])
 {
 	lb_assert(self != NULL);
 	lb_assert(c < self->ncolors);
@@ -73,7 +73,7 @@ LBColormap_set_color(LBColormap* self, int c, const double color[3])
 }
 
 void
-LBColormap_append_color(LBColormap* self, const double color[3])
+lb_colormap_append_color(lb_colormap* self, const double color[3])
 {
 	lb_assert(self != NULL);
 	lb_assert(color != NULL);
@@ -92,7 +92,7 @@ LBColormap_append_color(LBColormap* self, const double color[3])
 }
 
 void
-LBColormap_map_value(const LBColormap* self, double v, double color[3])
+lb_colormap_map_value(const lb_colormap* self, double v, double color[3])
 {
 	int bin;
 

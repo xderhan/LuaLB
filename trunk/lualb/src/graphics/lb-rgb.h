@@ -7,18 +7,18 @@
 
 LB_BEGIN_DECLS
 
-typedef struct _LBRGB LBRGB;
+typedef struct _LBRGB lb_rgb;
 
-LBRGB* LBRGB_new(int width, int height);
-void LBRGB_destroy(LBRGB*);
-int LBRGB_width(const LBRGB*);
-int LBRGB_height(const LBRGB*);
-void LBRGB_fill(LBRGB*, const double rgb[3]);
-void LBRGB_get_pixel(const LBRGB*, int x, int y, double rgb[3]);
-void LBRGB_set_pixel(LBRGB*, int x, int y, const double rgb[3]);
-void LBRGB_set_pixel_rgba(LBRGB*, int, int, const double rgba[4]);
-void LBRGB_save(const LBRGB*, char*);
-void LBRGB_map_value(LBRGB*, const LBColormap*, int, int, double);
+lb_rgb* lb_rgb_new(int width, int height);
+void lb_rgb_destroy(lb_rgb*);
+int lb_rgb_width(const lb_rgb*);
+int lb_rgb_height(const lb_rgb*);
+void lb_rgb_fill(lb_rgb*, const double rgb[3]);
+void lb_rgb_get_pixel(const lb_rgb*, int x, int y, double rgb[3]);
+void lb_rgb_set_pixel(lb_rgb*, int x, int y, const double rgb[3]);
+void lb_rgb_set_pixel_rgba(lb_rgb*, int, int, const double rgba[4]);
+void lb_rgb_save(const lb_rgb*, char*);
+void lb_rgb_map_value(lb_rgb*, const lb_colormap*, int, int, double);
 
 LB_END_DECLS
 

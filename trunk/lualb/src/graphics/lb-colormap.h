@@ -5,15 +5,15 @@
 
 LB_BEGIN_DECLS
 
-typedef struct _LBColormap LBColormap;
+typedef struct _LBColormap lb_colormap;
 
-LBColormap* LBColormap_new(void);
-void LBColormap_destroy(LBColormap*);
-int LBColormap_num_colors(const LBColormap*);
-void LBColormap_get_color(const LBColormap*, int, double c[3]);
-void LBColormap_set_color(LBColormap*, int, const double c[3]);
-void LBColormap_append_color(LBColormap*, const double c[3]);
-void LBColormap_map_value(const LBColormap*, double, double c[3]);
+lb_colormap* lb_colormap_new(void);
+void lb_colormap_destroy(lb_colormap*);
+int lb_colormap_num_colors(const lb_colormap*);
+void lb_colormap_get_color(const lb_colormap*, int, double c[3]);
+void lb_colormap_set_color(lb_colormap*, int, const double c[3]);
+void lb_colormap_append_color(lb_colormap*, const double c[3]);
+void lb_colormap_map_value(const lb_colormap*, double, double c[3]);
 
 LB_END_DECLS
 

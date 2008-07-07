@@ -6,28 +6,30 @@ NX = 64
 NY = 64
 NZ = 64
 
-PARAMETERS = lb.LBMixParameters()
+PARAMETERS = lb.LBLandauParameters()
 
-T = 0.56
 a = 9/49
 b = 2/21
 K = 0.01
 tau = 0.8
 
-PARAMETERS:set(T, a, b, K, tau)
+--PARAMETERS:set(T, a, b, K, tau)
 
 PZ = 1
 
 START = 0
-END = 1024
-FREQ = 64
+END = 2048
+FREQ = 128
+
+VB = {0,0}
+VT = {0,0}
 
 --
 --  initializer
 --
 
 initializer = function(x, y, z)
-	return 2.5 + math.random(), 0, 0, 0
+	return 1+0.0001*(1-2*math.random()-1.), 0.0001*(1-2*math.random()), 0, 0, 0
 end
 
 --
@@ -71,14 +73,14 @@ make_filename = function(t)
 		res = res .. "0"
 	end
 
-	return res .. t .. ".png"
+	return res .. t .. ".h5"
 end
 
 render = function(simulation, t)
 	local filename = make_filename(t)
 	local pinfo = simulation:partition_info()
 
-	simulation:dump(string.format("tmp-%d.h5", t))
+	simulation:dump(filename)
 
 --	if pinfo.processor_rank == 0 then
 --		local cmd = "./lb-iso -o " .. filename
@@ -86,6 +88,8 @@ render = function(simulation, t)
 --		os.execute(cmd)
 --		os.execute("rm -f tmp.h5")
 --	end
+
+	collectgarbage() -- this should on C side
 end
 
 --
@@ -107,11 +111,11 @@ end
 --  finally ... core functionality
 --
 
-simulation = lb.d3q19_VdW(NX, NY, NZ, PZ)
+simulation = lb.d3q19_LD(NX, NY, NZ, PZ)
 pinfo = simulation:partition_info()
 math.randomseed(pinfo:processor_rank() + 1)
 
-simulation:set_parameters(PARAMETERS)
+--simulation:set_parameters(PARAMETERS)
 
 if not PZ then
 	simulation:set_walls_speed(VT, VB)
@@ -130,11 +134,11 @@ for t = START, END do
 		if now - last_report > 7 then
 			report_progress(t0, START, END, t)
 			last_report = now
+			
+			local M = simulation:mass()
+			print(M)
 		end
 	end
-
-	local M = simulation:mass()
-	print(M)
 
 	if math.mod(t, FREQ) == 0 then
 		render(simulation, t)

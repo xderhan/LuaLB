@@ -66,36 +66,6 @@ int LBPartitionInfo_periods(LBPartitionInfo *self, int i){ return self->periods[
 int LBPartitionInfo_global_size(LBPartitionInfo *self, int i){ return self->global_size[i];}
 int LBPartitionInfo_global_origin(LBPartitionInfo *self, int i){ return self->global_origin[i];}
 
-/* extending for LBMixParameters array membrs */
-void LBMixParameters_set_T(LBMixParameters *self, double x) {self->T = x;}
-void LBMixParameters_set_a(LBMixParameters *self, double x) {self->a = x;}
-void LBMixParameters_set_b(LBMixParameters *self, double x) {self->b = x;}
-void LBMixParameters_set_K(LBMixParameters *self, double x) {self->K = x;}
-void LBMixParameters_set_Gr(LBMixParameters *self, double x) {self->Gr = x;}
-void LBMixParameters_set_lamda(LBMixParameters *self, double x) {self->lamda = x;}
-void LBMixParameters_set_rtau(LBMixParameters *self, double x) {self->rtau = x;}
-void LBMixParameters_set_ptau(LBMixParameters *self, double x) {self->ptau = x;}
-
-void LBMixParameters_set(LBMixParameters *self, 
-				double T, 
-				double a, 
-				double b, 
-				double K, 
-				double Gr,
-				double lamda,
-				double rtau,
-				double ptau) 
-{
-	self->T = T;
-	self->a = a;
-	self->b = b;
-	self->K = K;
-	self->Gr = Gr;
-	self->lamda = lamda;
-	self->rtau = rtau;
-	self->ptau = ptau;
-}
-
 %}
 
 typedef struct {
@@ -258,9 +228,7 @@ typedef struct {
 	%immutable;
 } lb_d3q19_Landau;
 
-
 #ifdef LB_ENABLE_RGB
-
 
 %nodefaultctor;
 typedef struct {
@@ -272,9 +240,7 @@ typedef struct {
 	%immutable;
 } lb_rgb;
 
-
 #endif /* LB_ENABLE_RGB */
-
 
 %rename(d2q9_BGK) LBD2Q9BGK_new;
 LBD2Q9BGK* LBD2Q9BGK_new(int c, int nx, int ny, int px, int py);
@@ -291,9 +257,7 @@ lb_d2q9_Landau* lb_d2q9_Landau_new(int nx, int ny, int py);
 %rename(d3q19_LD) lb_d3q19_Landau_new;
 lb_d3q19_Landau* lb_d3q19_Landau_new(int nx, int ny, int nz, int pz);
 
-
 #ifdef LB_ENABLE_RGB
-
 
 %rename(colormap) lb_colormap_new;
 lb_colormap* lb_colormap_new(void);
@@ -301,9 +265,7 @@ lb_colormap* lb_colormap_new(void);
 %rename(rgb) lb_rgb_new;
 lb_rgb* lb_rgb_new(int width, int height);
 
-
 #endif /* LB_ENABLE_RGB */
-
 
 /* ===== BGK module ===== */
 
@@ -360,9 +322,9 @@ lb_rgb* lb_rgb_new(int width, int height);
 	%apply double INPUT[ANY] {const double v4[2],const double v5[2]};
 	void set_walls_speed(const double v4[2], const double v5[2]);
 	%clear const double v4[2],const double v5[2];
-	%apply (double OUTPUT[ANY],double OUTPUT[ANY]) {(const double OUTPUT[2],const double OUTPUT[2])};
+	%apply double OUTPUT[ANY] {double OUTPUT[2],double OUTPUT[2]};
 	void get_walls_speed(double OUTPUT[2], double OUTPUT[2]);
-	%clear (const double OUTPUT[2],const double OUTPUT[2]);	
+	%clear double OUTPUT[2],double OUTPUT[2];	
 	
 	//void set_walls_speed(const double, const double, const double, const double);
 	//void get_walls_speed(double *OUTPUT, double *OUTPUT, double *OUTPUT, double *OUTPUT);
@@ -435,35 +397,21 @@ lb_rgb* lb_rgb_new(int width, int height);
 }
 
 /* ===== Binary Mixture Landau module ===== */
-
 %extend lb_d2q9_Landau {
 
 	void destroy();
-
 	LBPartitionInfo* partition_info();
-
 	LBD2Q9LandauStats* stats();
-
 	void set_parameters(const LBLandauParameters*);
-
 	LBLandauParameters* get_parameters();
-
 	void set_walls_speed(double top, double bottom);
-
 	void get_walls_speed(double *OUTPUT, double *OUTPUT);
-
 	void set_averages(int x, int y, double density, double diff_density, double vx, double vy);
-
 	void get_averages(int x, int y, double *OUTPUT, double *OUTPUT, double *OUTPUT, double *OUTPUT);
-
 	void set_equilibrium();
-
 	void advance();
-
 	void dump(const char* filename);
-
 	double mass();
-
 }
 
 %extend lb_d3q19_Landau {
@@ -473,16 +421,12 @@ lb_rgb* lb_rgb_new(int width, int height);
 	LBD3Q19LandauStats* stats();
 	void set_parameters(const LBLandauParameters*);
 	LBLandauParameters* get_parameters();
-
-	//void set_walls_speed(const double, const double, const double, const double);
 	%apply double INPUT[ANY] {const double v4[2],const double v5[2]};
 	void set_walls_speed(const double v4[2], const double v5[2]);
 	%clear const double v4[2],const double v5[2];
-	%apply (double OUTPUT[ANY],double OUTPUT[ANY]) {(const double OUTPUT[2],const double OUTPUT[2])};
+	%apply double OUTPUT[ANY] {double OUTPUT[2],double OUTPUT[2]};
 	void get_walls_speed(double OUTPUT[2], double OUTPUT[2]);
-	%clear (const double OUTPUT[2],const double OUTPUT[2]);	
-	//void get_walls_speed(double *OUTPUT, double *OUTPUT, double *OUTPUT, double *OUTPUT);
-
+	%clear double OUTPUT[2],double OUTPUT[2];	
 	void set_averages(int x, int y, int z, double density, double diff_density, double vx, double vy, double vz);
 	void get_averages(int x, int y, int z, double *OUTPUT, double *OUTPUT, double *OUTPUT, double *OUTPUT, double *OUTPUT);
 	void set_equilibrium();
@@ -491,9 +435,7 @@ lb_rgb* lb_rgb_new(int width, int height);
 	double mass();
 }
 
-
 /* ===== Utilities ===== */
-
 %rename(wtime) lb_wtime;
 double lb_wtime(void);
 
@@ -512,21 +454,15 @@ void lb_info_disable(void);
 
 #ifdef LB_ENABLE_MPI
 
-
 %rename(mpi_barrier) lb_mpi_barrier;
 void lb_mpi_barrier(void);
 
-
 #endif /* LB_ENABLE_MPI */
 
-
 /* ===== Graphics ===== */
-
 #ifdef LB_ENABLE_RGB
 
-
 /* Color map */
-
 %extend lb_colormap {
 	
 	void destroy();
@@ -534,14 +470,13 @@ void lb_mpi_barrier(void);
 	%apply double INPUT[ANY] {const double c[3]};
 	void set_color(int, const double c[3]);	void append_color(const double c[3]);
 	%clear const double c[3];
-	%apply double OUTPUT[ANY] {const double OUTPUT[3]};
+	%apply double OUTPUT[ANY] {double OUTPUT[3]};
 	void get_color(int, double OUTPUT[3]);
 	void map_value(double, double OUTPUT[3]);
-	%clear const double OUTPUT[3];
+	%clear double OUTPUT[3];
 }
 
 /* RGB */
-
 %extend lb_rgb {
 
 	void destroy();
@@ -554,16 +489,11 @@ void lb_mpi_barrier(void);
 	%apply double INPUT[ANY] {const double rgba[4]};
 	void set_pixel_rgba(int, int, const double rgba[4]);
 	%clear const double rgba[4];
-
-	//void map_value(const lb_colormap*, int, int, double);
-
 	%apply double OUTPUT[ANY] {const double OUTPUT[3]};
 	void get_pixel(int x, int y, double OUTPUT[3]);
 	%clear const double OUTPUT[3];
+	void map_value(const lb_colormap*, int, int, double);
 	void save(char*);
 }
 
-
 #endif /* LB_ENABLE_RGB */
-
-

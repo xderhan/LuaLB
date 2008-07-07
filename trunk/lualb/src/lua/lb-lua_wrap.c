@@ -7325,6 +7325,45 @@ fail:
 }
 
 
+static int _wrap_lb_rgb_map_value(lua_State* L) {
+  int SWIG_arg = 0;
+  lb_rgb *arg1 = (lb_rgb *) 0 ;
+  lb_colormap *arg2 = (lb_colormap *) 0 ;
+  int arg3 ;
+  int arg4 ;
+  double arg5 ;
+  
+  SWIG_check_num_args("map_value",5,5)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("map_value",1,"lb_rgb *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("map_value",2,"lb_colormap const *");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("map_value",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("map_value",4,"int");
+  if(!lua_isnumber(L,5)) SWIG_fail_arg("map_value",5,"double");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_lb_rgb,0))){
+    SWIG_fail_ptr("lb_rgb_map_value",1,SWIGTYPE_p_lb_rgb);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_lb_colormap,0))){
+    SWIG_fail_ptr("lb_rgb_map_value",2,SWIGTYPE_p_lb_colormap);
+  }
+  
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  arg5 = (double)lua_tonumber(L, 5);
+  lb_rgb_map_value(arg1,(lb_colormap const *)arg2,arg3,arg4,arg5);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_lb_rgb_save(lua_State* L) {
   int SWIG_arg = 0;
   lb_rgb *arg1 = (lb_rgb *) 0 ;
@@ -7363,6 +7402,7 @@ static swig_lua_method swig_lb_rgb_methods[] = {
     {"set_pixel", _wrap_lb_rgb_set_pixel}, 
     {"set_pixel_rgba", _wrap_lb_rgb_set_pixel_rgba}, 
     {"get_pixel", _wrap_lb_rgb_get_pixel}, 
+    {"map_value", _wrap_lb_rgb_map_value}, 
     {"save", _wrap_lb_rgb_save}, 
     {0,0}
 };

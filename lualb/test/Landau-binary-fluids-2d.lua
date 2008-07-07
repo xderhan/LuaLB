@@ -3,14 +3,11 @@ NY = 128
 
 PARAMETERS = lb.LBLandauParameters()
 
-a = 9/49
-b = 2/21
-K = 0.01
-Gr = 1.0
-rtau = 0.8
-ptau = 0.8
-
---PARAMETERS:set(T, a, b, K, Gr, lamda, rtau, ptau)
+PARAMETERS.a = -0.1
+PARAMETERS.b = 0.1
+PARAMETERS.K = 0.09
+PARAMETERS.rtau = 1.0
+PARAMETERS.ptau = 1.0
 
 PY = 1
 
@@ -93,8 +90,9 @@ render1 = function(callback, simulation, filename)
 	for x = 0, nx - 1 do
 		for y = 0, ny - 1 do
 			local rho, phi, ux, uy = simulation:get_averages(x, y)
-			local c = callback(phi, ux, uy)
-			rgb:set_pixel(x, ny - y - 1, c)
+			--local c = callback(phi, ux, uy)
+			--rgb:set_pixel(x, ny - y - 1, c)
+			rgb:map_value(cmap, x, ny - y - 1, (1+phi)/2)
 		end
 	end
 
@@ -156,14 +154,14 @@ simulation = lb.d2q9_LD(NX, NY, PY)
 pinfo = simulation:partition_info()
 math.randomseed(pinfo:processor_rank() + 1)
 
---simulation:set_parameters(PARAMETERS)
+simulation:set_parameters(PARAMETERS)
 
 if not PY then
 	simulation:set_walls_speed(VT, VB)
 end
 
 initialize(simulation, initializer)
-simulation:dump("bin_init_2d.h5")
+--simulation:dump("bin_init_2d.h5")
 
 t0 = lb.wtime()
 last_report = t0

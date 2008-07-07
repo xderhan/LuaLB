@@ -4,33 +4,41 @@
 
 NX = 64
 NY = 64
-NZ = 64
+NZ = 32
 
-PARAMETERS = lb.LBLandauParameters()
+PARAMETERS = lb.LBGKParameters()
 
-PARAMETERS = lb.LBLandauParameters()
+PARAMETERS.tau = 0.8
 
-PARAMETERS.a = -0.1
-PARAMETERS.b = 0.1
-PARAMETERS.K = 0.09
-PARAMETERS.rtau = 1.0
-PARAMETERS.ptau = 1.0
+--PARAMETERS:set(tau)
 
-PZ = 1
+PZ = 0
+
+VT = {0,1}
+VB = {1,0}
 
 START = 0
-END = 2048
-FREQ = 128
-
-VB = {0,0}
-VT = {0,0}
+END = 512
+FREQ = 64
 
 --
 --  initializer
 --
 
+poiseuilleVelocity = function(iZ, Lz, U) 
+	z = iZ/Lz
+	return 4.*U*(z-z*z)
+end
+
+poiseuillePressure = function(iX, Lx, Ly, U, nu)
+	Lx = Lx - 1
+	Ly = Ly - 1
+	return 8.*nu*U/(Ly*Ly)*(Lx/2.-iX);
+end
+
 initializer = function(x, y, z)
-	return 1+0.0001*(1-2*math.random()-1.), 0.0001*(1-2*math.random()), 0, 0, 0
+	return 2.5
+--	return 2.5 + math.random(), 0, 0, 0
 end
 
 --
@@ -48,7 +56,10 @@ initialize = function(simulation, initializer)
 		for y = 0, ny - 1 do
 			for z = 0, nz - 1 do
 				simulation:set_averages(x, y, z,
-					initializer(x + x0, y + y0, z + z0))
+					initializer(x + x0, y + y0, z + z0), 
+					poiseuilleVelocity(z, nz-1, 0.01), 
+					0.0, 
+					0.0)
 			end
 		end
 	end
@@ -74,14 +85,14 @@ make_filename = function(t)
 		res = res .. "0"
 	end
 
-	return res .. t .. ".h5"
+	return res .. t .. ".png"
 end
 
 render = function(simulation, t)
 	local filename = make_filename(t)
 	local pinfo = simulation:partition_info()
 
-	simulation:dump(filename)
+	simulation:dump(string.format("tmp-%d.h5", t))
 
 --	if pinfo.processor_rank == 0 then
 --		local cmd = "./lb-iso -o " .. filename
@@ -89,8 +100,6 @@ render = function(simulation, t)
 --		os.execute(cmd)
 --		os.execute("rm -f tmp.h5")
 --	end
-
-	collectgarbage() -- this should on C side
 end
 
 --
@@ -112,15 +121,19 @@ end
 --  finally ... core functionality
 --
 
-simulation = lb.d3q19_LD(NX, NY, NZ, PZ)
+simulation = lb.d3q19_BGK(NX, NY, NZ, PZ)
 pinfo = simulation:partition_info()
-math.randomseed(pinfo:processor_rank() + 1)
+-- math.randomseed(pinfo:processor_rank() + 1)
 
 simulation:set_parameters(PARAMETERS)
 
-if not PZ then
-	simulation:set_walls_speed(VT, VB)
+if PZ==0 then
+	simulation:set_walls_speed(VT,VB)
 end
+
+v4,v5 = simulation:get_walls_speed()
+
+print(v4[1],v4[2],v5[1],v5[2])
 
 initialize(simulation, initializer)
 
@@ -135,11 +148,11 @@ for t = START, END do
 		if now - last_report > 7 then
 			report_progress(t0, START, END, t)
 			last_report = now
-			
-			local M = simulation:mass()
-			print(M)
 		end
 	end
+
+	local M = simulation:mass()
+	print(M)
 
 	if math.mod(t, FREQ) == 0 then
 		render(simulation, t)

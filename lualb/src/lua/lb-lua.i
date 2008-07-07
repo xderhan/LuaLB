@@ -69,7 +69,7 @@ int LBPartitionInfo_global_origin(LBPartitionInfo *self, int i){ return self->gl
 %}
 
 typedef struct {
-	%immutable;
+	//%immutable;
 	/*
 	int ndims;
 	int processor_rank;
@@ -77,16 +77,14 @@ typedef struct {
 	int processors_size[3];
 	int processor_coords[3];
 
-	%apply int INPUT[ANY] {int size[3]};
 	int size[3];
-	%clear int size[3];
+
 	int periods[3];
 	int global_size[3];
 	int global_origin[3];
 	//%clear processors_size[3],processor_coords[3],size[3],periods[3],global_size[3],global_origin[3];
 	*/
 } LBPartitionInfo;
-
 
 %extend LBPartitionInfo {
 	int ndims();
@@ -114,18 +112,6 @@ typedef struct {
 	double rtau;
 	double ptau;
 } LBMixParameters;
-
-%extend LBMixParameters {
-	void set_T(double x);
-	void set_a(double x);
-	void set_b(double x);
-	void set_K(double x);
-	void set_Gr(double x);
-	void set_lamda(double x);
-	void set_rtau(double x);
-	void set_ptau(double x);
-	void set(double, double, double, double, double, double, double, double);
-}
 
 typedef struct {
 	double a;

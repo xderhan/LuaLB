@@ -11,7 +11,7 @@
     * [http://hdf.ncsa.uiuc.edu/HDF5/ HDF5 1.6.x]
     * [http://www.lua.org/ Lua 5.0.x] 
     * [http://www.libpng.org/pub/png/libpng.html libpng] (optional for graphics)
-    * [http://www.swig.org/ SWIG >= 1.3.31] ( optionalfor generating wrapper files)
+    * [http://www.swig.org/ SWIG >= 1.3.31] ( optional for generating wrapper files)
     * [http://www-unix.mcs.anl.gov/mpi/mpich1/ MPICH] (optional for parallel version)
 
 = Building for a PC =

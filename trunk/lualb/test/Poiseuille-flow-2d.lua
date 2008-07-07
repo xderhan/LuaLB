@@ -5,10 +5,6 @@ PARAMETERS = lb.LBGKParameters()
 
 PARAMETERS.tau = 0.8
 
---tau = 0.8
-
---PARAMETERS:set(tau)
-
 PY = 0
 
 VT = 0.0 
@@ -166,9 +162,9 @@ pinfo = lb.LBPartitionInfo()
 simulation:partition_info(pinfo)
 --math.randomseed(pinfo:processor_rank() + 1)
 
---pinfo.size[0] = 1
+pinfo.size[0] = 1
 
---print(pinfo.size[0])
+print(pinfo.size[0])
 
 simulation:set_parameters(PARAMETERS)
 

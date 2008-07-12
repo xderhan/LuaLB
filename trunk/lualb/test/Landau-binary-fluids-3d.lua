@@ -20,7 +20,7 @@ PZ = 1
 
 START = 0
 END = 2048
-FREQ = 128
+FREQ = 64
 
 VB = {0,0}
 VT = {0,0}
@@ -135,11 +135,10 @@ for t = START, END do
 		if now - last_report > 7 then
 			report_progress(t0, START, END, t)
 			last_report = now
-			
-			local M = simulation:mass()
-			print(M)
 		end
 	end
+	
+	print(simulation:mass())
 
 	if math.mod(t, FREQ) == 0 then
 		render(simulation, t)

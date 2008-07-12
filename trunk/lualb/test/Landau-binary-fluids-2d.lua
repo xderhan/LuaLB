@@ -16,7 +16,7 @@ VB = -0.05
 
 START = 0 
 END = 2048 -- 1024, 2048, 4096, 8192, 16384, 32768
-FREQ = 64
+FREQ = 128
 
 cmap = lb.colormap()
 cmap:append_color({1, 0, 0})
@@ -110,6 +110,7 @@ renderN = function(callback, simulation, filename)
 	render1(callback, simulation,
 		filename_IJ(filename, pinfo:processor_coords(0),
 		    pinfo:processor_size(1) - pinfo:processor_coords(1) - 1))
+	
 	lb.mpi_barrier()
 
 	if pinfo:processor_rank() == 0 then
@@ -128,7 +129,7 @@ renderN = function(callback, simulation, filename)
 			end
 		end
 
-		cmd = cmd .. " " .. filez .. " -depth 8 " .. filename .. " "
+		cmd = cmd .. " " .. filez .. " -depth 8 ./" .. filename .. " "
 		print(cmd)
 		os.execute(cmd)
 
@@ -174,12 +175,11 @@ for t = START, END do
 		if now - last_report > 7 then
 			report_progress(t0, START, END, t)
 			last_report = now
-		   stats = simulation:stats()
-		   print("ENERGY\t= ", stats.kin_energy)
 		end
 	end
-
-	--print("MASS\t= ", simulation:mass())
+	stats = simulation:stats()
+	print("ENERGY\t= ", stats.kin_energy)
+	print("MASS\t= ", simulation:mass())
 
 	if math.mod(t, FREQ) == 0 then
 		render(ordering2rgb, simulation, t)

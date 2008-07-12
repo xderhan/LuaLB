@@ -8,8 +8,6 @@ NZ = 64
 
 PARAMETERS = lb.LBLandauParameters()
 
-PARAMETERS = lb.LBLandauParameters()
-
 PARAMETERS.a = -0.1
 PARAMETERS.b = 0.1
 PARAMETERS.K = 0.09

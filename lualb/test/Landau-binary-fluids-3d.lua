@@ -1,3 +1,5 @@
+require("utils.lua")
+
 --
 --  parameters
 --
@@ -54,29 +56,8 @@ initialize = function(simulation, initializer)
 	simulation:set_equilibrium()
 end
 
-make_filename = function(t)
-	local res = ""
-	local digits = 1
-
-	for n = 1, 8 do
-		pp = __pow(10, n)
-		if math.floor(t / pp) == 0 then
-			break
-		else
-			digits = digits + 1
-		end
-	end
-
-	todo = 7 - digits
-	for n = 0, todo do
-		res = res .. "0"
-	end
-
-	return res .. t .. ".h5"
-end
-
-render = function(simulation, t)
-	local filename = make_filename(t)
+render3 = function(simulation, t)
+	local filename = make_filename(t,".h5")
 	local pinfo = simulation:partition_info()
 
 	simulation:dump(filename)
@@ -89,21 +70,6 @@ render = function(simulation, t)
 --	end
 
 	collectgarbage() -- this should on C side
-end
-
---
---  usefull function
---
-
-report_progress = function(start_wtime, t0, t1, t)
-	local secs = lb.wtime() - start_wtime
-	local steps = t - t0
-	local sps = secs/steps
-
-	print()
-	io.write(string.format("<>> %d steps done in %f seconds (%f sec/step)\n",
-			       steps, secs, sps))
-	io.write(string.format("<>> ETA: %s\n", lb.wtime_string((t1 - t)*sps)))
 end
 
 --
@@ -136,9 +102,9 @@ for t = START, END do
 		end
 	end
 	
-	print(simulation:mass())
+	print(simulation:mass(),"\n")
 
 	if math.mod(t, FREQ) == 0 then
-		render(simulation, t)
+		render3(simulation, t)
 	end
 end

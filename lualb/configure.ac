@@ -206,6 +206,7 @@ AC_CONFIG_FILES([
   Makefile
   doc/Makefile
   examples/Makefile
+  test/Makefile
   src/Makefile
   src/core/Makefile
   src/graphics/Makefile

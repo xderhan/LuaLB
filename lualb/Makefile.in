@@ -159,7 +159,7 @@ sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-SUBDIRS = . src examples doc
+SUBDIRS = . src examples test doc
 EXTRA_DIST = README TODO
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive

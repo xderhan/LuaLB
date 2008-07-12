@@ -5341,7 +5341,7 @@ else
 fi
 
 
-ac_config_files="$ac_config_files Makefile doc/Makefile examples/Makefile src/Makefile src/core/Makefile src/graphics/Makefile src/BGK/Makefile src/Mix/Makefile src/Landau/Makefile src/lua/Makefile"
+ac_config_files="$ac_config_files Makefile doc/Makefile examples/Makefile test/Makefile src/Makefile src/core/Makefile src/graphics/Makefile src/BGK/Makefile src/Mix/Makefile src/Landau/Makefile src/lua/Makefile"
 
 
 cat >confcache <<\_ACEOF
@@ -5947,6 +5947,7 @@ do
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
     "doc/Makefile") CONFIG_FILES="$CONFIG_FILES doc/Makefile" ;;
     "examples/Makefile") CONFIG_FILES="$CONFIG_FILES examples/Makefile" ;;
+    "test/Makefile") CONFIG_FILES="$CONFIG_FILES test/Makefile" ;;
     "src/Makefile") CONFIG_FILES="$CONFIG_FILES src/Makefile" ;;
     "src/core/Makefile") CONFIG_FILES="$CONFIG_FILES src/core/Makefile" ;;
     "src/graphics/Makefile") CONFIG_FILES="$CONFIG_FILES src/graphics/Makefile" ;;

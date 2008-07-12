@@ -39,9 +39,9 @@ render1 = function(callback, simulation, filename)
 
 	for x = 0, nx - 1 do
 		for y = 0, ny - 1 do
-			local rho, ux, uy = simulation:get_averages(x, y, 1)
-			local R, G, B = callback(rho, ux, uy)
-			rgb:set_pixel(x, ny - y - 1, R, G, B)
+			local rho, phi, ux, uy = simulation:get_averages(x, y)
+			local c = callback(phi, ux, uy)
+			rgb:set_pixel(x, ny - y - 1, c)
 		end
 	end
 

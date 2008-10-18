@@ -1,0 +1,60 @@
+Introduction
+
+LuaLB is an open-source parallelizable lattice Boltzmann simulation for computational fluid dynamics with Lua scripting. It is designed to work on both a PC and Parallel Computers (with MPI). It was written in C and binded with Lua for easy of usage. It includes a simple 2D graphics with PNG. For a large simulation like 3D system, you can store file in HDF5 format.
+System requirements
+
+    * Linux with or Windows (Cygwin)
+    * GCC compatible compiler
+    * HDF5 1.6.x
+    * Lua 5.0.x
+    * libpng (optional for graphics)
+    * SWIG >= 1.3.31 ( optional for generating wrapper files)
+    * MPICH (optional for parallel version) 
+
+Building for a PC
+
+If you are installing the software packages in the standard directory (i.e. /usr/local), typically, the compiling source code process are following:
+
+$ cd /path/to/lualb
+$ ./configure 
+$ make
+$ make install 
+
+If you are installing the software packages in non-standard directory (i.e. your home directory), you need to specify software location as following:
+
+$ cd /path/to/lualb
+$ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/path/to/local/lib
+$ ./configure --prefix=/path/to/your_dir --with-hdf5=/path/to/hdf5 --with-lua5=/path/to/lua5
+$ make
+$ make install 
+
+Building for parallel computers
+
+To build for parallel version, you need to install MPICH and HDF5 with the MPI supported (--enable-parallel option to the HDF5 configure script). The building precess for parallel version is similar to on a PC following except you need to specify --enable-mpi options. The building instructions are following:
+
+$ cd /path/to/lualb
+$ CC=/path/to/bin/mpicc ./configure --enable-mpi --prefix=/path/to/your_dir --with-hdf5=/path/to/hdf5 --with-lua5=/path/to/lua5
+$ make
+$ make install
+
+Running example scripts
+
+Ther are simple scripts in lualb/examples/ for testing. To run the scripts, please follow this instruction:
+
+$ cd /path/to/lualb/examples
+$ ../path/to/lualb script_files.lua (on a PC)
+$ /path/to/mpich/bin/mpirun -np 4 ../src/lua/lualb script_files.lua (for parallel version) 
+
+Generating wrapper files
+
+You may want to generate the lua wrapper code with SWIG. Please follow this instruction:
+
+$ cd gridlb-x.x.xx/src/lua
+# for a PC version
+$ swig -lua -DLB_ENABLE_RGB lb-lua.i
+# for parallel version
+$ swig -lua -DLB_ENABLE_RGB -DLB_ENABLE_MPI -o lb-lua_wrap-mpi.c lb-lua.i
+
+Where -Dxxx are optionals:
+      -DLB_ENABLE_RGB = to enable 2D RGB graphics, need libpng.
+      -DLB_ENABLE_MPI = to enable parallel version with MPI, need MPICH. 

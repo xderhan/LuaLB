@@ -74,7 +74,7 @@ make_filename = function(t)
 	local digits = 1
 
 	for n = 1, 8 do
-		pp = __pow(10, n)
+		pp = math.pow(10, n)
 		if math.floor(t / pp) == 0 then
 			break
 		else
@@ -162,9 +162,9 @@ pinfo = lb.LBPartitionInfo()
 simulation:partition_info(pinfo)
 --math.randomseed(pinfo:processor_rank() + 1)
 
-pinfo.size[0] = 1
+--pinfo.size[0] = 1
 
-print(pinfo.size[0])
+--print(pinfo.size[0])
 
 simulation:set_parameters(PARAMETERS)
 

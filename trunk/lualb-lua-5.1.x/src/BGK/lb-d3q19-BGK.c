@@ -2,6 +2,7 @@
 #include "config.h"
 #endif /* HAVE_CONFIG_H */
 
+#include <string.h>
 #include <math.h>
 #include <hdf5.h>
 
@@ -764,11 +765,11 @@ LBD3Q19BGK_dump(const LBD3Q19BGK* self, const char* filename)
 	 */
 
 	{
-		hssize_t start[3] = {1, 1, 1};
+		hsize_t start[3] = {1, 1, 1};
 		hsize_t  count[3] = {NX, NY, NZ};
 		hsize_t  stride[3] = {1, 1, 1};
 
-		hssize_t start2[3] = {1, 1, 3};
+		hsize_t start2[3] = {1, 1, 3};
 		hsize_t  count2[3] = {NX, NY, NZ};
 		hsize_t  stride2[3] = {1, 1, 3};
 
@@ -784,7 +785,7 @@ LBD3Q19BGK_dump(const LBD3Q19BGK* self, const char* filename)
 
 #ifdef LB_ENABLE_MPI
 	{
-		hssize_t start[3] = {self->d3q19.partition_info.global_origin[0],
+		hsize_t start[3] = {self->d3q19.partition_info.global_origin[0],
 				     self->d3q19.partition_info.global_origin[1],
 				     self->d3q19.partition_info.global_origin[2]};
 		hsize_t  count[3] = {NX, NY, NZ};

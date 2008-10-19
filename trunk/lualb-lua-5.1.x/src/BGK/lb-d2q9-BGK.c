@@ -2,6 +2,7 @@
 #include "config.h"
 #endif /* HAVE_CONFIG_H */
 
+#include <string.h>
 #include <math.h>
 #include <hdf5.h>
 
@@ -648,18 +649,18 @@ LBD2Q9BGK_dump(const LBD2Q9BGK* self, const char* filename)
 	 */
 
 	{
-		hssize_t start[2] = {1, RANK};
+		hsize_t start[2] = {1, RANK};
 		hsize_t  count[2] = {NX, NY};
 		hsize_t  stride[2] = {1, RANK};
 		
-		hssize_t start2[2] = {1, 2*RANK};
+		hsize_t start2[2] = {1, 2*RANK};
 		hsize_t  count2[2] = {NX, NY};
 		hsize_t  stride2[2] = {1, 2*RANK};
 
-		H5Sselect_hyperslab(mem_space_id, H5S_SELECT_SET,
-				    start, stride, count, NULL);
-		H5Sselect_hyperslab(vel_space_id, H5S_SELECT_SET,
-				    start2, stride2, count2, NULL);
+		H5Sselect_hyperslab(mem_space_id, H5S_SELECT_SET, 
+					start, stride, count, NULL);
+		H5Sselect_hyperslab(vel_space_id, H5S_SELECT_SET, 
+					start2, stride2, count2, NULL);
 	}
 
 	/*
@@ -668,9 +669,9 @@ LBD2Q9BGK_dump(const LBD2Q9BGK* self, const char* filename)
 
 #ifdef LB_ENABLE_MPI
 	{
-		hssize_t start[2] = {self->d2q9.partition_info.global_origin[0],
+		hsize_t start[2] = {self->d2q9.partition_info.global_origin[0],
 				    self->d2q9.partition_info.global_origin[1]};
-		hsize_t  count[2] = {NX, NY};
+		hsize_t count[2] = {NX, NY};
 
 		H5Sselect_hyperslab(file_space_id, H5S_SELECT_SET,
 				    start, NULL, count, NULL);
@@ -679,14 +680,11 @@ LBD2Q9BGK_dump(const LBD2Q9BGK* self, const char* filename)
 
 for (c = 0; c < RANK; ++c){
 	sprintf(d_name, "rho%d", c);
-	rho_set_id[c] = H5Dcreate(file_id, d_name, H5T_NATIVE_DOUBLE,
-	                       file_space_id, H5P_DEFAULT);
+	rho_set_id[c] = H5Dcreate(file_id, d_name, H5T_NATIVE_DOUBLE, file_space_id, H5P_DEFAULT);
 	sprintf(d_name, "ux%d", c);
-	ux_set_id[c] = H5Dcreate(file_id, d_name, H5T_NATIVE_DOUBLE,
-				file_space_id, H5P_DEFAULT);
+	ux_set_id[c] = H5Dcreate(file_id, d_name, H5T_NATIVE_DOUBLE, file_space_id, H5P_DEFAULT);
 	sprintf(d_name, "uy%d", c);
-	uy_set_id[c] = H5Dcreate(file_id, d_name, H5T_NATIVE_DOUBLE,
-				file_space_id, H5P_DEFAULT);
+	uy_set_id[c] = H5Dcreate(file_id, d_name, H5T_NATIVE_DOUBLE, file_space_id, H5P_DEFAULT);
 }
 
 #ifdef LB_ENABLE_MPI

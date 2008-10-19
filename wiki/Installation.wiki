@@ -1,7 +1,7 @@
 #labels Featured
 = Introduction =
 
-*LuaLB* is an open-source parallelizable [http://en.wikipedia.org/wiki/Lattice_Boltzmann_methods lattice Boltzmann simulation] for computational fluid dynamics with [http://lua.org Lua scripting]. It is designed to work on both a PC and Parallel Computers (with MPI). It was written in C and binded with Lua for easy of usage. It includes a simple 2D graphics with PNG. For a large simulation like 3D system, you can store file in HDF5 format. 
+*LuaLB* is an open-source parallelizable [http://en.wikipedia.org/wiki/Lattice_Boltzmann_methods lattice Boltzmann simulation] for computational fluid dynamics with [http://lua.org Lua scripting]. It is designed to work on both a PC and Parallel Computers (with MPI). It is written in C and binded with Lua for easy of usage. It includes a simple 2D graphics with PNG. For a large simulation like 3D system, it stores files in HDF5 format. 
 
 
 = System requirements =

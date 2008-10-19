@@ -17,6 +17,7 @@
 #include "config.h"
 #endif /* HAVE_CONFIG_H */
 
+#include <string.h>
 #include <math.h>
 #include <hdf5.h>
 
@@ -736,7 +737,7 @@ LBD2Q9Mix_dump(const LBD2Q9Mix* self, const char* filename)
 	 */
 
 	{
-		hssize_t start[2] = {1, 2};
+		hsize_t start[2] = {1, 2};
 		hsize_t  count[2] = {NX, NY};
 		hsize_t  stride[2] = {1, 2};
 
@@ -750,7 +751,7 @@ LBD2Q9Mix_dump(const LBD2Q9Mix* self, const char* filename)
 
 #ifdef LB_ENABLE_MPI
 	{
-		hssize_t start[2] = {self->d2q9.partition_info.global_origin[0],
+		hsize_t start[2] = {self->d2q9.partition_info.global_origin[0],
 				     self->d2q9.partition_info.global_origin[1]};
 		hsize_t  count[2] = {NX, NY};
 

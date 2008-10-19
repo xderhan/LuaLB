@@ -17,6 +17,7 @@
 #include "config.h"
 #endif /* HAVE_CONFIG_H */
 
+#include <string.h>
 #include <math.h>
 #include <hdf5.h>
 
@@ -888,7 +889,7 @@ LBD3Q19Mix_dump(const LBD3Q19Mix* self, const char* filename)
 	 */
 
 	{
-		hssize_t start[3] = {1, 1, 2};
+		hsize_t start[3] = {1, 1, 2};
 		hsize_t  count[3] = {NX, NY, NZ};
 		hsize_t  stride[3] = {1, 1, 2};
 
@@ -902,7 +903,7 @@ LBD3Q19Mix_dump(const LBD3Q19Mix* self, const char* filename)
 
 #ifdef LB_ENABLE_MPI
 	{
-		hssize_t start[3] = {self->d3q19.partition_info.global_origin[0],
+		hsize_t start[3] = {self->d3q19.partition_info.global_origin[0],
 				     self->d3q19.partition_info.global_origin[1],
 				     self->d3q19.partition_info.global_origin[2]};
 		hsize_t  count[3] = {NX, NY, NZ};

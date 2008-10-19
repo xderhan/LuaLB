@@ -1,4 +1,4 @@
-require("utils.lua")
+dofile("utils.lua")
 
 --
 --  parameters

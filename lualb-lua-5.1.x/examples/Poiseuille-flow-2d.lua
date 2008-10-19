@@ -3,9 +3,9 @@ NY = 64
 
 PARAMETERS = lb.LBGKParameters()
 
-tau = 0.8
+PARAMETERS.tau = 0.8
 
-PARAMETERS:set(tau)
+--PARAMETERS:set(tau)
 
 PY = 0
 

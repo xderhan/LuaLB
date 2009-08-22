@@ -52,8 +52,7 @@ Ther are simple scripts in lualb/examples/ for testing. To run the scripts, plea
 
 {{{
 $ cd /path/to/lualb/examples
-$ ../path/to/lualb script_files.lua (on a PC)
-*OR*
+$ ../path/to/lualb script_files.lua (on a PC) #*OR*
 $ /path/to/mpich/bin/mpirun -np 4 ../src/lua/lualb script_files.lua (for parallel version) 
 }}}
 

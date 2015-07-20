@@ -4,7 +4,7 @@
 **Automatically exported from [code.google.com/p/lualb](https://code.google.com/p/lualb/)** 
 
 
-**LuaLB** is an open-source parallelizable lattice Boltzmann simulation for computational fluid dynamics with Lua scripting.
+**LuaLB** is an open-source parallelizable [lattice Boltzmann simulation](http://en.wikipedia.org/wiki/Lattice_Boltzmann_methods) for computational fluid dynamics with [Lua scripting](http://lua.org)
 
 
 **News**
@@ -21,7 +21,7 @@
 * [MPICH](http://www-unix.mcs.anl.gov/mpi/mpich1/) (optional for parallel version)
 
 
-To build the software, please see [the installation page](http://code.google.com/p/lualb/wiki/Installation).
+To build the software, please see [the installation page](https://github.com/xderhan/lualb/wiki/Installation).
 
 
 **Credit**

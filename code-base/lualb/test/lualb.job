@@ -1,0 +1,7 @@
+#!/bin/bash
+#$ -cwd
+#$ -S /bin/bash
+export MPICH_HOME=/share/apps/mpich/gnu/bin/mpirun
+export MPICH_APP=../src/lua/lualb
+export LB_SCRIPT=./Landau-binary-fluids-2d.lua
+$MPICH_HOME -np $NSLOTS -machinefile $TMPDIR/machines $MPICH_APP $LB_SCRIPT

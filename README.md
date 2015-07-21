@@ -1,4 +1,4 @@
-# lualb
+# LuaLB
 ## A lattice Boltzmann simulation with Lua scripting
 
 **Automatically exported from [code.google.com/p/lualb](https://code.google.com/p/lualb/)** 
@@ -21,7 +21,7 @@
 * [MPICH](http://www-unix.mcs.anl.gov/mpi/mpich1/) (optional for parallel version)
 
 
-To build the software, please see [the installation page](https://github.com/xderhan/lualb/wiki/Installation).
+To build the software, please see [the installation page](https://github.com/xderhan/LuaLB/wiki/Installation).
 
 
 **Credit**

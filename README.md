@@ -6,6 +6,7 @@
 
 
 **Source code based on [code.google.com/p/lualb](https://code.google.com/p/lualb/)** 
+
 *See the code-base folder for the original source-code*
 
 
@@ -17,6 +18,3 @@
 * [libpng](http://www.libpng.org/pub/png/libpng.html) (optional for graphics)
 * [SWIG >= 1.3.31](http://www.swig.org/) ( optional for generating wrapper files)
 * [MPICH](http://www-unix.mcs.anl.gov/mpi/mpich1/) (optional for parallel version)
-
-
-To build the software, please see [the installation page](https://github.com/xderhan/LuaLB/wiki/Installation).

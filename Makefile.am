@@ -1,2 +1,2 @@
-SUBDIRS = . src examples test doc
-EXTRA_DIST = README.md TODO
+SUBDIRS = src examples test doc
+EXTRA_DIST = README TODO

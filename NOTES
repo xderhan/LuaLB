@@ -1,0 +1,8 @@
+My own command to do the configuration
+
+CC='/cygdrive/c/hdf5/bin/h5cc' \
+./configure \
+--with-hdf5='/cygdrive/c/hdf5' \
+--with-lua5='/usr/local' \
+--prefix='/cygdrive/c/lualb' \
+--enable-rgb=no

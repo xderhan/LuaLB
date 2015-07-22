@@ -156,9 +156,11 @@ saved_LIBS=$LIBS
 LIBS="$LIBS $LUA5_LIBS"
 AC_MSG_CHECKING([for Lua 5 libraries])
 AC_TRY_RUN([#include <lua.h>
-            #include <lauxlib.h>
+        #include <lauxlib.h>
+        #include <lualib.h>
  	    int main (int argc, char** argv) {
-	        lua_State* l = lua_open();
+	        lua_State* l = luaL_newstate();
+            lua_close(l);
 		return 0;
 	    }],
 	    AC_MSG_RESULT(ok),

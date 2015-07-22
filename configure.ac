@@ -1,6 +1,6 @@
 AC_PREREQ(2.53)
 
-AC_INIT([lualb], [0.1-alpha1], [ngamsaad.waipot@gmail.com])
+AC_INIT([lualb], [0.1.1], [admin@x-coder.mobi])
 
 AC_CONFIG_SRCDIR([src/lua/lb-lua.c])
 AM_CONFIG_HEADER(config.h)

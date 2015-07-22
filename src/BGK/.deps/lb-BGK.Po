@@ -1,1 +1,12 @@
-# dummy
+lb-BGK.o: lb-BGK.c ../../config.h lb-BGK.h ../core/lb-macros.h \
+ /usr/lib/gcc/i686-pc-cygwin/4.9.3/include/stddef.h ../core/lb-messages.h
+
+../../config.h:
+
+lb-BGK.h:
+
+../core/lb-macros.h:
+
+/usr/lib/gcc/i686-pc-cygwin/4.9.3/include/stddef.h:
+
+../core/lb-messages.h:

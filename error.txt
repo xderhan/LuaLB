@@ -1,0 +1,94 @@
+make  all-recursive
+make[1]: Entering directory '/home/Sederhana Gulo/projects/LuaLB'
+Making all in .
+make[2]: Entering directory '/home/Sederhana Gulo/projects/LuaLB'
+make[2]: Leaving directory '/home/Sederhana Gulo/projects/LuaLB'
+Making all in src
+make[2]: Entering directory '/home/Sederhana Gulo/projects/LuaLB/src'
+Making all in .
+make[3]: Entering directory '/home/Sederhana Gulo/projects/LuaLB/src'
+make[3]: Nothing to be done for 'all-am'.
+make[3]: Leaving directory '/home/Sederhana Gulo/projects/LuaLB/src'
+Making all in core
+make[3]: Entering directory '/home/Sederhana Gulo/projects/LuaLB/src/core'
+Making all in .
+make[4]: Entering directory '/home/Sederhana Gulo/projects/LuaLB/src/core'
+make[4]: Nothing to be done for 'all-am'.
+make[4]: Leaving directory '/home/Sederhana Gulo/projects/LuaLB/src/core'
+make[3]: Leaving directory '/home/Sederhana Gulo/projects/LuaLB/src/core'
+Making all in graphics
+make[3]: Entering directory '/home/Sederhana Gulo/projects/LuaLB/src/graphics'
+Making all in .
+make[4]: Entering directory '/home/Sederhana Gulo/projects/LuaLB/src/graphics'
+make[4]: Nothing to be done for 'all-am'.
+make[4]: Leaving directory '/home/Sederhana Gulo/projects/LuaLB/src/graphics'
+make[3]: Leaving directory '/home/Sederhana Gulo/projects/LuaLB/src/graphics'
+Making all in BGK
+make[3]: Entering directory '/home/Sederhana Gulo/projects/LuaLB/src/BGK'
+Making all in .
+make[4]: Entering directory '/home/Sederhana Gulo/projects/LuaLB/src/BGK'
+/cygdrive/c/hdf5/bin/h5cc -DHAVE_CONFIG_H -I. -I../.. -I../core -I../.. -I/cygdrive/c/hdf5/include    -g -O2 -Wall -Werror-implicit-function-declaration -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -MT lb-d2q9-BGK.o -MD -MP -MF .deps/lb-d2q9-BGK.Tpo -c -o lb-d2q9-BGK.o lb-d2q9-BGK.c
+In file included from /cygdrive/c/hdf5/include/H5public.h:34:0,
+                 from /cygdrive/c/hdf5/include/hdf5.h:24,
+                 from lb-d2q9-BGK.c:7:
+lb-d2q9-BGK.c: In function ‘LBD2Q9BGK_dump’:
+/cygdrive/c/hdf5/include/H5version.h:182:19: error: too few arguments to function ‘H5Dcreate2’
+ #define H5Dcreate H5Dcreate2
+                   ^
+lb-d2q9-BGK.c:683:18: note: in expansion of macro ‘H5Dcreate’
+  rho_set_id[c] = H5Dcreate(file_id, d_name, H5T_NATIVE_DOUBLE, file_space_id, H5P_DEFAULT);
+                  ^
+In file included from /cygdrive/c/hdf5/include/hdf5.h:27:0,
+                 from lb-d2q9-BGK.c:7:
+/cygdrive/c/hdf5/include/H5Dpublic.h:119:14: note: declared here
+ H5_DLL hid_t H5Dcreate2(hid_t loc_id, const char *name, hid_t type_id,
+              ^
+In file included from /cygdrive/c/hdf5/include/H5public.h:34:0,
+                 from /cygdrive/c/hdf5/include/hdf5.h:24,
+                 from lb-d2q9-BGK.c:7:
+/cygdrive/c/hdf5/include/H5version.h:182:19: error: too few arguments to function ‘H5Dcreate2’
+ #define H5Dcreate H5Dcreate2
+                   ^
+lb-d2q9-BGK.c:685:17: note: in expansion of macro ‘H5Dcreate’
+  ux_set_id[c] = H5Dcreate(file_id, d_name, H5T_NATIVE_DOUBLE, file_space_id, H5P_DEFAULT);
+                 ^
+In file included from /cygdrive/c/hdf5/include/hdf5.h:27:0,
+                 from lb-d2q9-BGK.c:7:
+/cygdrive/c/hdf5/include/H5Dpublic.h:119:14: note: declared here
+ H5_DLL hid_t H5Dcreate2(hid_t loc_id, const char *name, hid_t type_id,
+              ^
+In file included from /cygdrive/c/hdf5/include/H5public.h:34:0,
+                 from /cygdrive/c/hdf5/include/hdf5.h:24,
+                 from lb-d2q9-BGK.c:7:
+/cygdrive/c/hdf5/include/H5version.h:182:19: error: too few arguments to function ‘H5Dcreate2’
+ #define H5Dcreate H5Dcreate2
+                   ^
+lb-d2q9-BGK.c:687:17: note: in expansion of macro ‘H5Dcreate’
+  uy_set_id[c] = H5Dcreate(file_id, d_name, H5T_NATIVE_DOUBLE, file_space_id, H5P_DEFAULT);
+                 ^
+In file included from /cygdrive/c/hdf5/include/hdf5.h:27:0,
+                 from lb-d2q9-BGK.c:7:
+/cygdrive/c/hdf5/include/H5Dpublic.h:119:14: note: declared here
+ H5_DLL hid_t H5Dcreate2(hid_t loc_id, const char *name, hid_t type_id,
+              ^
+lb-d2q9-BGK.c: At top level:
+lb-d2q9-BGK.c:721:1: warning: no previous prototype for ‘lb_d2q9_stats’ [-Wmissing-prototypes]
+ lb_d2q9_stats(const LBD2Q9BGK* self, LBD2Q9BGKStats* stats)
+ ^
+lb-d2q9-BGK.c:157:1: warning: ‘lb_d2q9_BGK_setup_rho_guards’ defined but not used [-Wunused-function]
+ lb_d2q9_BGK_setup_rho_guards(LBD2Q9BGK* self)
+ ^
+Makefile:236: recipe for target 'lb-d2q9-BGK.o' failed
+make[4]: *** [lb-d2q9-BGK.o] Error 1
+make[4]: Leaving directory '/home/Sederhana Gulo/projects/LuaLB/src/BGK'
+Makefile:256: recipe for target 'all-recursive' failed
+make[3]: *** [all-recursive] Error 1
+make[3]: Leaving directory '/home/Sederhana Gulo/projects/LuaLB/src/BGK'
+Makefile:189: recipe for target 'all-recursive' failed
+make[2]: *** [all-recursive] Error 1
+make[2]: Leaving directory '/home/Sederhana Gulo/projects/LuaLB/src'
+Makefile:226: recipe for target 'all-recursive' failed
+make[1]: *** [all-recursive] Error 1
+make[1]: Leaving directory '/home/Sederhana Gulo/projects/LuaLB'
+Makefile:165: recipe for target 'all' failed
+make: *** [all] Error 2

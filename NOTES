@@ -6,3 +6,7 @@ CC='/cygdrive/c/hdf5/bin/h5cc' \
 --with-lua5='/usr/local' \
 --prefix='/cygdrive/c/lualb' \
 --enable-rgb=no
+
+Command for make, that cause to log the make status
+
+make |& tee error.txt

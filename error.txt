@@ -27,63 +27,238 @@ Making all in BGK
 make[3]: Entering directory '/home/Sederhana Gulo/projects/LuaLB/src/BGK'
 Making all in .
 make[4]: Entering directory '/home/Sederhana Gulo/projects/LuaLB/src/BGK'
-/cygdrive/c/hdf5/bin/h5cc -DHAVE_CONFIG_H -I. -I../.. -I../core -I../.. -I/cygdrive/c/hdf5/include    -g -O2 -Wall -Werror-implicit-function-declaration -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -MT lb-d2q9-BGK.o -MD -MP -MF .deps/lb-d2q9-BGK.Tpo -c -o lb-d2q9-BGK.o lb-d2q9-BGK.c
-In file included from /cygdrive/c/hdf5/include/H5public.h:34:0,
-                 from /cygdrive/c/hdf5/include/hdf5.h:24,
-                 from lb-d2q9-BGK.c:7:
-lb-d2q9-BGK.c: In function ‘LBD2Q9BGK_dump’:
-/cygdrive/c/hdf5/include/H5version.h:182:19: error: too few arguments to function ‘H5Dcreate2’
- #define H5Dcreate H5Dcreate2
-                   ^
-lb-d2q9-BGK.c:683:18: note: in expansion of macro ‘H5Dcreate’
-  rho_set_id[c] = H5Dcreate(file_id, d_name, H5T_NATIVE_DOUBLE, file_space_id, H5P_DEFAULT);
-                  ^
-In file included from /cygdrive/c/hdf5/include/hdf5.h:27:0,
-                 from lb-d2q9-BGK.c:7:
-/cygdrive/c/hdf5/include/H5Dpublic.h:119:14: note: declared here
- H5_DLL hid_t H5Dcreate2(hid_t loc_id, const char *name, hid_t type_id,
-              ^
-In file included from /cygdrive/c/hdf5/include/H5public.h:34:0,
-                 from /cygdrive/c/hdf5/include/hdf5.h:24,
-                 from lb-d2q9-BGK.c:7:
-/cygdrive/c/hdf5/include/H5version.h:182:19: error: too few arguments to function ‘H5Dcreate2’
- #define H5Dcreate H5Dcreate2
-                   ^
-lb-d2q9-BGK.c:685:17: note: in expansion of macro ‘H5Dcreate’
-  ux_set_id[c] = H5Dcreate(file_id, d_name, H5T_NATIVE_DOUBLE, file_space_id, H5P_DEFAULT);
-                 ^
-In file included from /cygdrive/c/hdf5/include/hdf5.h:27:0,
-                 from lb-d2q9-BGK.c:7:
-/cygdrive/c/hdf5/include/H5Dpublic.h:119:14: note: declared here
- H5_DLL hid_t H5Dcreate2(hid_t loc_id, const char *name, hid_t type_id,
-              ^
-In file included from /cygdrive/c/hdf5/include/H5public.h:34:0,
-                 from /cygdrive/c/hdf5/include/hdf5.h:24,
-                 from lb-d2q9-BGK.c:7:
-/cygdrive/c/hdf5/include/H5version.h:182:19: error: too few arguments to function ‘H5Dcreate2’
- #define H5Dcreate H5Dcreate2
-                   ^
-lb-d2q9-BGK.c:687:17: note: in expansion of macro ‘H5Dcreate’
-  uy_set_id[c] = H5Dcreate(file_id, d_name, H5T_NATIVE_DOUBLE, file_space_id, H5P_DEFAULT);
-                 ^
-In file included from /cygdrive/c/hdf5/include/hdf5.h:27:0,
-                 from lb-d2q9-BGK.c:7:
-/cygdrive/c/hdf5/include/H5Dpublic.h:119:14: note: declared here
- H5_DLL hid_t H5Dcreate2(hid_t loc_id, const char *name, hid_t type_id,
-              ^
-lb-d2q9-BGK.c: At top level:
-lb-d2q9-BGK.c:721:1: warning: no previous prototype for ‘lb_d2q9_stats’ [-Wmissing-prototypes]
- lb_d2q9_stats(const LBD2Q9BGK* self, LBD2Q9BGKStats* stats)
- ^
-lb-d2q9-BGK.c:157:1: warning: ‘lb_d2q9_BGK_setup_rho_guards’ defined but not used [-Wunused-function]
- lb_d2q9_BGK_setup_rho_guards(LBD2Q9BGK* self)
- ^
-Makefile:236: recipe for target 'lb-d2q9-BGK.o' failed
-make[4]: *** [lb-d2q9-BGK.o] Error 1
+make[4]: Nothing to be done for 'all-am'.
 make[4]: Leaving directory '/home/Sederhana Gulo/projects/LuaLB/src/BGK'
-Makefile:256: recipe for target 'all-recursive' failed
-make[3]: *** [all-recursive] Error 1
 make[3]: Leaving directory '/home/Sederhana Gulo/projects/LuaLB/src/BGK'
+Making all in Mix
+make[3]: Entering directory '/home/Sederhana Gulo/projects/LuaLB/src/Mix'
+Making all in .
+make[4]: Entering directory '/home/Sederhana Gulo/projects/LuaLB/src/Mix'
+make[4]: Nothing to be done for 'all-am'.
+make[4]: Leaving directory '/home/Sederhana Gulo/projects/LuaLB/src/Mix'
+make[3]: Leaving directory '/home/Sederhana Gulo/projects/LuaLB/src/Mix'
+Making all in Landau
+make[3]: Entering directory '/home/Sederhana Gulo/projects/LuaLB/src/Landau'
+Making all in .
+make[4]: Entering directory '/home/Sederhana Gulo/projects/LuaLB/src/Landau'
+/cygdrive/c/hdf5/bin/h5cc -DHAVE_CONFIG_H -I. -I../.. -I../core -I../.. -I/cygdrive/c/hdf5/include    -g -O2 -Wall -Werror-implicit-function-declaration -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -MT lb-d2q9-Landau.o -MD -MP -MF .deps/lb-d2q9-Landau.Tpo -c -o lb-d2q9-Landau.o lb-d2q9-Landau.c
+lb-d2q9-Landau.c: In function ‘lb_d2q9_Landau_collide_pdfs’:
+lb-d2q9-Landau.c:276:12: warning: unused variable ‘r’ [-Wunused-variable]
+  int x, y, r;
+            ^
+lb-d2q9-Landau.c: At top level:
+lb-d2q9-Landau.c:465:1: warning: no previous prototype for ‘_lb_d2q9_Landau_partition_info’ [-Wmissing-prototypes]
+ _lb_d2q9_Landau_partition_info(const lb_d2q9_Landau* self,
+ ^
+lb-d2q9-Landau.c:504:1: warning: no previous prototype for ‘_lb_d2q9_Landau_get_parameters’ [-Wmissing-prototypes]
+ _lb_d2q9_Landau_get_parameters(const lb_d2q9_Landau* self,
+ ^
+lb-d2q9-Landau.c: In function ‘lb_d2q9_Landau_advance’:
+lb-d2q9-Landau.c:632:5: warning: passing argument 2 of ‘lb_d2q9_average_pdfs’ from incompatible pointer type
+     self->pdfs, self->rho, self->u);
+     ^
+In file included from lb-d2q9-Landau.c:25:0:
+../core/lb-d2q9-utils.h:36:6: note: expected ‘const double **’ but argument is of type ‘double **’
+ void lb_d2q9_average_pdfs(LBD2Q9 *, const double **, double *, double *);
+      ^
+lb-d2q9-Landau.c: At top level:
+lb-d2q9-Landau.c:752:1: warning: no previous prototype for ‘_lb_d2q9_Landau_stats’ [-Wmissing-prototypes]
+ _lb_d2q9_Landau_stats(const lb_d2q9_Landau* self, LBD2Q9LandauStats* stats)
+ ^
+lb-d2q9-Landau.c:94:1: warning: ‘lb_d2q9_Landau_average_pdfs’ defined but not used [-Wunused-function]
+ lb_d2q9_Landau_average_pdfs(lb_d2q9_Landau* self)
+ ^
+lb-d2q9-Landau.c:184:1: warning: ‘lb_d2q9_Landau_setup_rho_guards’ defined but not used [-Wunused-function]
+ lb_d2q9_Landau_setup_rho_guards(lb_d2q9_Landau* self)
+ ^
+mv -f .deps/lb-d2q9-Landau.Tpo .deps/lb-d2q9-Landau.Po
+/cygdrive/c/hdf5/bin/h5cc -DHAVE_CONFIG_H -I. -I../.. -I../core -I../.. -I/cygdrive/c/hdf5/include    -g -O2 -Wall -Werror-implicit-function-declaration -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -MT lb-d3q19-Landau.o -MD -MP -MF .deps/lb-d3q19-Landau.Tpo -c -o lb-d3q19-Landau.o lb-d3q19-Landau.c
+lb-d3q19-Landau.c:639:1: warning: no previous prototype for ‘_lb_d3q19_Landau_partition_info’ [-Wmissing-prototypes]
+ _lb_d3q19_Landau_partition_info(const lb_d3q19_Landau* self,
+ ^
+lb-d3q19-Landau.c:678:1: warning: no previous prototype for ‘_lb_d3q19_Landau_get_parameters’ [-Wmissing-prototypes]
+ _lb_d3q19_Landau_get_parameters(const lb_d3q19_Landau* self,
+ ^
+lb-d3q19-Landau.c: In function ‘lb_d3q19_Landau_advance’:
+lb-d3q19-Landau.c:815:5: warning: passing argument 2 of ‘lb_d3q19_average_pdfs’ from incompatible pointer type
+     self->pdfs,
+     ^
+In file included from lb-d3q19-Landau.c:25:0:
+../core/lb-d3q19-utils.h:38:1: note: expected ‘const double **’ but argument is of type ‘double **’
+ lb_d3q19_average_pdfs(LBD3Q19*, const double **, double *, double *);
+ ^
+lb-d3q19-Landau.c: At top level:
+lb-d3q19-Landau.c:939:1: warning: no previous prototype for ‘_lb_d3q19_Landau_stats’ [-Wmissing-prototypes]
+ _lb_d3q19_Landau_stats(const lb_d3q19_Landau* self, LBD3Q19LandauStats* stats)
+ ^
+lb-d3q19-Landau.c:134:1: warning: ‘lb_d3q19_Landau_average_pdfs’ defined but not used [-Wunused-function]
+ lb_d3q19_Landau_average_pdfs(lb_d3q19_Landau* self)
+ ^
+lb-d3q19-Landau.c:561:1: warning: ‘lb_d3q19_Landau_setup_rho_guards’ defined but not used [-Wunused-function]
+ lb_d3q19_Landau_setup_rho_guards(lb_d3q19_Landau* self)
+ ^
+mv -f .deps/lb-d3q19-Landau.Tpo .deps/lb-d3q19-Landau.Po
+rm -f liblbLandau.a
+ar cru liblbLandau.a lb-Landau.o lb-d2q9-Landau.o lb-d3q19-Landau.o 
+ranlib liblbLandau.a
+make[4]: Leaving directory '/home/Sederhana Gulo/projects/LuaLB/src/Landau'
+make[3]: Leaving directory '/home/Sederhana Gulo/projects/LuaLB/src/Landau'
+Making all in lua
+make[3]: Entering directory '/home/Sederhana Gulo/projects/LuaLB/src/lua'
+Making all in .
+make[4]: Entering directory '/home/Sederhana Gulo/projects/LuaLB/src/lua'
+/cygdrive/c/hdf5/bin/h5cc -DHAVE_CONFIG_H -I. -I../.. -I../core -I../graphics -I../BGK -I../Mix -I../BGK -I../Landau -I../.. -I/cygdrive/c/hdf5/include -I/usr/local/include    -g -O2 -Wall -Werror-implicit-function-declaration -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -MT lb-lua.o -MD -MP -MF .deps/lb-lua.Tpo -c -o lb-lua.o lb-lua.c
+lb-lua.c:51:31: error: ‘LUA_PROGNAME’ undeclared here (not in a function)
+ static const char *progname = LUA_PROGNAME;
+                               ^
+lb-lua.c:55:14: error: unknown type name ‘luaL_reg’
+ static const luaL_reg lualibs[] = {
+              ^
+lb-lua.c:56:3: warning: braces around scalar initializer
+   {"base", luaopen_base},
+   ^
+lb-lua.c:56:3: warning: (near initialization for ‘lualibs[0]’)
+lb-lua.c:56:3: warning: initialization makes integer from pointer without a cast
+lb-lua.c:56:3: warning: (near initialization for ‘lualibs[0]’)
+lb-lua.c:56:3: warning: excess elements in scalar initializer
+lb-lua.c:56:3: warning: (near initialization for ‘lualibs[0]’)
+lb-lua.c:57:3: warning: braces around scalar initializer
+   {"table", luaopen_table},
+   ^
+lb-lua.c:57:3: warning: (near initialization for ‘lualibs[1]’)
+lb-lua.c:57:3: warning: initialization makes integer from pointer without a cast
+lb-lua.c:57:3: warning: (near initialization for ‘lualibs[1]’)
+lb-lua.c:57:3: warning: excess elements in scalar initializer
+lb-lua.c:57:3: warning: (near initialization for ‘lualibs[1]’)
+lb-lua.c:58:3: warning: braces around scalar initializer
+   {"io", luaopen_io},
+   ^
+lb-lua.c:58:3: warning: (near initialization for ‘lualibs[2]’)
+lb-lua.c:58:3: warning: initialization makes integer from pointer without a cast
+lb-lua.c:58:3: warning: (near initialization for ‘lualibs[2]’)
+lb-lua.c:58:3: warning: excess elements in scalar initializer
+lb-lua.c:58:3: warning: (near initialization for ‘lualibs[2]’)
+lb-lua.c:59:3: warning: braces around scalar initializer
+   {"os", luaopen_os},
+   ^
+lb-lua.c:59:3: warning: (near initialization for ‘lualibs[3]’)
+lb-lua.c:59:3: warning: initialization makes integer from pointer without a cast
+lb-lua.c:59:3: warning: (near initialization for ‘lualibs[3]’)
+lb-lua.c:59:3: warning: excess elements in scalar initializer
+lb-lua.c:59:3: warning: (near initialization for ‘lualibs[3]’)
+lb-lua.c:60:3: warning: braces around scalar initializer
+   {"string", luaopen_string},
+   ^
+lb-lua.c:60:3: warning: (near initialization for ‘lualibs[4]’)
+lb-lua.c:60:3: warning: initialization makes integer from pointer without a cast
+lb-lua.c:60:3: warning: (near initialization for ‘lualibs[4]’)
+lb-lua.c:60:3: warning: excess elements in scalar initializer
+lb-lua.c:60:3: warning: (near initialization for ‘lualibs[4]’)
+lb-lua.c:61:3: warning: braces around scalar initializer
+   {"math", luaopen_math},
+   ^
+lb-lua.c:61:3: warning: (near initialization for ‘lualibs[5]’)
+lb-lua.c:61:3: warning: initialization makes integer from pointer without a cast
+lb-lua.c:61:3: warning: (near initialization for ‘lualibs[5]’)
+lb-lua.c:61:3: warning: excess elements in scalar initializer
+lb-lua.c:61:3: warning: (near initialization for ‘lualibs[5]’)
+lb-lua.c:62:3: warning: braces around scalar initializer
+   {"debug", luaopen_debug},
+   ^
+lb-lua.c:62:3: warning: (near initialization for ‘lualibs[6]’)
+lb-lua.c:62:3: warning: initialization makes integer from pointer without a cast
+lb-lua.c:62:3: warning: (near initialization for ‘lualibs[6]’)
+lb-lua.c:62:3: warning: excess elements in scalar initializer
+lb-lua.c:62:3: warning: (near initialization for ‘lualibs[6]’)
+lb-lua.c:65:3: warning: braces around scalar initializer
+   {"lb", luaopen_lb},
+   ^
+lb-lua.c:65:3: warning: (near initialization for ‘lualibs[7]’)
+lb-lua.c:65:3: warning: initialization makes integer from pointer without a cast
+lb-lua.c:65:3: warning: (near initialization for ‘lualibs[7]’)
+lb-lua.c:65:3: warning: excess elements in scalar initializer
+lb-lua.c:65:3: warning: (near initialization for ‘lualibs[7]’)
+lb-lua.c:67:3: warning: braces around scalar initializer
+   {NULL, NULL}
+   ^
+lb-lua.c:67:3: warning: (near initialization for ‘lualibs[8]’)
+lb-lua.c:67:3: warning: initialization makes integer from pointer without a cast
+lb-lua.c:67:3: warning: (near initialization for ‘lualibs[8]’)
+lb-lua.c:67:3: warning: excess elements in scalar initializer
+lb-lua.c:67:3: warning: (near initialization for ‘lualibs[8]’)
+lb-lua.c: In function ‘traceback’:
+lb-lua.c:123:19: error: ‘LUA_GLOBALSINDEX’ undeclared (first use in this function)
+   lua_getfield(L, LUA_GLOBALSINDEX, "debug");
+                   ^
+lb-lua.c:123:19: note: each undeclared identifier is reported only once for each function it appears in
+lb-lua.c: In function ‘get_prompt’:
+lb-lua.c:199:19: error: ‘LUA_GLOBALSINDEX’ undeclared (first use in this function)
+   lua_getfield(L, LUA_GLOBALSINDEX, firstline ? "_PROMPT" : "_PROMPT2");
+                   ^
+lb-lua.c:201:35: error: ‘LUA_PROMPT’ undeclared (first use in this function)
+   if (p == NULL) p = (firstline ? LUA_PROMPT : LUA_PROMPT2);
+                                   ^
+lb-lua.c:201:48: error: ‘LUA_PROMPT2’ undeclared (first use in this function)
+   if (p == NULL) p = (firstline ? LUA_PROMPT : LUA_PROMPT2);
+                                                ^
+lb-lua.c: In function ‘pushline’:
+lb-lua.c:222:15: error: ‘LUA_MAXINPUT’ undeclared (first use in this function)
+   char buffer[LUA_MAXINPUT];
+               ^
+lb-lua.c:226:3: error: implicit declaration of function ‘lua_readline’ [-Werror=implicit-function-declaration]
+   if (lua_readline(L, b, prmt) == 0)
+   ^
+lb-lua.c:235:3: error: implicit declaration of function ‘lua_freeline’ [-Werror=implicit-function-declaration]
+   lua_freeline(L, b);
+   ^
+lb-lua.c:222:8: warning: unused variable ‘buffer’ [-Wunused-variable]
+   char buffer[LUA_MAXINPUT];
+        ^
+lb-lua.c: In function ‘loadline’:
+lb-lua.c:246:5: error: implicit declaration of function ‘lua_strlen’ [-Werror=implicit-function-declaration]
+     status = luaL_loadbuffer(L, lua_tostring(L, 1), lua_strlen(L, 1), "=stdin");
+     ^
+lb-lua.c:254:3: error: implicit declaration of function ‘lua_saveline’ [-Werror=implicit-function-declaration]
+   lua_saveline(L, 1);
+   ^
+lb-lua.c: In function ‘openstdlibs’:
+lb-lua.c:368:9: error: unknown type name ‘luaL_reg’
+   const luaL_reg *lib = lualibs;
+         ^
+lb-lua.c:369:13: error: request for member ‘func’ in something not a structure or union
+   for (; lib->func; lib++) {
+             ^
+lb-lua.c:370:8: error: request for member ‘func’ in something not a structure or union
+     lib->func(l);  /* open library */
+        ^
+lb-lua.c: In function ‘handle_luainit’:
+lb-lua.c:377:29: error: ‘LUA_INIT’ undeclared (first use in this function)
+   const char *init = getenv(LUA_INIT);
+                             ^
+lb-lua.c:382:34: error: expected ‘)’ before ‘LUA_INIT’
+     return dostring(L, init, "=" LUA_INIT);
+                                  ^
+lb-lua.c: In function ‘pmain’:
+lb-lua.c:420:5: error: implicit declaration of function ‘lua_stdin_is_tty’ [-Werror=implicit-function-declaration]
+     if (lua_stdin_is_tty()) {
+     ^
+lb-lua.c: In function ‘main’:
+lb-lua.c:448:3: error: implicit declaration of function ‘lua_open’ [-Werror=implicit-function-declaration]
+   lua_State *L = lua_open();  /* create state */
+   ^
+lb-lua.c:448:18: warning: initialization makes pointer from integer without a cast
+   lua_State *L = lua_open();  /* create state */
+                  ^
+lb-lua.c:455:3: error: implicit declaration of function ‘lua_cpcall’ [-Werror=implicit-function-declaration]
+   status = lua_cpcall(L, &pmain, &s);
+   ^
+cc1: some warnings being treated as errors
+Makefile:262: recipe for target 'lb-lua.o' failed
+make[4]: *** [lb-lua.o] Error 1
+make[4]: Leaving directory '/home/Sederhana Gulo/projects/LuaLB/src/lua'
+Makefile:282: recipe for target 'all-recursive' failed
+make[3]: *** [all-recursive] Error 1
+make[3]: Leaving directory '/home/Sederhana Gulo/projects/LuaLB/src/lua'
 Makefile:189: recipe for target 'all-recursive' failed
 make[2]: *** [all-recursive] Error 1
 make[2]: Leaving directory '/home/Sederhana Gulo/projects/LuaLB/src'

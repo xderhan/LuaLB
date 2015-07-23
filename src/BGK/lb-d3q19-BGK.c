@@ -796,13 +796,13 @@ LBD3Q19BGK_dump(const LBD3Q19BGK* self, const char* filename)
 #endif /* LB_ENABLE_MPI */
 
 	rho_set_id = H5Dcreate(file_id, "rho", H5T_NATIVE_DOUBLE,
-	                       file_space_id, H5P_DEFAULT);
+	                       file_space_id, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
 	ux_set_id = H5Dcreate(file_id, "ux", H5T_NATIVE_DOUBLE,
-	                       file_space_id, H5P_DEFAULT);
+	                       file_space_id, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
 	uy_set_id = H5Dcreate(file_id, "uy", H5T_NATIVE_DOUBLE,
-	                       file_space_id, H5P_DEFAULT);
+	                       file_space_id, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
 	uz_set_id = H5Dcreate(file_id, "uz", H5T_NATIVE_DOUBLE,
-	                       file_space_id, H5P_DEFAULT);
+	                       file_space_id, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
 
 #ifdef LB_ENABLE_MPI
 	xfer_plist = H5Pcreate(H5P_DATASET_XFER);

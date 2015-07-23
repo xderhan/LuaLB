@@ -680,11 +680,11 @@ LBD2Q9BGK_dump(const LBD2Q9BGK* self, const char* filename)
 
 for (c = 0; c < RANK; ++c){
 	sprintf(d_name, "rho%d", c);
-	rho_set_id[c] = H5Dcreate(file_id, d_name, H5T_NATIVE_DOUBLE, file_space_id, H5P_DEFAULT);
+	rho_set_id[c] = H5Dcreate(file_id, d_name, H5T_NATIVE_DOUBLE, file_space_id, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
 	sprintf(d_name, "ux%d", c);
-	ux_set_id[c] = H5Dcreate(file_id, d_name, H5T_NATIVE_DOUBLE, file_space_id, H5P_DEFAULT);
+	ux_set_id[c] = H5Dcreate(file_id, d_name, H5T_NATIVE_DOUBLE, file_space_id, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
 	sprintf(d_name, "uy%d", c);
-	uy_set_id[c] = H5Dcreate(file_id, d_name, H5T_NATIVE_DOUBLE, file_space_id, H5P_DEFAULT);
+	uy_set_id[c] = H5Dcreate(file_id, d_name, H5T_NATIVE_DOUBLE, file_space_id, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
 }
 
 #ifdef LB_ENABLE_MPI

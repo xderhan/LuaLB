@@ -761,9 +761,9 @@ LBD2Q9Mix_dump(const LBD2Q9Mix* self, const char* filename)
 #endif /* LB_ENABLE_MPI */
 
 	rho_set_id = H5Dcreate(file_id, "rho", H5T_NATIVE_DOUBLE,
-	                       file_space_id, H5P_DEFAULT);
+	                       file_space_id, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
 	phi_set_id = H5Dcreate(file_id, "phi", H5T_NATIVE_DOUBLE,
-	                       file_space_id, H5P_DEFAULT);
+	                       file_space_id, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
 
 #ifdef LB_ENABLE_MPI
 	xfer_plist = H5Pcreate(H5P_DATASET_XFER);

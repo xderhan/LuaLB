@@ -13,35 +13,278 @@ Making all in core
 make[3]: Entering directory '/home/Sederhana Gulo/projects/LuaLB/src/core'
 Making all in .
 make[4]: Entering directory '/home/Sederhana Gulo/projects/LuaLB/src/core'
-make[4]: Nothing to be done for 'all-am'.
+/cygdrive/c/hdf5/bin/h5cc -DHAVE_CONFIG_H -I. -I../.. -I../..     -g -O2 -Wall -Werror-implicit-function-declaration -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -MT lb-memory.o -MD -MP -MF .deps/lb-memory.Tpo -c -o lb-memory.o lb-memory.c
+mv -f .deps/lb-memory.Tpo .deps/lb-memory.Po
+/cygdrive/c/hdf5/bin/h5cc -DHAVE_CONFIG_H -I. -I../.. -I../..     -g -O2 -Wall -Werror-implicit-function-declaration -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -MT lb-messages.o -MD -MP -MF .deps/lb-messages.Tpo -c -o lb-messages.o lb-messages.c
+mv -f .deps/lb-messages.Tpo .deps/lb-messages.Po
+/cygdrive/c/hdf5/bin/h5cc -DHAVE_CONFIG_H -I. -I../.. -I../..     -g -O2 -Wall -Werror-implicit-function-declaration -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -MT lb-wtime.o -MD -MP -MF .deps/lb-wtime.Tpo -c -o lb-wtime.o lb-wtime.c
+mv -f .deps/lb-wtime.Tpo .deps/lb-wtime.Po
+/cygdrive/c/hdf5/bin/h5cc -DHAVE_CONFIG_H -I. -I../.. -I../..     -g -O2 -Wall -Werror-implicit-function-declaration -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -MT lb-d2q9.o -MD -MP -MF .deps/lb-d2q9.Tpo -c -o lb-d2q9.o lb-d2q9.c
+mv -f .deps/lb-d2q9.Tpo .deps/lb-d2q9.Po
+/cygdrive/c/hdf5/bin/h5cc -DHAVE_CONFIG_H -I. -I../.. -I../..     -g -O2 -Wall -Werror-implicit-function-declaration -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -MT lb-d3q19.o -MD -MP -MF .deps/lb-d3q19.Tpo -c -o lb-d3q19.o lb-d3q19.c
+mv -f .deps/lb-d3q19.Tpo .deps/lb-d3q19.Po
+/cygdrive/c/hdf5/bin/h5cc -DHAVE_CONFIG_H -I. -I../.. -I../..     -g -O2 -Wall -Werror-implicit-function-declaration -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -MT lb-d2q9-utils.o -MD -MP -MF .deps/lb-d2q9-utils.Tpo -c -o lb-d2q9-utils.o lb-d2q9-utils.c
+lb-d2q9-utils.c: In function ‘lb_d2q9_average_pdfs_1’:
+lb-d2q9-utils.c:86:17: warning: unused variable ‘s3’ [-Wunused-variable]
+    const double s3 = pdfs[4][o + ot] - pdfs[6][o + ot];
+                 ^
+mv -f .deps/lb-d2q9-utils.Tpo .deps/lb-d2q9-utils.Po
+/cygdrive/c/hdf5/bin/h5cc -DHAVE_CONFIG_H -I. -I../.. -I../..     -g -O2 -Wall -Werror-implicit-function-declaration -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -MT lb-d3q19-utils.o -MD -MP -MF .deps/lb-d3q19-utils.Tpo -c -o lb-d3q19-utils.o lb-d3q19-utils.c
+mv -f .deps/lb-d3q19-utils.Tpo .deps/lb-d3q19-utils.Po
+rm -f liblbcore.a
+ar cru liblbcore.a lb-memory.o lb-messages.o lb-wtime.o lb-d2q9.o lb-d3q19.o lb-d2q9-utils.o lb-d3q19-utils.o  
+ranlib liblbcore.a
 make[4]: Leaving directory '/home/Sederhana Gulo/projects/LuaLB/src/core'
 make[3]: Leaving directory '/home/Sederhana Gulo/projects/LuaLB/src/core'
 Making all in graphics
 make[3]: Entering directory '/home/Sederhana Gulo/projects/LuaLB/src/graphics'
 Making all in .
 make[4]: Entering directory '/home/Sederhana Gulo/projects/LuaLB/src/graphics'
-make[4]: Nothing to be done for 'all-am'.
+rm -f liblbgraphics.a
+ar cru liblbgraphics.a  
+ranlib liblbgraphics.a
 make[4]: Leaving directory '/home/Sederhana Gulo/projects/LuaLB/src/graphics'
 make[3]: Leaving directory '/home/Sederhana Gulo/projects/LuaLB/src/graphics'
 Making all in BGK
 make[3]: Entering directory '/home/Sederhana Gulo/projects/LuaLB/src/BGK'
 Making all in .
 make[4]: Entering directory '/home/Sederhana Gulo/projects/LuaLB/src/BGK'
-make[4]: Nothing to be done for 'all-am'.
+/cygdrive/c/hdf5/bin/h5cc -DHAVE_CONFIG_H -I. -I../.. -I../core -I../.. -I/cygdrive/c/hdf5/include    -g -O2 -Wall -Werror-implicit-function-declaration -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -MT lb-BGK.o -MD -MP -MF .deps/lb-BGK.Tpo -c -o lb-BGK.o lb-BGK.c
+mv -f .deps/lb-BGK.Tpo .deps/lb-BGK.Po
+/cygdrive/c/hdf5/bin/h5cc -DHAVE_CONFIG_H -I. -I../.. -I../core -I../.. -I/cygdrive/c/hdf5/include    -g -O2 -Wall -Werror-implicit-function-declaration -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -MT lb-d2q9-BGK.o -MD -MP -MF .deps/lb-d2q9-BGK.Tpo -c -o lb-d2q9-BGK.o lb-d2q9-BGK.c
+lb-d2q9-BGK.c:721:1: warning: no previous prototype for ‘lb_d2q9_stats’ [-Wmissing-prototypes]
+ lb_d2q9_stats(const LBD2Q9BGK* self, LBD2Q9BGKStats* stats)
+ ^
+lb-d2q9-BGK.c:157:1: warning: ‘lb_d2q9_BGK_setup_rho_guards’ defined but not used [-Wunused-function]
+ lb_d2q9_BGK_setup_rho_guards(LBD2Q9BGK* self)
+ ^
+mv -f .deps/lb-d2q9-BGK.Tpo .deps/lb-d2q9-BGK.Po
+/cygdrive/c/hdf5/bin/h5cc -DHAVE_CONFIG_H -I. -I../.. -I../core -I../.. -I/cygdrive/c/hdf5/include    -g -O2 -Wall -Werror-implicit-function-declaration -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -MT lb-d3q19-BGK.o -MD -MP -MF .deps/lb-d3q19-BGK.Tpo -c -o lb-d3q19-BGK.o lb-d3q19-BGK.c
+lb-d3q19-BGK.c: In function ‘lb_d3q19_BGK_collide_pdfs’:
+lb-d3q19-BGK.c:191:18: warning: unused variable ‘ddr’ [-Wunused-variable]
+     const double ddr =  self->rho[o + dox]
+                  ^
+lb-d3q19-BGK.c:189:18: warning: unused variable ‘drz’ [-Wunused-variable]
+     const double drz = 0.5*(self->rho[o + 1]
+                  ^
+lb-d3q19-BGK.c:187:18: warning: unused variable ‘dry’ [-Wunused-variable]
+     const double dry = 0.5*(self->rho[o + doy]
+                  ^
+lb-d3q19-BGK.c:185:18: warning: unused variable ‘drx’ [-Wunused-variable]
+     const double drx = 0.5*(self->rho[o + dox]
+                  ^
+lb-d3q19-BGK.c:219:18: warning: unused variable ‘ddr’ [-Wunused-variable]
+     const double ddr =
+                  ^
+lb-d3q19-BGK.c:215:18: warning: unused variable ‘dry’ [-Wunused-variable]
+     const double dry =
+                  ^
+lb-d3q19-BGK.c:211:18: warning: unused variable ‘drx’ [-Wunused-variable]
+     const double drx =
+                  ^
+lb-d3q19-BGK.c:246:18: warning: unused variable ‘ddr’ [-Wunused-variable]
+     const double ddr =
+                  ^
+lb-d3q19-BGK.c:242:18: warning: unused variable ‘dry’ [-Wunused-variable]
+     const double dry =
+                  ^
+lb-d3q19-BGK.c:238:18: warning: unused variable ‘drx’ [-Wunused-variable]
+     const double drx =
+                  ^
+lb-d3q19-BGK.c:156:22: warning: unused variable ‘zero’ [-Wunused-variable]
+  static const double zero = 0.0;
+                      ^
+lb-d3q19-BGK.c: At top level:
+lb-d3q19-BGK.c:512:1: warning: no previous prototype for ‘_LBD3Q19BGK_partition_info’ [-Wmissing-prototypes]
+ _LBD3Q19BGK_partition_info(const LBD3Q19BGK* self,
+ ^
+lb-d3q19-BGK.c:547:1: warning: no previous prototype for ‘_LBD3Q19BGK_get_parameters’ [-Wmissing-prototypes]
+ _LBD3Q19BGK_get_parameters(const LBD3Q19BGK* self,
+ ^
+lb-d3q19-BGK.c:837:1: warning: no previous prototype for ‘_LBD3Q19BGK_stats’ [-Wmissing-prototypes]
+ _LBD3Q19BGK_stats(const LBD3Q19BGK* self, LBD3Q19BGKStats* stats)
+ ^
+mv -f .deps/lb-d3q19-BGK.Tpo .deps/lb-d3q19-BGK.Po
+rm -f liblbBGK.a
+ar cru liblbBGK.a lb-BGK.o lb-d2q9-BGK.o lb-d3q19-BGK.o 
+ranlib liblbBGK.a
 make[4]: Leaving directory '/home/Sederhana Gulo/projects/LuaLB/src/BGK'
 make[3]: Leaving directory '/home/Sederhana Gulo/projects/LuaLB/src/BGK'
 Making all in Mix
 make[3]: Entering directory '/home/Sederhana Gulo/projects/LuaLB/src/Mix'
 Making all in .
 make[4]: Entering directory '/home/Sederhana Gulo/projects/LuaLB/src/Mix'
-make[4]: Nothing to be done for 'all-am'.
+/cygdrive/c/hdf5/bin/h5cc -DHAVE_CONFIG_H -I. -I../.. -I../core -I../.. -I/cygdrive/c/hdf5/include    -g -O2 -Wall -Werror-implicit-function-declaration -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -MT lb-Mix.o -MD -MP -MF .deps/lb-Mix.Tpo -c -o lb-Mix.o lb-Mix.c
+lb-Mix.c: In function ‘lb_d2q9_Mix_equilibrium’:
+lb-Mix.c:91:15: warning: unused variable ‘rddr’ [-Wunused-variable]
+  const double rddr = params->K*( rho*(*ddr) + phi*(*ddp) );
+               ^
+lb-Mix.c: In function ‘lb_d3q19_Mix_equilibrium’:
+lb-Mix.c:285:15: warning: unused variable ‘dpz2’ [-Wunused-variable]
+  const double dpz2 = params->K*(*dpz)*(*dpz);
+               ^
+lb-Mix.c:284:15: warning: unused variable ‘dpy2’ [-Wunused-variable]
+  const double dpy2 = params->K*(*dpy)*(*dpy);
+               ^
+lb-Mix.c:283:15: warning: unused variable ‘dpx2’ [-Wunused-variable]
+  const double dpx2 = params->K*(*dpx)*(*dpx);
+               ^
+lb-Mix.c:281:15: warning: unused variable ‘drz2’ [-Wunused-variable]
+  const double drz2 = params->K*(*drz)*(*drz);
+               ^
+lb-Mix.c:280:15: warning: unused variable ‘dry2’ [-Wunused-variable]
+  const double dry2 = params->K*(*dry)*(*dry);
+               ^
+lb-Mix.c:279:15: warning: unused variable ‘drx2’ [-Wunused-variable]
+  const double drx2 = params->K*(*drx)*(*drx);
+               ^
+lb-Mix.c:277:15: warning: unused variable ‘puz2’ [-Wunused-variable]
+  const double puz2 = puz*uz;
+               ^
+lb-Mix.c:276:15: warning: unused variable ‘puy2’ [-Wunused-variable]
+  const double puy2 = puy*uy;
+               ^
+lb-Mix.c:275:15: warning: unused variable ‘pux2’ [-Wunused-variable]
+  const double pux2 = pux*ux;
+               ^
+lb-Mix.c:268:15: warning: unused variable ‘ruz2’ [-Wunused-variable]
+  const double ruz2 = ruz*uz;
+               ^
+lb-Mix.c:267:15: warning: unused variable ‘ruy2’ [-Wunused-variable]
+  const double ruy2 = ruy*uy;
+               ^
+lb-Mix.c:266:15: warning: unused variable ‘rux2’ [-Wunused-variable]
+  const double rux2 = rux*ux;
+               ^
+mv -f .deps/lb-Mix.Tpo .deps/lb-Mix.Po
+/cygdrive/c/hdf5/bin/h5cc -DHAVE_CONFIG_H -I. -I../.. -I../core -I../.. -I/cygdrive/c/hdf5/include    -g -O2 -Wall -Werror-implicit-function-declaration -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -MT lb-d2q9-Mix.o -MD -MP -MF .deps/lb-d2q9-Mix.Tpo -c -o lb-d2q9-Mix.o lb-d2q9-Mix.c
+lb-d2q9-Mix.c: In function ‘lb_d2q9_Mix_collide_pdfs’:
+lb-d2q9-Mix.c:276:12: warning: unused variable ‘r’ [-Wunused-variable]
+  int x, y, r;
+            ^
+lb-d2q9-Mix.c: At top level:
+lb-d2q9-Mix.c:501:1: warning: no previous prototype for ‘_LBD2Q9Mix_partition_info’ [-Wmissing-prototypes]
+ _LBD2Q9Mix_partition_info(const LBD2Q9Mix* self,
+ ^
+lb-d2q9-Mix.c:543:1: warning: no previous prototype for ‘_LBD2Q9Mix_get_parameters’ [-Wmissing-prototypes]
+ _LBD2Q9Mix_get_parameters(const LBD2Q9Mix* self,
+ ^
+lb-d2q9-Mix.c: In function ‘LBD2Q9Mix_advance’:
+lb-d2q9-Mix.c:671:5: warning: passing argument 2 of ‘lb_d2q9_average_pdfs’ from incompatible pointer type
+     self->pdfs, self->rho, self->u);
+     ^
+In file included from lb-d2q9-Mix.c:25:0:
+../core/lb-d2q9-utils.h:36:6: note: expected ‘const double **’ but argument is of type ‘double **’
+ void lb_d2q9_average_pdfs(LBD2Q9 *, const double **, double *, double *);
+      ^
+lb-d2q9-Mix.c: At top level:
+lb-d2q9-Mix.c:791:1: warning: no previous prototype for ‘_LBD2Q9Mix_stats’ [-Wmissing-prototypes]
+ _LBD2Q9Mix_stats(const LBD2Q9Mix* self, LBD2Q9MixStats* stats)
+ ^
+lb-d2q9-Mix.c:94:1: warning: ‘lb_d2q9_Mix_average_pdfs’ defined but not used [-Wunused-function]
+ lb_d2q9_Mix_average_pdfs(LBD2Q9Mix* self)
+ ^
+lb-d2q9-Mix.c:184:1: warning: ‘lb_d2q9_Mix_setup_rho_guards’ defined but not used [-Wunused-function]
+ lb_d2q9_Mix_setup_rho_guards(LBD2Q9Mix* self)
+ ^
+mv -f .deps/lb-d2q9-Mix.Tpo .deps/lb-d2q9-Mix.Po
+/cygdrive/c/hdf5/bin/h5cc -DHAVE_CONFIG_H -I. -I../.. -I../core -I../.. -I/cygdrive/c/hdf5/include    -g -O2 -Wall -Werror-implicit-function-declaration -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -MT lb-d3q19-Mix.o -MD -MP -MF .deps/lb-d3q19-Mix.Tpo -c -o lb-d3q19-Mix.o lb-d3q19-Mix.c
+lb-d3q19-Mix.c:641:1: warning: no previous prototype for ‘_LBD3Q19Mix_partition_info’ [-Wmissing-prototypes]
+ _LBD3Q19Mix_partition_info(const LBD3Q19Mix* self,
+ ^
+lb-d3q19-Mix.c:683:1: warning: no previous prototype for ‘_LBD3Q19Mix_get_parameters’ [-Wmissing-prototypes]
+ _LBD3Q19Mix_get_parameters(const LBD3Q19Mix* self,
+ ^
+lb-d3q19-Mix.c: In function ‘LBD3Q19Mix_advance’:
+lb-d3q19-Mix.c:820:5: warning: passing argument 2 of ‘lb_d3q19_average_pdfs’ from incompatible pointer type
+     self->pdfs,
+     ^
+In file included from lb-d3q19-Mix.c:25:0:
+../core/lb-d3q19-utils.h:38:1: note: expected ‘const double **’ but argument is of type ‘double **’
+ lb_d3q19_average_pdfs(LBD3Q19*, const double **, double *, double *);
+ ^
+lb-d3q19-Mix.c: At top level:
+lb-d3q19-Mix.c:944:1: warning: no previous prototype for ‘_LBD3Q19Mix_stats’ [-Wmissing-prototypes]
+ _LBD3Q19Mix_stats(const LBD3Q19Mix* self, LBD3Q19MixStats* stats)
+ ^
+lb-d3q19-Mix.c:134:1: warning: ‘lb_d3q19_Mix_average_pdfs’ defined but not used [-Wunused-function]
+ lb_d3q19_Mix_average_pdfs(LBD3Q19Mix* self)
+ ^
+lb-d3q19-Mix.c:560:1: warning: ‘lb_d3q19_Mix_setup_rho_guards’ defined but not used [-Wunused-function]
+ lb_d3q19_Mix_setup_rho_guards(LBD3Q19Mix* self)
+ ^
+mv -f .deps/lb-d3q19-Mix.Tpo .deps/lb-d3q19-Mix.Po
+rm -f liblbMix.a
+ar cru liblbMix.a lb-Mix.o lb-d2q9-Mix.o lb-d3q19-Mix.o 
+ranlib liblbMix.a
 make[4]: Leaving directory '/home/Sederhana Gulo/projects/LuaLB/src/Mix'
 make[3]: Leaving directory '/home/Sederhana Gulo/projects/LuaLB/src/Mix'
 Making all in Landau
 make[3]: Entering directory '/home/Sederhana Gulo/projects/LuaLB/src/Landau'
 Making all in .
 make[4]: Entering directory '/home/Sederhana Gulo/projects/LuaLB/src/Landau'
-make[4]: Nothing to be done for 'all-am'.
+/cygdrive/c/hdf5/bin/h5cc -DHAVE_CONFIG_H -I. -I../.. -I../core -I../.. -I/cygdrive/c/hdf5/include    -g -O2 -Wall -Werror-implicit-function-declaration -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -MT lb-Landau.o -MD -MP -MF .deps/lb-Landau.Tpo -c -o lb-Landau.o lb-Landau.c
+mv -f .deps/lb-Landau.Tpo .deps/lb-Landau.Po
+/cygdrive/c/hdf5/bin/h5cc -DHAVE_CONFIG_H -I. -I../.. -I../core -I../.. -I/cygdrive/c/hdf5/include    -g -O2 -Wall -Werror-implicit-function-declaration -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -MT lb-d2q9-Landau.o -MD -MP -MF .deps/lb-d2q9-Landau.Tpo -c -o lb-d2q9-Landau.o lb-d2q9-Landau.c
+lb-d2q9-Landau.c: In function ‘lb_d2q9_Landau_collide_pdfs’:
+lb-d2q9-Landau.c:276:12: warning: unused variable ‘r’ [-Wunused-variable]
+  int x, y, r;
+            ^
+lb-d2q9-Landau.c: At top level:
+lb-d2q9-Landau.c:465:1: warning: no previous prototype for ‘_lb_d2q9_Landau_partition_info’ [-Wmissing-prototypes]
+ _lb_d2q9_Landau_partition_info(const lb_d2q9_Landau* self,
+ ^
+lb-d2q9-Landau.c:504:1: warning: no previous prototype for ‘_lb_d2q9_Landau_get_parameters’ [-Wmissing-prototypes]
+ _lb_d2q9_Landau_get_parameters(const lb_d2q9_Landau* self,
+ ^
+lb-d2q9-Landau.c: In function ‘lb_d2q9_Landau_advance’:
+lb-d2q9-Landau.c:632:5: warning: passing argument 2 of ‘lb_d2q9_average_pdfs’ from incompatible pointer type
+     self->pdfs, self->rho, self->u);
+     ^
+In file included from lb-d2q9-Landau.c:25:0:
+../core/lb-d2q9-utils.h:36:6: note: expected ‘const double **’ but argument is of type ‘double **’
+ void lb_d2q9_average_pdfs(LBD2Q9 *, const double **, double *, double *);
+      ^
+lb-d2q9-Landau.c: At top level:
+lb-d2q9-Landau.c:752:1: warning: no previous prototype for ‘_lb_d2q9_Landau_stats’ [-Wmissing-prototypes]
+ _lb_d2q9_Landau_stats(const lb_d2q9_Landau* self, LBD2Q9LandauStats* stats)
+ ^
+lb-d2q9-Landau.c:94:1: warning: ‘lb_d2q9_Landau_average_pdfs’ defined but not used [-Wunused-function]
+ lb_d2q9_Landau_average_pdfs(lb_d2q9_Landau* self)
+ ^
+lb-d2q9-Landau.c:184:1: warning: ‘lb_d2q9_Landau_setup_rho_guards’ defined but not used [-Wunused-function]
+ lb_d2q9_Landau_setup_rho_guards(lb_d2q9_Landau* self)
+ ^
+mv -f .deps/lb-d2q9-Landau.Tpo .deps/lb-d2q9-Landau.Po
+/cygdrive/c/hdf5/bin/h5cc -DHAVE_CONFIG_H -I. -I../.. -I../core -I../.. -I/cygdrive/c/hdf5/include    -g -O2 -Wall -Werror-implicit-function-declaration -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -MT lb-d3q19-Landau.o -MD -MP -MF .deps/lb-d3q19-Landau.Tpo -c -o lb-d3q19-Landau.o lb-d3q19-Landau.c
+lb-d3q19-Landau.c:639:1: warning: no previous prototype for ‘_lb_d3q19_Landau_partition_info’ [-Wmissing-prototypes]
+ _lb_d3q19_Landau_partition_info(const lb_d3q19_Landau* self,
+ ^
+lb-d3q19-Landau.c:678:1: warning: no previous prototype for ‘_lb_d3q19_Landau_get_parameters’ [-Wmissing-prototypes]
+ _lb_d3q19_Landau_get_parameters(const lb_d3q19_Landau* self,
+ ^
+lb-d3q19-Landau.c: In function ‘lb_d3q19_Landau_advance’:
+lb-d3q19-Landau.c:815:5: warning: passing argument 2 of ‘lb_d3q19_average_pdfs’ from incompatible pointer type
+     self->pdfs,
+     ^
+In file included from lb-d3q19-Landau.c:25:0:
+../core/lb-d3q19-utils.h:38:1: note: expected ‘const double **’ but argument is of type ‘double **’
+ lb_d3q19_average_pdfs(LBD3Q19*, const double **, double *, double *);
+ ^
+lb-d3q19-Landau.c: At top level:
+lb-d3q19-Landau.c:939:1: warning: no previous prototype for ‘_lb_d3q19_Landau_stats’ [-Wmissing-prototypes]
+ _lb_d3q19_Landau_stats(const lb_d3q19_Landau* self, LBD3Q19LandauStats* stats)
+ ^
+lb-d3q19-Landau.c:134:1: warning: ‘lb_d3q19_Landau_average_pdfs’ defined but not used [-Wunused-function]
+ lb_d3q19_Landau_average_pdfs(lb_d3q19_Landau* self)
+ ^
+lb-d3q19-Landau.c:561:1: warning: ‘lb_d3q19_Landau_setup_rho_guards’ defined but not used [-Wunused-function]
+ lb_d3q19_Landau_setup_rho_guards(lb_d3q19_Landau* self)
+ ^
+mv -f .deps/lb-d3q19-Landau.Tpo .deps/lb-d3q19-Landau.Po
+rm -f liblbLandau.a
+ar cru liblbLandau.a lb-Landau.o lb-d2q9-Landau.o lb-d3q19-Landau.o 
+ranlib liblbLandau.a
 make[4]: Leaving directory '/home/Sederhana Gulo/projects/LuaLB/src/Landau'
 make[3]: Leaving directory '/home/Sederhana Gulo/projects/LuaLB/src/Landau'
 Making all in lua
@@ -49,31 +292,319 @@ make[3]: Entering directory '/home/Sederhana Gulo/projects/LuaLB/src/lua'
 Making all in .
 make[4]: Entering directory '/home/Sederhana Gulo/projects/LuaLB/src/lua'
 /cygdrive/c/hdf5/bin/h5cc -DHAVE_CONFIG_H -I. -I../.. -I../core -I../graphics -I../BGK -I../Mix -I../BGK -I../Landau -I../.. -I/cygdrive/c/hdf5/include -I/usr/local/include    -g -O2 -Wall -Werror-implicit-function-declaration -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -MT lb-lua.o -MD -MP -MF .deps/lb-lua.Tpo -c -o lb-lua.o lb-lua.c
-lb-lua.c: In function ‘pushline’:
-lb-lua.c:241:3: error: implicit declaration of function ‘lua_readline’ [-Werror=implicit-function-declaration]
-   int readstatus = lua_readline(L, b, prmt);
-   ^
-lb-lua.c:252:3: error: implicit declaration of function ‘lua_freeline’ [-Werror=implicit-function-declaration]
-   lua_freeline(L, b);
-   ^
-lb-lua.c: In function ‘loadline’:
-lb-lua.c:263:5: error: implicit declaration of function ‘lua_strlen’ [-Werror=implicit-function-declaration]
-     status = luaL_loadbuffer(L, lua_tostring(L, 1), lua_strlen(L, 1), "=stdin");
+mv -f .deps/lb-lua.Tpo .deps/lb-lua.Po
+/cygdrive/c/hdf5/bin/h5cc -DHAVE_CONFIG_H -I. -I../.. -I../core -I../graphics -I../BGK -I../Mix -I../BGK -I../Landau -I../.. -I/cygdrive/c/hdf5/include -I/usr/local/include    -g -O2 -Wall -Werror-implicit-function-declaration -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -MT lb-lua_wrap.o -MD -MP -MF .deps/lb-lua_wrap.Tpo -c -o lb-lua_wrap.o lb-lua_wrap.c
+lb-lua_wrap.c:1700:5: warning: no previous prototype for ‘LBPartitionInfo_ndims’ [-Wmissing-prototypes]
+ int LBPartitionInfo_ndims(LBPartitionInfo *self){ return self->ndims;}
      ^
-lb-lua.c:271:3: error: implicit declaration of function ‘lua_saveline’ [-Werror=implicit-function-declaration]
-   lua_saveline(L, 1);
-   ^
-lb-lua.c: In function ‘pmain’:
-lb-lua.c:443:5: error: implicit declaration of function ‘lua_stdin_is_tty’ [-Werror=implicit-function-declaration]
-     if (lua_stdin_is_tty()) {
+lb-lua_wrap.c:1701:5: warning: no previous prototype for ‘LBPartitionInfo_processor_rank’ [-Wmissing-prototypes]
+ int LBPartitionInfo_processor_rank(LBPartitionInfo *self){ return self->processor_rank;}
      ^
-lb-lua.c: In function ‘main’:
-lb-lua.c:478:3: error: implicit declaration of function ‘lua_cpcall’ [-Werror=implicit-function-declaration]
-   status = lua_cpcall(L, &pmain, &s);
+lb-lua_wrap.c:1702:5: warning: no previous prototype for ‘LBPartitionInfo_processor_size’ [-Wmissing-prototypes]
+ int LBPartitionInfo_processor_size(LBPartitionInfo *self, int i){ return self->processors_size[i];}
+     ^
+lb-lua_wrap.c:1703:5: warning: no previous prototype for ‘LBPartitionInfo_processor_coords’ [-Wmissing-prototypes]
+ int LBPartitionInfo_processor_coords(LBPartitionInfo *self, int i){ return self->processor_coords[i];}
+     ^
+lb-lua_wrap.c:1704:5: warning: no previous prototype for ‘LBPartitionInfo_size’ [-Wmissing-prototypes]
+ int LBPartitionInfo_size(LBPartitionInfo *self, int i){ return self->size[i];}
+     ^
+lb-lua_wrap.c:1705:5: warning: no previous prototype for ‘LBPartitionInfo_periods’ [-Wmissing-prototypes]
+ int LBPartitionInfo_periods(LBPartitionInfo *self, int i){ return self->periods[i];}
+     ^
+lb-lua_wrap.c:1706:5: warning: no previous prototype for ‘LBPartitionInfo_global_size’ [-Wmissing-prototypes]
+ int LBPartitionInfo_global_size(LBPartitionInfo *self, int i){ return self->global_size[i];}
+     ^
+lb-lua_wrap.c:1707:5: warning: no previous prototype for ‘LBPartitionInfo_global_origin’ [-Wmissing-prototypes]
+ int LBPartitionInfo_global_origin(LBPartitionInfo *self, int i){ return self->global_origin[i];}
+     ^
+lb-lua_wrap.c: In function ‘_wrap_lb_colormap_destroy’:
+lb-lua_wrap.c:6647:3: error: unknown type name ‘lb_colormap’
+   lb_colormap *arg1 = (lb_colormap *) 0 ;
    ^
+lb-lua_wrap.c:6647:24: error: ‘lb_colormap’ undeclared (first use in this function)
+   lb_colormap *arg1 = (lb_colormap *) 0 ;
+                        ^
+lb-lua_wrap.c:6647:24: note: each undeclared identifier is reported only once for each function it appears in
+lb-lua_wrap.c:6647:37: error: expected expression before ‘)’ token
+   lb_colormap *arg1 = (lb_colormap *) 0 ;
+                                     ^
+lb-lua_wrap.c:6656:3: error: implicit declaration of function ‘lb_colormap_destroy’ [-Werror=implicit-function-declaration]
+   lb_colormap_destroy(arg1);
+   ^
+lb-lua_wrap.c: In function ‘_wrap_lb_colormap_num_colors’:
+lb-lua_wrap.c:6670:3: error: unknown type name ‘lb_colormap’
+   lb_colormap *arg1 = (lb_colormap *) 0 ;
+   ^
+lb-lua_wrap.c:6670:24: error: ‘lb_colormap’ undeclared (first use in this function)
+   lb_colormap *arg1 = (lb_colormap *) 0 ;
+                        ^
+lb-lua_wrap.c:6670:37: error: expected expression before ‘)’ token
+   lb_colormap *arg1 = (lb_colormap *) 0 ;
+                                     ^
+lb-lua_wrap.c:6680:3: error: implicit declaration of function ‘lb_colormap_num_colors’ [-Werror=implicit-function-declaration]
+   result = (int)lb_colormap_num_colors(arg1);
+   ^
+lb-lua_wrap.c: In function ‘_wrap_lb_colormap_set_color’:
+lb-lua_wrap.c:6694:3: error: unknown type name ‘lb_colormap’
+   lb_colormap *arg1 = (lb_colormap *) 0 ;
+   ^
+lb-lua_wrap.c:6694:24: error: ‘lb_colormap’ undeclared (first use in this function)
+   lb_colormap *arg1 = (lb_colormap *) 0 ;
+                        ^
+lb-lua_wrap.c:6694:37: error: expected expression before ‘)’ token
+   lb_colormap *arg1 = (lb_colormap *) 0 ;
+                                     ^
+lb-lua_wrap.c:6709:3: error: implicit declaration of function ‘lb_colormap_set_color’ [-Werror=implicit-function-declaration]
+   lb_colormap_set_color(arg1,arg2,(double const (*))arg3);
+   ^
+lb-lua_wrap.c: In function ‘_wrap_lb_colormap_append_color’:
+lb-lua_wrap.c:6725:3: error: unknown type name ‘lb_colormap’
+   lb_colormap *arg1 = (lb_colormap *) 0 ;
+   ^
+lb-lua_wrap.c:6725:24: error: ‘lb_colormap’ undeclared (first use in this function)
+   lb_colormap *arg1 = (lb_colormap *) 0 ;
+                        ^
+lb-lua_wrap.c:6725:37: error: expected expression before ‘)’ token
+   lb_colormap *arg1 = (lb_colormap *) 0 ;
+                                     ^
+lb-lua_wrap.c:6737:3: error: implicit declaration of function ‘lb_colormap_append_color’ [-Werror=implicit-function-declaration]
+   lb_colormap_append_color(arg1,(double const (*))arg2);
+   ^
+lb-lua_wrap.c: In function ‘_wrap_lb_colormap_get_color’:
+lb-lua_wrap.c:6753:3: error: unknown type name ‘lb_colormap’
+   lb_colormap *arg1 = (lb_colormap *) 0 ;
+   ^
+lb-lua_wrap.c:6753:24: error: ‘lb_colormap’ undeclared (first use in this function)
+   lb_colormap *arg1 = (lb_colormap *) 0 ;
+                        ^
+lb-lua_wrap.c:6753:37: error: expected expression before ‘)’ token
+   lb_colormap *arg1 = (lb_colormap *) 0 ;
+                                     ^
+lb-lua_wrap.c:6767:3: error: implicit declaration of function ‘lb_colormap_get_color’ [-Werror=implicit-function-declaration]
+   lb_colormap_get_color(arg1,arg2,arg3);
+   ^
+lb-lua_wrap.c: In function ‘_wrap_lb_colormap_map_value’:
+lb-lua_wrap.c:6784:3: error: unknown type name ‘lb_colormap’
+   lb_colormap *arg1 = (lb_colormap *) 0 ;
+   ^
+lb-lua_wrap.c:6784:24: error: ‘lb_colormap’ undeclared (first use in this function)
+   lb_colormap *arg1 = (lb_colormap *) 0 ;
+                        ^
+lb-lua_wrap.c:6784:37: error: expected expression before ‘)’ token
+   lb_colormap *arg1 = (lb_colormap *) 0 ;
+                                     ^
+lb-lua_wrap.c:6798:3: error: implicit declaration of function ‘lb_colormap_map_value’ [-Werror=implicit-function-declaration]
+   lb_colormap_map_value(arg1,arg2,arg3);
+   ^
+lb-lua_wrap.c: In function ‘swig_delete_lb_colormap’:
+lb-lua_wrap.c:6814:1: error: unknown type name ‘lb_colormap’
+ lb_colormap *arg1 = (lb_colormap *) obj;
+ ^
+lb-lua_wrap.c:6814:22: error: ‘lb_colormap’ undeclared (first use in this function)
+ lb_colormap *arg1 = (lb_colormap *) obj;
+                      ^
+lb-lua_wrap.c:6814:35: error: expected expression before ‘)’ token
+ lb_colormap *arg1 = (lb_colormap *) obj;
+                                   ^
+lb-lua_wrap.c: In function ‘_wrap_lb_rgb_destroy’:
+lb-lua_wrap.c:6835:3: error: unknown type name ‘lb_rgb’
+   lb_rgb *arg1 = (lb_rgb *) 0 ;
+   ^
+lb-lua_wrap.c:6835:19: error: ‘lb_rgb’ undeclared (first use in this function)
+   lb_rgb *arg1 = (lb_rgb *) 0 ;
+                   ^
+lb-lua_wrap.c:6835:27: error: expected expression before ‘)’ token
+   lb_rgb *arg1 = (lb_rgb *) 0 ;
+                           ^
+lb-lua_wrap.c:6844:3: error: implicit declaration of function ‘lb_rgb_destroy’ [-Werror=implicit-function-declaration]
+   lb_rgb_destroy(arg1);
+   ^
+lb-lua_wrap.c: In function ‘_wrap_lb_rgb_width’:
+lb-lua_wrap.c:6858:3: error: unknown type name ‘lb_rgb’
+   lb_rgb *arg1 = (lb_rgb *) 0 ;
+   ^
+lb-lua_wrap.c:6858:19: error: ‘lb_rgb’ undeclared (first use in this function)
+   lb_rgb *arg1 = (lb_rgb *) 0 ;
+                   ^
+lb-lua_wrap.c:6858:27: error: expected expression before ‘)’ token
+   lb_rgb *arg1 = (lb_rgb *) 0 ;
+                           ^
+lb-lua_wrap.c:6868:3: error: implicit declaration of function ‘lb_rgb_width’ [-Werror=implicit-function-declaration]
+   result = (int)lb_rgb_width(arg1);
+   ^
+lb-lua_wrap.c: In function ‘_wrap_lb_rgb_height’:
+lb-lua_wrap.c:6882:3: error: unknown type name ‘lb_rgb’
+   lb_rgb *arg1 = (lb_rgb *) 0 ;
+   ^
+lb-lua_wrap.c:6882:19: error: ‘lb_rgb’ undeclared (first use in this function)
+   lb_rgb *arg1 = (lb_rgb *) 0 ;
+                   ^
+lb-lua_wrap.c:6882:27: error: expected expression before ‘)’ token
+   lb_rgb *arg1 = (lb_rgb *) 0 ;
+                           ^
+lb-lua_wrap.c:6892:3: error: implicit declaration of function ‘lb_rgb_height’ [-Werror=implicit-function-declaration]
+   result = (int)lb_rgb_height(arg1);
+   ^
+lb-lua_wrap.c: In function ‘_wrap_lb_rgb_fill’:
+lb-lua_wrap.c:6906:3: error: unknown type name ‘lb_rgb’
+   lb_rgb *arg1 = (lb_rgb *) 0 ;
+   ^
+lb-lua_wrap.c:6906:19: error: ‘lb_rgb’ undeclared (first use in this function)
+   lb_rgb *arg1 = (lb_rgb *) 0 ;
+                   ^
+lb-lua_wrap.c:6906:27: error: expected expression before ‘)’ token
+   lb_rgb *arg1 = (lb_rgb *) 0 ;
+                           ^
+lb-lua_wrap.c:6918:3: error: implicit declaration of function ‘lb_rgb_fill’ [-Werror=implicit-function-declaration]
+   lb_rgb_fill(arg1,(double const (*))arg2);
+   ^
+lb-lua_wrap.c: In function ‘_wrap_lb_rgb_set_pixel’:
+lb-lua_wrap.c:6934:3: error: unknown type name ‘lb_rgb’
+   lb_rgb *arg1 = (lb_rgb *) 0 ;
+   ^
+lb-lua_wrap.c:6934:19: error: ‘lb_rgb’ undeclared (first use in this function)
+   lb_rgb *arg1 = (lb_rgb *) 0 ;
+                   ^
+lb-lua_wrap.c:6934:27: error: expected expression before ‘)’ token
+   lb_rgb *arg1 = (lb_rgb *) 0 ;
+                           ^
+lb-lua_wrap.c:6952:3: error: implicit declaration of function ‘lb_rgb_set_pixel’ [-Werror=implicit-function-declaration]
+   lb_rgb_set_pixel(arg1,arg2,arg3,(double const (*))arg4);
+   ^
+lb-lua_wrap.c: In function ‘_wrap_lb_rgb_set_pixel_rgba’:
+lb-lua_wrap.c:6968:3: error: unknown type name ‘lb_rgb’
+   lb_rgb *arg1 = (lb_rgb *) 0 ;
+   ^
+lb-lua_wrap.c:6968:19: error: ‘lb_rgb’ undeclared (first use in this function)
+   lb_rgb *arg1 = (lb_rgb *) 0 ;
+                   ^
+lb-lua_wrap.c:6968:27: error: expected expression before ‘)’ token
+   lb_rgb *arg1 = (lb_rgb *) 0 ;
+                           ^
+lb-lua_wrap.c:6986:3: error: implicit declaration of function ‘lb_rgb_set_pixel_rgba’ [-Werror=implicit-function-declaration]
+   lb_rgb_set_pixel_rgba(arg1,arg2,arg3,(double const (*))arg4);
+   ^
+lb-lua_wrap.c: In function ‘_wrap_lb_rgb_get_pixel’:
+lb-lua_wrap.c:7002:3: error: unknown type name ‘lb_rgb’
+   lb_rgb *arg1 = (lb_rgb *) 0 ;
+   ^
+lb-lua_wrap.c:7002:19: error: ‘lb_rgb’ undeclared (first use in this function)
+   lb_rgb *arg1 = (lb_rgb *) 0 ;
+                   ^
+lb-lua_wrap.c:7002:27: error: expected expression before ‘)’ token
+   lb_rgb *arg1 = (lb_rgb *) 0 ;
+                           ^
+lb-lua_wrap.c:7019:3: error: implicit declaration of function ‘lb_rgb_get_pixel’ [-Werror=implicit-function-declaration]
+   lb_rgb_get_pixel(arg1,arg2,arg3,arg4);
+   ^
+lb-lua_wrap.c: In function ‘_wrap_lb_rgb_map_value’:
+lb-lua_wrap.c:7036:3: error: unknown type name ‘lb_rgb’
+   lb_rgb *arg1 = (lb_rgb *) 0 ;
+   ^
+lb-lua_wrap.c:7036:19: error: ‘lb_rgb’ undeclared (first use in this function)
+   lb_rgb *arg1 = (lb_rgb *) 0 ;
+                   ^
+lb-lua_wrap.c:7036:27: error: expected expression before ‘)’ token
+   lb_rgb *arg1 = (lb_rgb *) 0 ;
+                           ^
+lb-lua_wrap.c:7037:3: error: unknown type name ‘lb_colormap’
+   lb_colormap *arg2 = (lb_colormap *) 0 ;
+   ^
+lb-lua_wrap.c:7037:24: error: ‘lb_colormap’ undeclared (first use in this function)
+   lb_colormap *arg2 = (lb_colormap *) 0 ;
+                        ^
+lb-lua_wrap.c:7037:37: error: expected expression before ‘)’ token
+   lb_colormap *arg2 = (lb_colormap *) 0 ;
+                                     ^
+lb-lua_wrap.c:7061:3: error: implicit declaration of function ‘lb_rgb_map_value’ [-Werror=implicit-function-declaration]
+   lb_rgb_map_value(arg1,(lb_colormap const *)arg2,arg3,arg4,arg5);
+   ^
+lb-lua_wrap.c:7061:38: error: expected ‘)’ before ‘const’
+   lb_rgb_map_value(arg1,(lb_colormap const *)arg2,arg3,arg4,arg5);
+                                      ^
+lb-lua_wrap.c:7061:46: error: expected ‘)’ before ‘arg2’
+   lb_rgb_map_value(arg1,(lb_colormap const *)arg2,arg3,arg4,arg5);
+                                              ^
+lb-lua_wrap.c:7040:10: warning: variable ‘arg5’ set but not used [-Wunused-but-set-variable]
+   double arg5 ;
+          ^
+lb-lua_wrap.c:7039:7: warning: variable ‘arg4’ set but not used [-Wunused-but-set-variable]
+   int arg4 ;
+       ^
+lb-lua_wrap.c:7038:7: warning: variable ‘arg3’ set but not used [-Wunused-but-set-variable]
+   int arg3 ;
+       ^
+lb-lua_wrap.c: In function ‘_wrap_lb_rgb_save’:
+lb-lua_wrap.c:7075:3: error: unknown type name ‘lb_rgb’
+   lb_rgb *arg1 = (lb_rgb *) 0 ;
+   ^
+lb-lua_wrap.c:7075:19: error: ‘lb_rgb’ undeclared (first use in this function)
+   lb_rgb *arg1 = (lb_rgb *) 0 ;
+                   ^
+lb-lua_wrap.c:7075:27: error: expected expression before ‘)’ token
+   lb_rgb *arg1 = (lb_rgb *) 0 ;
+                           ^
+lb-lua_wrap.c:7087:3: error: implicit declaration of function ‘lb_rgb_save’ [-Werror=implicit-function-declaration]
+   lb_rgb_save(arg1,arg2);
+   ^
+lb-lua_wrap.c: In function ‘swig_delete_lb_rgb’:
+lb-lua_wrap.c:7100:1: error: unknown type name ‘lb_rgb’
+ lb_rgb *arg1 = (lb_rgb *) obj;
+ ^
+lb-lua_wrap.c:7100:17: error: ‘lb_rgb’ undeclared (first use in this function)
+ lb_rgb *arg1 = (lb_rgb *) obj;
+                 ^
+lb-lua_wrap.c:7100:25: error: expected expression before ‘)’ token
+ lb_rgb *arg1 = (lb_rgb *) obj;
+                         ^
+lb-lua_wrap.c: In function ‘_wrap_colormap’:
+lb-lua_wrap.c:7295:3: error: unknown type name ‘lb_colormap’
+   lb_colormap *result = 0 ;
+   ^
+lb-lua_wrap.c:7298:13: error: ‘lb_colormap’ undeclared (first use in this function)
+   result = (lb_colormap *)lb_colormap_new();
+             ^
+lb-lua_wrap.c:7298:26: error: expected expression before ‘)’ token
+   result = (lb_colormap *)lb_colormap_new();
+                          ^
+lb-lua_wrap.c: In function ‘_wrap_rgb’:
+lb-lua_wrap.c:7314:3: error: unknown type name ‘lb_rgb’
+   lb_rgb *result = 0 ;
+   ^
+lb-lua_wrap.c:7321:13: error: ‘lb_rgb’ undeclared (first use in this function)
+   result = (lb_rgb *)lb_rgb_new(arg1,arg2);
+             ^
+lb-lua_wrap.c:7321:21: error: expected expression before ‘)’ token
+   result = (lb_rgb *)lb_rgb_new(arg1,arg2);
+                     ^
+lb-lua_wrap.c:7313:7: warning: variable ‘arg2’ set but not used [-Wunused-but-set-variable]
+   int arg2 ;
+       ^
+lb-lua_wrap.c:7312:7: warning: variable ‘arg1’ set but not used [-Wunused-but-set-variable]
+   int arg1 ;
+       ^
+lb-lua_wrap.c: At top level:
+lb-lua_wrap.c:7423:30: error: array type has incomplete element type
+ static const struct luaL_reg swig_commands[] = {
+                              ^
+lb-lua_wrap.c:1499:24: warning: no previous prototype for ‘luaopen_lb’ [-Wmissing-prototypes]
+ #define SWIG_init      luaopen_lb
+                        ^
+lb-lua_wrap.c:7786:16: note: in expansion of macro ‘SWIG_init’
+ SWIGEXPORT int SWIG_init(lua_State* L)
+                ^
+lb-lua_wrap.c: In function ‘luaopen_lb’:
+lb-lua_wrap.c:7790:19: error: ‘LUA_GLOBALSINDEX’ undeclared (first use in this function)
+   lua_pushvalue(L,LUA_GLOBALSINDEX);
+                   ^
+lb-lua_wrap.c: At top level:
+lb-lua_wrap.c:7423:30: warning: ‘swig_commands’ defined but not used [-Wunused-variable]
+ static const struct luaL_reg swig_commands[] = {
+                              ^
 cc1: some warnings being treated as errors
-Makefile:262: recipe for target 'lb-lua.o' failed
-make[4]: *** [lb-lua.o] Error 1
+Makefile:262: recipe for target 'lb-lua_wrap.o' failed
+make[4]: *** [lb-lua_wrap.o] Error 1
 make[4]: Leaving directory '/home/Sederhana Gulo/projects/LuaLB/src/lua'
 Makefile:282: recipe for target 'all-recursive' failed
 make[3]: *** [all-recursive] Error 1

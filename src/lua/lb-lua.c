@@ -32,7 +32,7 @@
 #endif
 
 #if !defined(LUA_PROGNAME)
-#define LUA_PROGNAME		"lua"
+#define LUA_PROGNAME		"lb-lua"
 #endif
 
 #if !defined(LUA_MAXINPUT)
@@ -459,7 +459,7 @@ static int handle_script (lua_State *L, char **argv) {
 
 /* bits of various argument indicators in 'args' */
 #define has_error	1	/* bad option */
-/*#define has_i		2	/* -i */
+#define has_i		2	/* -i */
 #define has_v		4	/* -v */
 #define has_e		8	/* -e */
 #define has_E		16	/* -E */
@@ -610,10 +610,13 @@ int main (int argc, char **argv) {
 
   // Do not allow interactive mode
   if (argc<2) {
+    int script;
+    collectargs(argv, &script);
+	  
 #ifdef LB_ENABLE_MPI
 	if(lb_mpi_comm_rank(MPI_COMM_WORLD) == 0)
 #endif /* LB_ENABLE_MPI */
-	print_usage();
+	print_usage(argv[script]);
     return 0;
   }
 

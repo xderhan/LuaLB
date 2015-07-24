@@ -22,7 +22,13 @@ lb-lua.o: lb-lua.c ../../config.h /usr/include/signal.h \
  /usr/lib/gcc/i686-pc-cygwin/4.9.3/include-fixed/syslimits.h \
  /usr/include/limits.h /usr/include/features.h \
  /usr/local/include/lauxlib.h /usr/local/include/lua.h \
- /usr/local/include/lualib.h
+ /usr/local/include/lualib.h /usr/include/readline/readline.h \
+ /usr/include/readline/rlstdc.h /usr/include/readline/rltypedefs.h \
+ /usr/include/readline/keymaps.h /usr/include/readline/chardefs.h \
+ /usr/include/ctype.h /usr/include/strings.h \
+ /usr/include/readline/tilde.h /usr/include/readline/history.h \
+ /usr/include/time.h /usr/include/machine/time.h \
+ /usr/include/sys/timespec.h /usr/include/cygwin/time.h
 
 ../../config.h:
 
@@ -117,3 +123,29 @@ lb-lua.o: lb-lua.c ../../config.h /usr/include/signal.h \
 /usr/local/include/lua.h:
 
 /usr/local/include/lualib.h:
+
+/usr/include/readline/readline.h:
+
+/usr/include/readline/rlstdc.h:
+
+/usr/include/readline/rltypedefs.h:
+
+/usr/include/readline/keymaps.h:
+
+/usr/include/readline/chardefs.h:
+
+/usr/include/ctype.h:
+
+/usr/include/strings.h:
+
+/usr/include/readline/tilde.h:
+
+/usr/include/readline/history.h:
+
+/usr/include/time.h:
+
+/usr/include/machine/time.h:
+
+/usr/include/sys/timespec.h:
+
+/usr/include/cygwin/time.h:

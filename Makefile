@@ -76,7 +76,7 @@ AUTOMAKE = automake-1.10
 AWK = gawk
 CC = /cygdrive/c/hdf5/bin/h5cc
 CCDEPMODE = depmode=gcc3
-CFLAGS = -g -O2 -Wall -Werror-implicit-function-declaration -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations
+CFLAGS = -DLUA_USE_READLINE -Wall -Werror-implicit-function-declaration -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations
 CPP = /cygdrive/c/hdf5/bin/h5cc -E
 CPPFLAGS = 
 CYGPATH_W = cygpath -w

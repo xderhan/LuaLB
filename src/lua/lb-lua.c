@@ -32,7 +32,7 @@
 #endif
 
 #if !defined(LUA_PROGNAME)
-#define LUA_PROGNAME		"lb-lua"
+#define LUA_PROGNAME		"lualb"
 #endif
 
 #if !defined(LUA_MAXINPUT)
@@ -108,6 +108,7 @@ static lua_State *globalL = NULL;
 
 static const char *progname = LUA_PROGNAME;
 
+extern int luaopen_lb(lua_State* L);
 
 /*
 ** Hook set by signal function to stop the interpreter.
@@ -133,10 +134,10 @@ static void laction (int i) {
 
 static void print_usage (const char *badoption) {
   lua_writestringerror("%s: ", progname);
+  
   if (badoption[1] == 'e' || badoption[1] == 'l')
     lua_writestringerror("'%s' needs argument\n", badoption);
-  else
-    lua_writestringerror("unrecognized option '%s'\n", badoption);
+  
   lua_writestringerror(
   "usage: %s [options] [script [args]]\n"
   "Available options are:\n"
@@ -214,7 +215,7 @@ static int docall (lua_State *L, int narg, int nres) {
 
 
 static void print_version (void) {
-  lua_writestring(LUA_COPYRIGHT, strlen(LUA_COPYRIGHT));
+  lua_writestring(PACKAGE_STRING, strlen(PACKAGE_STRING));
   lua_writeline();
 }
 
@@ -490,8 +491,10 @@ static int collectargs (char **argv, int *first) {
           return has_error;  /* invalid option */
         args |= has_E;
         break;
-      //case 'i':
-        //args |= has_i;  /* (-i implies -v) *//* FALLTHROUGH */ 
+	  /*
+      case 'i':
+        args |= has_i;  // No interactive mode
+	  */
       case 'v':
         if (argv[i][2] != '\0')  /* extra characters after 1st? */
           return has_error;  /* invalid option */
@@ -576,6 +579,13 @@ static int pmain (lua_State *L) {
     lua_setfield(L, LUA_REGISTRYINDEX, "LUA_NOENV");
   }
   luaL_openlibs(L);  /* open standard libraries */
+  
+  /* open LuaLB library */
+  luaL_getsubtable(L, LUA_REGISTRYINDEX, "_PRELOAD");
+  lua_pushcfunction(L, luaopen_lb);
+  lua_setfield(L, -2, "lb");
+  lua_pop(L, 1);  // remove _PRELOAD table
+  
   createargtable(L, argv, argc, script);  /* create table 'arg' */
   if (!(args & has_E)) {  /* no option '-E'? */
     if (handle_luainit(L) != LUA_OK)  /* run LUA_INIT */
@@ -610,13 +620,10 @@ int main (int argc, char **argv) {
 
   // Do not allow interactive mode
   if (argc<2) {
-    int script;
-    collectargs(argv, &script);
-	  
 #ifdef LB_ENABLE_MPI
 	if(lb_mpi_comm_rank(MPI_COMM_WORLD) == 0)
 #endif /* LB_ENABLE_MPI */
-	print_usage(argv[script]);
+	print_usage(progname);
     return 0;
   }
 

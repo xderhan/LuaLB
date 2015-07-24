@@ -1,6 +1,7 @@
 My own command to do the configuration
 
 CC='/cygdrive/c/hdf5/bin/h5cc' \
+CFLAGS=-DLUA_USE_READLINE \
 ./configure \
 --with-hdf5='/cygdrive/c/hdf5' \
 --with-lua5='/usr/local' \
@@ -10,3 +11,4 @@ CC='/cygdrive/c/hdf5/bin/h5cc' \
 Command for make, that cause to log the make status
 
 make |& tee error.txt
+

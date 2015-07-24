@@ -1,4 +1,4 @@
-require("utils.lua")
+-- require("./utils.lua")
 
 NX = 128
 NY = 64

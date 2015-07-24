@@ -5,7 +5,7 @@ CFLAGS=-DLUA_USE_READLINE \
 ./configure \
 --with-hdf5='/cygdrive/c/hdf5' \
 --with-lua5='/usr/local' \
---prefix='/cygdrive/c/lualb' \
+--prefix='/usr/local' \
 --enable-rgb=no
 
 Command for make, that cause to log the make status

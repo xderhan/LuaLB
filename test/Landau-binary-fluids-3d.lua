@@ -104,7 +104,7 @@ for t = START, END do
 	
 	print(simulation:mass(),"\n")
 
-	if math.mod(t, FREQ) == 0 then
+	if math.fmod(t, FREQ) == 0 then
 		render3(simulation, t)
 	end
 end

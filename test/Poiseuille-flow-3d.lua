@@ -72,7 +72,7 @@ make_filename = function(t)
 	local digits = 1
 
 	for n = 1, 8 do
-		pp = __pow(10, n)
+		pp = math.pow(10, n)
 		if math.floor(t / pp) == 0 then
 			break
 		else
@@ -154,7 +154,7 @@ for t = START, END do
 	local M = simulation:mass()
 	print(M)
 
-	if math.mod(t, FREQ) == 0 then
+	if math.fmod(t, FREQ) == 0 then
 		render(simulation, t)
 	end
 end

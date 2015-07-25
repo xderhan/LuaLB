@@ -39,7 +39,7 @@ initializer = function(x, y)
 --	return 2.5 + math.random(), 0, 0
 end
 
-initialize = function(simulation, initializer,pinfo)
+initialize = function(simulation, initializer, pinfo)
 	--local pinfo = lb.LBPartitionInfo()
 	--simulation:partition_info(pinfo)
 	local nx, ny = pinfo:size(0), pinfo:size(1)
@@ -69,7 +69,7 @@ report_progress = function(start_wtime, t0, t1, t)
 	io.write(string.format("<>> ETA: %s\n", lb.wtime_string((t1 - t)*sps)))
 end
 
-make_filename = function(t)
+make_filename = function(t, ext)
 	local res = ""
 	local digits = 1
 
@@ -87,18 +87,26 @@ make_filename = function(t)
 		res = res .. "0"
 	end
 
-	return res .. t .. ".h5"
+	return res .. t .. ext
 end
 
-render1 = function(callback, simulation, filename)
-	local pinfo = simulation:partition_info()
+render1 = function(callback, simulation, filename, pinfo)
+--	local pinfo = simulation:partition_info()
 	local nx, ny = pinfo:size(0), pinfo:size(1)
 	local rgb = lb.rgb(nx, ny)
+	
+	local x0, y0 = pinfo:global_origin(0), pinfo:global_origin(1)
 
 	for x = 0, nx - 1 do
 		for y = 0, ny - 1 do
-			local rho, ux, uy = simulation:get_averages(x, y)
+			local ux = poiseuilleVelocity(y, ny-1, 0.01)
+			local rho = initializer(x + x0, y + y0)
+			local uy = 0.0
+			
+			simulation:get_averages(rho, ux, uy)
+			
 			local c = callback(rho, ux, uy)
+			
 			rgb:set_pixel(x, ny - y - 1, c)
 		end
 	end
@@ -111,8 +119,8 @@ filename_IJ = function(base, i, j)
 	return string.format("%s-%d-%d.png", base, i, j)
 end
 
-renderN = function(callback, simulation, filename)
-	local pinfo = simulation:partition_info()
+renderN = function(callback, simulation, filename, pinfo)
+--	local pinfo = simulation:partition_info()
 
 	render1(callback, simulation,
 		filename_IJ(filename, pinfo:processor_coords(0),
@@ -145,13 +153,14 @@ renderN = function(callback, simulation, filename)
 	end
 end
 
-render = function(callback, simulation, t)
-	local filename = make_filename(t)
+render = function(callback, simulation, t, pinfo)
+	-- local filename = make_filename(t, ".h5")
+	local filename = make_filename(t, ".png")
 
 	if lb.is_parallel() == 1 then
-		renderN(callback, simulation, filename)
+		renderN(callback, simulation, filename, pinfo)
 	else
-		render1(callback, simulation, filename)
+		render1(callback, simulation, filename, pinfo)
 	end
 end
 
@@ -190,9 +199,9 @@ for t = START, END do
 		end
 	end
 
-	if math.mod(t, FREQ) == 0 then
---		render(density2rgb, simulation, t)
-		simulation:dump(make_filename(t))
+	if math.fmod(t, FREQ) == 0 then
+		render(density2rgb, simulation, t, pinfo)
+--		simulation:dump(make_filename(t))
 		print(simulation:mass())
 	end
 end

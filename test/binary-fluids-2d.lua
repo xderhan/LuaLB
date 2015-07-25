@@ -183,7 +183,7 @@ for t = START, END do
 
 	--print("MASS\t= ", simulation:mass())
 
-	if math.mod(t, FREQ) == 0 then
+	if math.fmod(t, FREQ) == 0 then
 		render(ordering2rgb, simulation, t)
 --		simulation:dump(make_filename(t, ".h5"))
 	end

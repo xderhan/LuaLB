@@ -1,3 +1,5 @@
+lb = require("lb")
+
 cmap = lb.colormap()
 cmap:append_color({1, 0, 0})
 cmap:append_color({1, 1, 1})

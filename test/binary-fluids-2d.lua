@@ -1,3 +1,5 @@
+lb = require("lb")
+
 NX = 128
 NY = 128
 

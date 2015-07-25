@@ -12,9 +12,7 @@ END = 2*2024
 
 PARAMETERS = lb.LBGKParameters()
 
-tau = 0.8
-
-PARAMETERS:set(tau)
+PARAMETERS.tau = 0.8
 
 init_data = function(x, y)
 	return 2.5705, 0.0, 0.0
@@ -59,6 +57,10 @@ end
 -----------------------------------------------------------------------------
 
 simulation = lb.d2q9_BGK(1, NX, NY, 1, PY)
+
+pinfo = lb.LBPartitionInfo()
+simulation.partition_info(pinfo)
+
 init(simulation)
 
 simulation:set_parameters(PARAMETERS)

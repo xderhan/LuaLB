@@ -4533,13 +4533,13 @@ fi
 PNG_LIBS=
 
 if test "x$enable_rgb" = "xyes"; then
-  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for png_read_info in -lpng" >&5
-$as_echo_n "checking for png_read_info in -lpng... " >&6; }
-if ${ac_cv_lib_png_png_read_info+:} false; then :
+  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for png_read_info in -lpng16" >&5
+$as_echo_n "checking for png_read_info in -lpng16... " >&6; }
+if ${ac_cv_lib_png16_png_read_info+:} false; then :
   $as_echo_n "(cached) " >&6
 else
   ac_check_lib_save_LIBS=$LIBS
-LIBS="-lpng -lz -lm $LIBS"
+LIBS="-lpng16 -lz -lm $LIBS"
 cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
 
@@ -4559,20 +4559,20 @@ return png_read_info ();
 }
 _ACEOF
 if ac_fn_c_try_link "$LINENO"; then :
-  ac_cv_lib_png_png_read_info=yes
+  ac_cv_lib_png16_png_read_info=yes
 else
-  ac_cv_lib_png_png_read_info=no
+  ac_cv_lib_png16_png_read_info=no
 fi
 rm -f core conftest.err conftest.$ac_objext \
     conftest$ac_exeext conftest.$ac_ext
 LIBS=$ac_check_lib_save_LIBS
 fi
-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_png_png_read_info" >&5
-$as_echo "$ac_cv_lib_png_png_read_info" >&6; }
-if test "x$ac_cv_lib_png_png_read_info" = xyes; then :
-  ac_fn_c_check_header_mongrel "$LINENO" "png.h" "ac_cv_header_png_h" "$ac_includes_default"
-if test "x$ac_cv_header_png_h" = xyes; then :
-  PNG_LIBS="-lpng -lz -lm"
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_png16_png_read_info" >&5
+$as_echo "$ac_cv_lib_png16_png_read_info" >&6; }
+if test "x$ac_cv_lib_png16_png_read_info" = xyes; then :
+  ac_fn_c_check_header_mongrel "$LINENO" "libpng16/png.h" "ac_cv_header_libpng16_png_h" "$ac_includes_default"
+if test "x$ac_cv_header_libpng16_png_h" = xyes; then :
+  PNG_LIBS="-lpng16 -lz -lm"
 else
   enable_rgb=no
 fi

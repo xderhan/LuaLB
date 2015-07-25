@@ -1,12 +1,14 @@
 My own command to do the configuration
 
+IMPORTANT : run autoconf when modify the configure.ac file
+
 CC='/cygdrive/c/hdf5/bin/h5cc' \
 CFLAGS=-DLUA_USE_READLINE \
 ./configure \
 --with-hdf5='/cygdrive/c/hdf5' \
 --with-lua5='/usr/local' \
 --prefix='/usr/local' \
---enable-rgb=no
+--enable-rgb=yes
 
 Command for make, that cause to log the make status
 

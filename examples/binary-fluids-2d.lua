@@ -3,16 +3,15 @@ NY = 128
 
 PARAMETERS = lb.LBMixParameters()
 
-T = 0.511 -- 0.498, 0.511, 0.526
-a = 9/49
-b = 2/21
-K = 0.01
-Gr = 1.0
-lamda = 1.1
-rtau = 0.8
-ptau = 0.8
+PARAMETERS.T = 0.511 -- 0.498, 0.511, 0.526
+PARAMETERS.a = 9/49
+PARAMETERS.b = 2/21
+PARAMETERS.K = 0.01
+PARAMETERS.Gr = 1.0
+PARAMETERS.lamda = 1.1
+PARAMETERS.rtau = 0.8
+PARAMETERS.ptau = 0.8
 
-PARAMETERS:set(T, a, b, K, Gr, lamda, rtau, ptau)
 
 PY = 1
 

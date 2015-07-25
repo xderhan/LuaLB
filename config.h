@@ -38,7 +38,7 @@
 /* #undef LB_ENABLE_MPI */
 
 /* Define if you want build 'rgb' class */
-/* #undef LB_ENABLE_RGB */
+#define LB_ENABLE_RGB 1
 
 /* Name of package */
 #define PACKAGE "lualb"

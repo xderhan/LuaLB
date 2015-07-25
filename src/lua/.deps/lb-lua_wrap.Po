@@ -25,7 +25,8 @@ lb-lua_wrap.o: lb-lua_wrap.c /usr/include/string.h /usr/include/_ansi.h \
  ../BGK/lb-d3q19-BGK.h ../Mix/lb-d2q9-Mix.h ../Mix/lb-Mix.h \
  ../Mix/lb-d3q19-Mix.h ../Mix/lb-Mix.h ../Landau/lb-d2q9-Landau.h \
  ../Landau/lb-Landau.h ../Landau/lb-d3q19-Landau.h ../Landau/lb-Landau.h \
- ../core/lb-wtime.h ../core/lb-messages.h
+ ../core/lb-wtime.h ../core/lb-messages.h ../graphics/lb-rgb.h \
+ ../graphics/lb-colormap.h
 
 /usr/include/string.h:
 
@@ -144,3 +145,7 @@ lb-lua_wrap.o: lb-lua_wrap.c /usr/include/string.h /usr/include/_ansi.h \
 ../core/lb-wtime.h:
 
 ../core/lb-messages.h:
+
+../graphics/lb-rgb.h:
+
+../graphics/lb-colormap.h:

@@ -1,4 +1,4 @@
-require("utils.lua")
+require("utils")
 
 NX = 128
 NY = 128
@@ -10,7 +10,7 @@ a = -0.1
 b = 0.1
 k = 0.05
 
-PARAMETERS:set(tau)
+PARAMETERS.tau = tau
 
 PY = 1
 

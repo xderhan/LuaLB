@@ -48,7 +48,7 @@ liblbgraphics_a_LIBADD =
 am__liblbgraphics_a_SOURCES_DIST = lb-rgb.h lb-rgb.c lb-colormap.h \
 	lb-colormap.c
 am__objects_1 = lb-rgb.$(OBJEXT) lb-colormap.$(OBJEXT)
-#am__objects_2 = $(am__objects_1)
+am__objects_2 = $(am__objects_1)
 am_liblbgraphics_a_OBJECTS = $(am__objects_2)
 liblbgraphics_a_OBJECTS = $(am_liblbgraphics_a_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(top_builddir)
@@ -119,7 +119,7 @@ PACKAGE_TARNAME = lualb
 PACKAGE_URL = 
 PACKAGE_VERSION = 0.1.1
 PATH_SEPARATOR = :
-PNG_LIBS = 
+PNG_LIBS = -lpng16 -lz -lm
 RANLIB = ranlib
 SET_MAKE = 
 SHELL = /bin/sh
@@ -156,7 +156,7 @@ mandir = ${datarootdir}/man
 mkdir_p = /usr/bin/mkdir -p
 oldincludedir = /usr/include
 pdfdir = ${docdir}
-prefix = /cygdrive/c/lualb
+prefix = /usr/local
 program_transform_name = s,x,x,
 psdir = ${docdir}
 sbindir = ${exec_prefix}/sbin
@@ -179,8 +179,8 @@ lbrgbsources = \
 	lb-colormap.h		\
 	lb-colormap.c
 
-maybe_lbrgbsources = 
-#maybe_lbrgbsources = $(lbrgbsources) 
+#maybe_lbrgbsources = 
+maybe_lbrgbsources = $(lbrgbsources) 
 
 #
 # library

@@ -192,8 +192,8 @@ dnl
 PNG_LIBS=
 
 if test "x$enable_rgb" = "xyes"; then
-  AC_CHECK_LIB(png, png_read_info,
-    [AC_CHECK_HEADER(png.h,PNG_LIBS="-lpng -lz -lm",enable_rgb=no)],
+  AC_CHECK_LIB(png16, png_read_info,
+    [AC_CHECK_HEADER(libpng16/png.h,PNG_LIBS="-lpng16 -lz -lm",enable_rgb=no)],
     AC_MSG_WARN(*** 'rgb' class will not be built (PNG library not found) ***), -lz -lm)
 fi
 

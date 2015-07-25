@@ -1,13 +1,13 @@
--- require("./utils.lua")
+require ("utils")
+
+lb = require("lb")
 
 NX = 128
 NY = 64
 
 PARAMETERS = lb.LBGKParameters()
 
-tau = 0.8
-
-PARAMETERS:set(tau)
+PARAMETERS.tau = 0.8
 
 PY = 0
 

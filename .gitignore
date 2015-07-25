@@ -1,0 +1,30 @@
+Makefile.in
+
+# Autotools
+/autom4te.cache
+/aclocal.m4
+/compile
+# /configure
+/depcomp
+/install-sh
+/missing
+/stamp-h1
+
+# Lua
+*.dll
+*.so
+
+# C
+*.o
+*.ko
+*.obj
+*.lib
+*.a
+*.la
+
+*.exe
+*.out
+*.app
+
+# Debug files
+*.dSYM/

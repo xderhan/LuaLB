@@ -1,4 +1,6 @@
-r--
+lb = require("lb")
+
+--
 --  parameters
 --
 
@@ -8,11 +10,14 @@ NZ = 32
 
 PARAMETERS = lb.LBGKParameters()
 
-tau = 0.8
+PARAMETERS.tau = 0.8
 
-PARAMETERS:set(tau)
+--PARAMETERS:set(tau)
 
 PZ = 0
+
+VT = {0,1}
+VB = {1,0}
 
 START = 0
 END = 512
@@ -63,13 +68,13 @@ initialize = function(simulation, initializer)
 
 	simulation:set_equilibrium()
 end
-s 
+
 make_filename = function(t)
 	local res = ""
 	local digits = 1
 
 	for n = 1, 8 do
-		pp = __pow(10, n)
+		pp = math.pow(10, n)
 		if math.floor(t / pp) == 0 then
 			break
 		else
@@ -124,9 +129,13 @@ pinfo = simulation:partition_info()
 
 simulation:set_parameters(PARAMETERS)
 
-if not PZ then
-	simulation:set_walls_speed(0.0, 0.0, 0.0, 0.0)
+if PZ==0 then
+	simulation:set_walls_speed(VT,VB)
 end
+
+v4,v5 = simulation:get_walls_speed()
+
+print(v4[1],v4[2],v5[1],v5[2])
 
 initialize(simulation, initializer)
 
@@ -147,7 +156,7 @@ for t = START, END do
 	local M = simulation:mass()
 	print(M)
 
-	if math.mod(t, FREQ) == 0 then
+	if math.fmod(t, FREQ) == 0 then
 		render(simulation, t)
 	end
 end

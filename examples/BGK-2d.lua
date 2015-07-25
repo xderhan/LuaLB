@@ -1,27 +1,25 @@
-require ("utils")
-
+require("utils")
 lb = require("lb")
 
 NX = 128
 NY = 64
 
 PARAMETERS = lb.LBGKParameters()
-
 PARAMETERS.tau = 0.8
 
 PY = 0
 
-VT = 0.0 
+VT = 0.0
 VB = 0.0
 
-START = 0 
+START = 0
 END = 2048
 FREQ = 128
 
 cmap = lb.colormap()
-cmap:append_color(1, 0, 0)
-cmap:append_color(1, 1, 1)
-cmap:append_color(0, 0, 1)
+cmap:append_color({1, 0, 0})
+cmap:append_color({1, 1, 1})
+cmap:append_color({0, 0, 1})
 
 poiseuilleVelocity = function(iY, Ly, U) 
 	y = iY/Ly
@@ -43,8 +41,8 @@ initializer = function(x, y)
 --	return 2.5 + math.random(), 0, 0
 end
 
-initialize = function(simulation, initializer)
-	local pinfo = simulation:partition_info()
+initialize = function(simulation, initializer, pinfo)
+	-- local pinfo = simulation:partition_info()
 	local nx, ny = pinfo:size(0), pinfo:size(1)
 	local x0, y0 = pinfo:global_origin(0), pinfo:global_origin(1)
 
@@ -64,8 +62,8 @@ initialize = function(simulation, initializer)
 end
 
 -- ##### Begin simulation code #####
-my_collide = function(simulation)
-	local pinfo = simulation:partition_info()
+my_collide = function(simulation, pinfo)
+	-- local pinfo = simulation:partition_info()
 	local nx, ny = pinfo:size(0), pinfo:size(1)
 	local x0, y0 = pinfo:global_origin(0), pinfo:global_origin(1)
 
@@ -102,8 +100,12 @@ my_collide = function(simulation)
 	end
 end
 
+-- #### RUN SIMULATION #### --
+
 simulation = lb.d2q9_BGK(2, NX, NY, 1, PY)
-pinfo = simulation:partition_info()
+pinfo = lb.LBPartitionInfo()
+simulation:partition_info(pinfo)
+
 --math.randomseed(pinfo:processor_rank() + 1)
 
 simulation:set_parameters(PARAMETERS)
@@ -112,7 +114,7 @@ simulation:set_parameters(PARAMETERS)
 	simulation:set_walls_speed(VT, VB)
 end--]]
 
-initialize(simulation, initializer)
+initialize(simulation, initializer, pinfo)
 
 t0 = lb.wtime()
 last_report = t0
@@ -121,7 +123,7 @@ for t = START, END do
 	--simulation:advance()
 	simulation:stream()
 	simulation:average()
-	my_collide(simulation)
+	my_collide(simulation, pinfo)
 	
 	if pinfo:processor_rank() == 0 then
 		local now = lb.wtime()
@@ -131,8 +133,8 @@ for t = START, END do
 		end
 	end
 
-	if math.mod(t, FREQ) == 0 then
---		render(density2rgb, simulation, t)
+	if math.fmod(t, FREQ) == 0 then
+--		render(density2rgb, simulation, t, pinfo)
 		simulation:dump(make_filename(t,".h5"))
 		print(simulation:mass())
 	end

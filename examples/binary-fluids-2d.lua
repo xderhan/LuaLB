@@ -1,3 +1,5 @@
+lb = require("lb")
+
 NX = 128
 NY = 128
 
@@ -12,7 +14,6 @@ PARAMETERS.lamda = 1.1
 PARAMETERS.rtau = 0.8
 PARAMETERS.ptau = 0.8
 
-
 PY = 1
 
 VT = 0.05 
@@ -23,9 +24,9 @@ END = 2048 -- 1024, 2048, 4096, 8192, 16384, 32768
 FREQ = 64
 
 cmap = lb.colormap()
-cmap:append_color(1, 0, 0)
-cmap:append_color(1, 1, 1)
-cmap:append_color(0, 0, 1)
+cmap:append_color({1, 0, 0})
+cmap:append_color({1, 1, 1})
+cmap:append_color({0, 0, 1})
 
 density2rgb = function(rho, ux, uy)
 	return cmap:map_value((rho - 2.7)/3)
@@ -70,7 +71,7 @@ make_filename = function(t, ext)
 	local digits = 1
 
 	for n = 1, 8 do
-		pp = __pow(10, n)
+		pp = math.pow(10, n)
 		if math.floor(t / pp) == 0 then
 			break
 		else
@@ -94,8 +95,8 @@ render1 = function(callback, simulation, filename)
 	for x = 0, nx - 1 do
 		for y = 0, ny - 1 do
 			local rho, phi, ux, uy = simulation:get_averages(x, y)
-			local R, G, B = callback(phi, ux, uy)
-			rgb:set_pixel(x, ny - y - 1, R, G, B)
+			local c = callback(phi, ux, uy)
+			rgb:set_pixel(x, ny - y - 1, c)
 		end
 	end
 
@@ -184,7 +185,7 @@ for t = START, END do
 
 	--print("MASS\t= ", simulation:mass())
 
-	if math.mod(t, FREQ) == 0 then
+	if math.fmod(t, FREQ) == 0 then
 		render(ordering2rgb, simulation, t)
 --		simulation:dump(make_filename(t, ".h5"))
 	end

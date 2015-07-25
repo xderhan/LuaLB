@@ -16,7 +16,7 @@ make_filename = function(t, ext)
 	local digits = 1
 
 	for n = 1, 8 do
-		pp = __pow(10, n)
+		pp = math.pow(10, n)
 		if math.floor(t / pp) == 0 then
 			break
 		else
@@ -32,16 +32,16 @@ make_filename = function(t, ext)
 	return res .. t .. ext
 end
 
-render1 = function(callback, simulation, filename)
-	local pinfo = simulation:partition_info()
+render1 = function(callback, simulation, filename, pinfo)
+	--local pinfo = simulation:partition_info()
 	local nx, ny = pinfo:size(0), pinfo:size(1)
 	local rgb = lb.rgb(nx, ny)
 
 	for x = 0, nx - 1 do
 		for y = 0, ny - 1 do
 			local rho, ux, uy = simulation:get_averages(x, y, 1)
-			local R, G, B = callback(rho, ux, uy)
-			rgb:set_pixel(x, ny - y - 1, R, G, B)
+			local c = callback(rho, ux, uy)
+			rgb:set_pixel(x, ny - y - 1, c)
 		end
 	end
 
@@ -53,8 +53,8 @@ filename_IJ = function(base, i, j)
 	return string.format("%s-%d-%d.png", base, i, j)
 end
 
-renderN = function(callback, simulation, filename)
-	local pinfo = simulation:partition_info()
+renderN = function(callback, simulation, filename, pinfo)
+	--local pinfo = simulation:partition_info()
 
 	render1(callback, simulation,
 		filename_IJ(filename, pinfo:processor_coords(0),
@@ -87,12 +87,12 @@ renderN = function(callback, simulation, filename)
 	end
 end
 
-render = function(callback, simulation, t)
-	local filename = make_filename(t, ".png")
+render = function(callback, simulation, pinfo, t, ext)
+	local filename = make_filename(t, ext)
 
 	if lb.is_parallel() == 1 then
-		renderN(callback, simulation, filename)
+		renderN(callback, simulation, filename, pinfo)
 	else
-		render1(callback, simulation, filename)
+		render1(callback, simulation, filename, pinfo)
 	end
 end

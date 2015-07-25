@@ -1,3 +1,5 @@
+lb = require("lb")
+
 --
 --  parameters
 --
@@ -8,13 +10,14 @@ NZ = 64
 
 PARAMETERS = lb.LBMixParameters()
 
-T = 0.56
-a = 9/49
-b = 2/21
-K = 0.01
-tau = 0.8
-
-PARAMETERS:set(T, a, b, K, tau)
+PARAMETERS.T = 0.511 -- 0.498, 0.511, 0.526
+PARAMETERS.a = 9/49
+PARAMETERS.b = 2/21
+PARAMETERS.K = 0.01
+PARAMETERS.Gr = 1.0
+PARAMETERS.lamda = 1.1
+PARAMETERS.rtau = 0.8
+PARAMETERS.ptau = 0.8
 
 PZ = 1
 
@@ -25,6 +28,10 @@ FREQ = 64
 --
 --  initializer
 --
+poiseuilleVelocity = function(iZ, Lz, U) 
+	z = iZ/Lz
+	return 4.*U*(z-z*z)
+end
 
 initializer = function(x, y, z)
 	return 2.5 + math.random(), 0, 0, 0
@@ -45,7 +52,11 @@ initialize = function(simulation, initializer)
 		for y = 0, ny - 1 do
 			for z = 0, nz - 1 do
 				simulation:set_averages(x, y, z,
-					initializer(x + x0, y + y0, z + z0))
+					initializer(x + x0, y + y0, z + z0), 
+					poiseuilleVelocity(z, nz-1, 0.01), 
+					0.0, 
+					0.0,
+					0.0)
 			end
 		end
 	end
@@ -58,7 +69,7 @@ make_filename = function(t)
 	local digits = 1
 
 	for n = 1, 8 do
-		pp = __pow(10, n)
+		pp = math.pow(10, n)
 		if math.floor(t / pp) == 0 then
 			break
 		else
@@ -107,8 +118,10 @@ end
 --  finally ... core functionality
 --
 
-simulation = lb.d3q19_VdW(NX, NY, NZ, PZ)
+simulation = lb.d3q19_Mix(NX, NY, NZ, PZ)
+
 pinfo = simulation:partition_info()
+
 math.randomseed(pinfo:processor_rank() + 1)
 
 simulation:set_parameters(PARAMETERS)
@@ -136,7 +149,7 @@ for t = START, END do
 	local M = simulation:mass()
 	print(M)
 
-	if math.mod(t, FREQ) == 0 then
+	if math.fmod(t, FREQ) == 0 then
 		render(simulation, t)
 	end
 end

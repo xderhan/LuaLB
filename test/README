@@ -1,1 +1,9 @@
 Testing script files
+
+To run the test file:
+
+/path/to/bin/lualb test.lua
+
+or if already installed in global bin directory run :
+
+lualb test.lua

@@ -1,0 +1,7 @@
+To run the example file:
+
+/path/to/bin/lualb example.lua
+
+or if already installed in global bin directory run :
+
+lualb example.lua

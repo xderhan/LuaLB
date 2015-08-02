@@ -17,4 +17,4 @@
 * [Lua 5.3.x](http://www.lua.org/)
 * [libpng](http://www.libpng.org/pub/png/libpng.html) (optional for graphics)
 * [SWIG >= 3.0.6](http://www.swig.org/) ( optional for generating wrapper files)
-* [MPICH](http://www-unix.mcs.anl.gov/mpi/mpich1/) (optional for parallel version)
+* [MPICH](https://www.mpich.org) (optional for parallel version)
